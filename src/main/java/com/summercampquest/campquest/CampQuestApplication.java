@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CampQuestApplication {
+public class CampquestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CampQuestApplication.class, args);
+		SpringApplication.run(CampquestApplication.class, args);
 	}
 
 }

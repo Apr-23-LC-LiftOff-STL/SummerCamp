@@ -9,9 +9,9 @@ import java.util.Date;
 @Entity
 public class Camp extends AbstractEntity{
 
-    //@NotBlank(message = "Required")
-    //@Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
-    /*
+    /* @NotBlank(message = "Required")
+    @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
+
     description: string;
     price: number;
     duration: string;

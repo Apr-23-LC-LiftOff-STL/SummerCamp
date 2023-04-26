@@ -11,5 +11,5 @@ import java.util.List;
 public interface CampRepository extends JpaRepository<Camp, Integer> {
 
     List<Camp> findByName(String name);
-    List<Camp> findByDate(Date date);
+    List<Camp> findByDeadline(Date deadline);
 }

@@ -43,7 +43,8 @@ public class HomeController {
             List<Camp> camps = new ArrayList<>();
 
             if (name == null)
-                campRepository.findAll().forEach(camps::add);
+                campRepository.findAll().forEach(camps::add); /* Method references shorthand lambda expressions = campRepository.findAll().forEach(camp -> camps.add(camp)); */
+
             else
                 campRepository.findByName(name);
 

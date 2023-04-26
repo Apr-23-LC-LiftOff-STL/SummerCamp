@@ -1,5 +1,6 @@
 package com.summercampquest.campquest.models;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -13,8 +14,9 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    @NotBlank(message = "Required field")
-    @Size(min = 3, max = 120, message = "Must be between 3 and 120 characters")
+    //@NotBlank(message = "Required field")
+    //@Size(min = 3, max = 120, message = "Must be between 3 and 120 characters")
+    @Column(name="name")
     private String name;
 
     public int getId() {

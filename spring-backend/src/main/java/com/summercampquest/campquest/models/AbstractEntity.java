@@ -1,29 +1,21 @@
 package com.summercampquest.campquest.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class AbstractEntity {
+public abstract class AbstractEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     //@NotBlank(message = "Required field")
     //@Size(min = 3, max = 120, message = "Must be between 3 and 120 characters")
-    @Column(name="name")
-    private String name;
+
 
     public int getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 //    @Override

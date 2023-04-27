@@ -2,8 +2,6 @@ package com.summercampquest.campquest.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -21,6 +19,9 @@ public class Camp extends AbstractEntity{
     mode: string;
     category: string;
     campLink: string;*/
+    @Column(name="name")
+    private String name;
+
     @Column(name="description")
     private String description;
     @Column(name="price")
@@ -42,11 +43,13 @@ public class Camp extends AbstractEntity{
 
 
     //Constructors
-    public Camp(){}
+    public Camp(){
+    }
 
     public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
                 Integer totalSeats, String mode, String category, String campLink) {
         super();
+        this.name=name;
         this.description = description;
         this.price = price;
         this.duration = duration;
@@ -57,6 +60,16 @@ public class Camp extends AbstractEntity{
         this.category = category;
         this.campLink = campLink;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
 
     public String getDescription() {

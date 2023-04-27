@@ -24,11 +24,11 @@ public abstract class AbstractEntity {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
 
 //    @Override

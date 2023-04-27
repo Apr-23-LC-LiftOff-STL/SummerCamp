@@ -7,7 +7,7 @@ import { Camp } from './camp';
   providedIn: 'root'
 })
 export class CampService {
-
+  //must be the port number for the backend api - Tomcat8080
   private baseUrl = "http://localhost:8080/api/camps";
 
   constructor(private httpClient: HttpClient) { }

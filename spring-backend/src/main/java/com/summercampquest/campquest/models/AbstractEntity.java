@@ -1,8 +1,6 @@
 package com.summercampquest.campquest.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @MappedSuperclass

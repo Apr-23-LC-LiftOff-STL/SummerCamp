@@ -10,4 +10,8 @@ The following tools and technologies will be used:
 - Spring Boot
 - Angular
 
+##Helpful Tutorials and Guides 
+- https://www.youtube.com/watch?v=Tbf7F42tcBw&ab_channel=JavaTechie
+- https://awstip.com/deploy-spring-boot-application-with-amazon-ec2-and-rds-d7ca7e4b223f
+
 

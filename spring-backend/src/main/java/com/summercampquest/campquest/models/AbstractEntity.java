@@ -24,17 +24,17 @@ public abstract class AbstractEntity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        name = name;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+//    @Override
+//    public String toString() {
+//        return name;
+//    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Camp {
+@Table(name="camps")
+public class Camp extends AbstractEntity {
 
     /* @NotBlank(message = "Required")
     @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
@@ -20,9 +21,7 @@ public class Camp {
     category: string;
     campLink: string;*/
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+
     @Column(name="name")
     private String name;
 
@@ -64,11 +63,6 @@ public class Camp {
         this.category = category;
         this.campLink = campLink;
     }
-
-    public int getId() {
-        return id;
-    }
-
 
     public void setName(String name) {
         this.name = name;
@@ -151,15 +145,17 @@ public class Camp {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Camp camp = (Camp) o;
-        return id == camp.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", duration='" + duration + '\'' +
+                ", age=" + age +
+                ", deadline=" + deadline +
+                ", totalSeats=" + totalSeats +
+                ", mode='" + mode + '\'' +
+                ", category='" + category + '\'' +
+                ", campLink='" + campLink + '\'' +
+                '}';
     }
 }

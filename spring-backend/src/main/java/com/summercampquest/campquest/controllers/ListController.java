@@ -36,7 +36,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class ListController {
     @Autowired
-    CampRepository campRepository;
+    private CampRepository campRepository;
 
     @GetMapping("/camps")
     public ResponseEntity<List<Camp>> getAllCamps(@RequestParam(required = false) String name) {
@@ -49,11 +49,11 @@ public class ListController {
             else
                 campRepository.findByName(name);
 
-            if (camps.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
+        if (camps.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
             return new ResponseEntity<>(camps, HttpStatus.OK);
+        }
 
     }
 

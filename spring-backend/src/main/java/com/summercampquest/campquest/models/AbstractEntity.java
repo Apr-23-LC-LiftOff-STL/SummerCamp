@@ -3,6 +3,7 @@ package com.summercampquest.campquest.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+//
 
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {

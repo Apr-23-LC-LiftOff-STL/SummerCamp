@@ -52,6 +52,10 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
+    public User findUserByEmailAndPassword(String email, String password){
+        return userRepository.findByEmailAndPassword(email,password);
+    }
+
 
 
 }

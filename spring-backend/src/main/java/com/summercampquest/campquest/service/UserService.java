@@ -44,6 +44,13 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(()-> new UserNotFoundException("User not found"));
     }
 
+    public Boolean findUserExists(String username){
+        return userRepository.existsByUsername(username);
+    }
+
+    public Boolean findEmailExists(String email){
+        return userRepository.existsByEmail(email);
+    }
 
 
 

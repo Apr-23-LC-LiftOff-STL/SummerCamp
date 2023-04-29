@@ -40,6 +40,7 @@ public class User extends AbstractEntity {
     }
 
     public User(String firstName, String lastName, String email, Integer age, Integer grade, Integer phone, String username, String password, List<Camp> favorites, String profilePictureLink) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

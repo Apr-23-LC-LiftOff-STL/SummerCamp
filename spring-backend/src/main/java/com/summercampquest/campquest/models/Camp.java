@@ -51,7 +51,7 @@ public class Camp extends AbstractEntity {
 
     public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
                 Integer totalSeats, String mode, String category, String campLink) {
-
+        super();
         this.name=name;
         this.description = description;
         this.price = price;

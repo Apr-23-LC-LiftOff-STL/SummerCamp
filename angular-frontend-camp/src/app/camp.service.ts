@@ -14,4 +14,8 @@ export class CampService {
   getCampsList(): Observable<Camp[]>{
     return this.httpClient.get<Camp[]>(`${this.baseURL}`);
   }
+
+  createCamp(camp: Camp): Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}`,camp);
+  }
 }

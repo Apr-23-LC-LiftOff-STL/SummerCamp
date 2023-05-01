@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@CrossOrigin(origins = "http://localhost:8080")
 public class Camp {
 
     /* @NotBlank(message = "Required")

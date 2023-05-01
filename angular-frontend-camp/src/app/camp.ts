@@ -26,4 +26,5 @@ export class Camp {
         this.category = category;
         this.campLink = campLink;
     }*/
+    
 }

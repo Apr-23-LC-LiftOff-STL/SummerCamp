@@ -8,16 +8,14 @@ import { CampService } from '../camp.service';
   styleUrls: ['./camp-list.component.css']
 })
 export class CampListComponent implements OnInit {
-
+  
   camps: Camp[] = [];
-
-  constructor(private campService: CampService) { 
-  }
+  constructor(private campService: CampService) { }
 
   ngOnInit(): void {
     this.getCamps();
   }
-
+  
   private getCamps(){
     this.campService.getCampsList().subscribe(data => {
         this.camps = data;

@@ -1,9 +1,9 @@
 package com.summercampquest.campquest.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Table(name="users")
@@ -27,8 +27,13 @@ public class User extends AbstractEntity {
     private String username;
     @Column(name="password")
     private String password;
-    @Column(name="favorites")
-    private List<Camp> favorites;
+
+
+    //TODO:connect to favorites table
+    @OneToMany
+    @JoinColumn(name = "camp_id")
+    private List<Camp> favorites = new ArrayList<>();
+
     @Column(name="profilePictureLink")
     private String profilePictureLink;
     @Column(name="admin")

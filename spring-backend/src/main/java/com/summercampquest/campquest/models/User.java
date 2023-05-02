@@ -29,7 +29,7 @@ public class User extends AbstractEntity {
     private String password;
 
 
-    //TODO:connect to favorites table
+    // TODO:connect to favorites table
     @OneToMany
     @JoinColumn(name = "camp_id")
     private List<Camp> favorites = new ArrayList<>();

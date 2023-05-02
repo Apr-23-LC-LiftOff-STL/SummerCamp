@@ -1,10 +1,13 @@
 package com.summercampquest.campquest.models;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@CrossOrigin()
 public class Camp {
 
     /* @NotBlank(message = "Required")

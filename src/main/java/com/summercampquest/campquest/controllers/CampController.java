@@ -1,34 +1,39 @@
 package com.summercampquest.campquest.controllers;
 
 
-import com.summercampquest.campquest.data.CampRepository;
+import com.summercampquest.campquest.models.CampData;
+import com.summercampquest.campquest.models.data.CampRepository;
 import com.summercampquest.campquest.models.Camp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.Optional;
 
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/camp")
+@RequestMapping("/api/camps")
 public class CampController {
 
-
     @Autowired
-     private CampRepository campRepository;
+    private CampData campData;
 
-//Camp details display
-    @GetMapping("view/{id}")
-    public ResponseEntity<Camp> displayViewCampDetail(@PathVariable int campId){
-        Optional<Camp> camp= campRepository.findById(campId);
+    @GetMapping
+    public ResponseEntity <List<Camp>> displayCamps(){
+        List<Camp> camp=  campData.displayCamps();
+        System.out.println(camp);
+
+//                orElseThrow(()->new ResourceNotFoundException("Camp details not present "+campId));
+        return new ResponseEntity<>(camp,HttpStatus.OK);
+    }
+
+    //Camp details display
+    @GetMapping("/{id}")
+    public ResponseEntity<Camp> displayViewId(@PathVariable int campId){
+        Optional<Camp> camp= campData.displayCampById(campId);
 //                orElseThrow(()->new ResourceNotFoundException("Camp details not present "+campId));
         return new ResponseEntity<>(camp.get(), HttpStatus.OK);
     }

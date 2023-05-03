@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camp } from '../camp';
 import { CampService } from '../camp.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-camp-list',
@@ -19,6 +20,8 @@ export class CampListComponent implements OnInit {
   private getCamps(){
     this.campService.getCampsList().subscribe(data => {
         this.camps = data;
+    },(error:HttpErrorResponse)=>{
+      alert(error.message);
     });
   }
 

@@ -4,22 +4,21 @@ import { Camp } from './camp';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CampService {
 
   //must be the port number for the backend api - Tomcat8080
   private baseURL = "http://localhost:8080/api/camps";
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient) {}
 
   getCampsList(): Observable<Camp[]>{
     return this.httpClient.get<Camp[]>(`${this.baseURL}`);
   }
 
-  createCamp(camp: Camp): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,camp);
+  createCamp(camp: Camp): Observable<Object> {
+    return this.httpClient.post(`${this.baseURL}`, camp);
   }
-
 
   getAll(): Observable<Camp[]> {
     return this.httpClient.get<Camp[]>(this.baseURL);
@@ -40,7 +39,4 @@ export class CampService {
   delete(id: any): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
-
-
-
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Register</h2>
+  <h2>Create Account</h2>
   <form #loginform="ngForm">
     <div class="form-group">
       <label for="email">Email:</label>
@@ -12,13 +12,13 @@
       />
     </div>
     <div class="form-group">
-      <label for="email">Email:</label>
+      <label for="userName">Username:</label>
       <input
-        type="email"
+        type="userName"
         class="form-control"
-        id="email"
-        placeholder="Enter email"
-        name="email"
+        id="userName"
+        placeholder="Enter username"
+        name="userName"
       />
     </div>
     <div class="form-group">
@@ -73,19 +73,15 @@
       />
     </div>
     <div class="form-group">
-      <label for="grade">Grade:</label>
+      <label for="phone">Phone Number:</label>
       <input
-        type="grade"
+        type="phone"
         class="form-control"
-        id="grade"
-        placeholder="Enter grade level"
-        name="grade"
+        id="phone"
+        placeholder="Enter phone number"
+        name="phone"
       />
     </div>
-    <button type="submit" class="btn btn-default">Login</button>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remember" /> Remember me</label>
-    </div>
-    <button type="submit" class="btn btn-default">Create Account</button>
+    <button type="submit" class="btn btn-default">Register</button>
   </form>
 </div>

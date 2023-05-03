@@ -9,25 +9,13 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
 
   users!: User; 
 
   constructor(private loginService: LoginService){}
 
-  ngOnInit(): void {
-    this.getAllUsers();
-  }
-
-
-  public getAllUsers():void {
-    this.loginService.getAllUsers().subscribe(
-      (data:User) => {
-      this.users = data;
-    },
-    (error:HttpErrorResponse)=>{
-      alert(error.message);
-    }
-    );
+  public verifyUser():void {
+    this.loginService.verifyUser();
   }
 }

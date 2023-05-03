@@ -6,21 +6,16 @@ import { User } from 'src/app/ModelInterfaces/user';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  private loginApiURL = 'http://localhost:8080';
 
-  private loginApiURL = "http://localhost:8080";
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient : HttpClient) { }
-
-  public getAllUsers(): Observable<User>{
-    return this.httpClient.get<User>(`${this.loginApiURL}/users/all`)
-  }
+  public verifyUser(): void {}
 
   create(data: any): Observable<any> {
     return this.httpClient.post(this.loginApiURL, data);
   }
-
-  
-  }
+}

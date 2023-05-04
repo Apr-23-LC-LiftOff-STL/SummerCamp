@@ -41,8 +41,7 @@ public class User extends AbstractEntity {
 
 
     //Constructors
-    public User(){
-    }
+    public User(){}
 
     public User(String firstName, String lastName, String email, Integer age, Integer grade, Integer phone, String username, String password, List<Camp> favorites, String profilePictureLink) {
         super();

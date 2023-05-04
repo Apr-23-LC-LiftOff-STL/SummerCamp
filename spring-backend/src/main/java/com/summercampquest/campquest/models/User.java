@@ -9,7 +9,6 @@ import java.util.List;
 @Table(name="users")
 public class User extends AbstractEntity {
 
-
     @Column(name="firstName")
     private String firstName;
 

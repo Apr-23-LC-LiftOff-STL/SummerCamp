@@ -1,13 +1,19 @@
 package com.summercampquest.campquest.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
 @Entity
 @Table(name="users")
 public class User extends AbstractEntity {
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Column(name="firstName")
     private String firstName;
@@ -38,12 +44,16 @@ public class User extends AbstractEntity {
     @Column(name="admin")
     private boolean isAdmin=false;
 
+    @Column
+    @CreationTimestamp
+    private Date dateCreated;
+
 
     //Constructors
     public User(){
     }
 
-    public User(String firstName, String lastName, String email, Integer age, Integer grade, Integer phone, String username, String password, List<Camp> favorites, String profilePictureLink) {
+    public User(String firstName, String lastName, String email, Integer age, Integer grade, Integer phone, String username, String pwHash, List<Camp> favorites, String profilePictureLink) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,12 +62,14 @@ public class User extends AbstractEntity {
         this.grade = grade;
         this.phone = phone;
         this.username = username;
-        this.password = password;
+        this.password = encoder.encode(pwHash);
         this.favorites = favorites;
         this.profilePictureLink = profilePictureLink;
     }
 
-
+    public boolean isMatchingPassword(String pwd) {
+        return encoder.matches(pwd, password);
+    }
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -126,9 +138,9 @@ public class User extends AbstractEntity {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public List<Camp> getFavorites() {
         return favorites;
@@ -144,6 +156,10 @@ public class User extends AbstractEntity {
 
     public void setProfilePictureLink(String profilePictureLink) {
         this.profilePictureLink = profilePictureLink;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
     @Override

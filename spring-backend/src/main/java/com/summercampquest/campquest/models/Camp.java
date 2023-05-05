@@ -2,8 +2,8 @@ package com.summercampquest.campquest.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 @Entity
@@ -29,23 +29,26 @@ public class Camp extends AbstractEntity{
     private String duration;
     @Column(name="age")
     private Integer age;
-    @Column(name="deadline")
+    @Column(name = "deadline")
     private Date deadline;
-    @Column(name="totalSeats")
+    @Column(name = "totalSeats")
     private Integer totalSeats;
-    @Column(name="mode")
+    @Column(name = "mode")
     private String mode;
-    @Column(name="category")
+    @Column(name = "category")
     private String category;
-    @Column(name="campLink")
+    @Column(name = "campLink")
     private String campLink;
-
+    @Column(name = "gradeGrp")
+    @Enumerated(EnumType.STRING)
+    private GradeGroup gradeGrp;
 
     //Constructors
-    public Camp(){}
+    public Camp() {
+    }
 
     public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
-                Integer totalSeats, String mode, String category, String campLink) {
+                Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
         super();
         this.description = description;
         this.price = price;
@@ -56,6 +59,7 @@ public class Camp extends AbstractEntity{
         this.mode = mode;
         this.category = category;
         this.campLink = campLink;
+        this.gradeGrp = gradeGrp;
     }
 
 
@@ -73,6 +77,14 @@ public class Camp extends AbstractEntity{
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public GradeGroup getGradeGrp() {
+        return gradeGrp;
+    }
+
+    public void setGradeGrp(GradeGroup gradeGrp) {
+        this.gradeGrp = gradeGrp;
     }
 
     public String getDuration() {

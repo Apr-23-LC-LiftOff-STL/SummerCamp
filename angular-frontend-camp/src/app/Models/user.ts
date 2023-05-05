@@ -1,17 +1,7 @@
-export interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  age: number;
-  grade: number;
-  phone: number;
-  username: string;
-  password: string;
-  favorites: [];
-  profilePictureLink: string;
-  
-/*
+// changing from interface to parameter properties
+
+export class User {
+
   constructor(
     id: number,
     firstName: string,
@@ -36,5 +26,5 @@ export interface User {
     this.password = password;
     this.favorites = favorites;
     this.profilePictureLink = profilePictureLink;
-  }*/
+  }
 }

@@ -1,87 +1,123 @@
 <div class="container">
   <h2>Create Account</h2>
-  <form #loginform="ngForm">
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        placeholder="Enter email"
-        name="email"
-      />
+  <form [formGroup]="registrationFormGroup" (ngSubmit)="onSubmit()">
+    
+    <!-- Login form group -->
+    <div formGroupName="login" class="form-area">
+      <!-- Username field and validation -->
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input
+          formControlName="username"
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Enter username"
+          name="username"
+        />
+        <div
+          *ngIf="
+            username?.invalid && (username?.dirty ||
+              username?.touched)
+          " class="alert alert-danger">
+          <div *ngIf="username?.errors?.requiredFieldMinSize2NotOnlyWhitespace">
+            Invalid username
+          </div>
+        </div>
+      </div>
+      
+      <!-- Password field -->
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          formControlName="password"
+          type="text"
+          class="form-control"
+          id="password"
+          placeholder="Create password"
+          name="password"
+        />
+        <div
+          *ngIf="
+            password?.invalid && (password?.dirty ||
+              password?.touched)
+          " class="alert alert-danger">
+          <div *ngIf="password?.errors?.requiredFieldMinSize2NotOnlyWhitespace">
+            Invalid password
+          </div>
     </div>
-    <div class="form-group">
-      <label for="userName">Username:</label>
-      <input
-        type="userName"
-        class="form-control"
-        id="userName"
-        placeholder="Enter username"
-        name="userName"
-      />
     </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        placeholder="Create password"
-        name="password"
-      />
-    </div>
-    <div class="form-group">
-      <label for="firstName">First Name:</label>
-      <input
-        type="firstName"
-        class="form-control"
-        id="firstName"
-        placeholder="Enter First Name"
-        name="firstName"
-      />
-    </div>
-    <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <input
-        type="lastName"
-        class="form-control"
-        id="lastName"
-        placeholder="Enter Last Name"
-        name="lasttName"
-      />
-    </div>
+</div>
+    <div formGroupName="user">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter email"
+          name="email"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="age">Age:</label>
-      <input
-        type="age"
-        class="form-control"
-        id="age"
-        placeholder="Enter age"
-        name="age"
-      />
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input
+          formControlName="firstName"
+          type="text"
+          class="form-control"
+          id="firstName"
+          placeholder="Enter First Name"
+          name="firstName"
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input
+          formControlName="lastName"
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Enter Last Name"
+          name="lastName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input
+          formControlName="age"
+          type="text"
+          class="form-control"
+          id="age"
+          placeholder="Enter age"
+          name="age"
+        />
+      </div>
+      <div class="form-group">
+        <label for="grade">Grade:</label>
+        <input
+          formControlName="grade"
+          type="text"
+          class="form-control"
+          id="grade"
+          placeholder="Enter grade level"
+          name="grade"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input
+          formControlName="phone"
+          type="text"
+          class="form-control"
+          id="phone"
+          placeholder="Enter phone number"
+          name="phone"
+        />
+      </div>
     </div>
-    <div class="form-group">
-      <label for="grade">Grade:</label>
-      <input
-        type="grade"
-        class="form-control"
-        id="grade"
-        placeholder="Enter grade level"
-        name="grade"
-      />
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone Number:</label>
-      <input
-        type="phone"
-        class="form-control"
-        id="phone"
-        placeholder="Enter phone number"
-        name="phone"
-      />
-    </div>
-    <button type="submit" class="btn btn-default">Register</button>
+    <button type="submit" class="btn btn-info">Register</button>
   </form>
 </div>

@@ -3,6 +3,25 @@
 export class User {
 
   constructor(
+    firstName: string,
+    lastName: string,
+    email: string,
+    age: number,
+    grade: number,
+    phone: number,
+    username: string,
+    password: string
+  ) {}
+}
+
+
+
+
+/*
+
+export interface User {
+
+  constructor(
     id: number,
     firstName: string,
     lastName: string,
@@ -28,3 +47,4 @@ export class User {
     this.profilePictureLink = profilePictureLink;
   }
 }
+*/

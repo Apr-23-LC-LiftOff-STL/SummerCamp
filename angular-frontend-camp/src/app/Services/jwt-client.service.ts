@@ -8,7 +8,7 @@ export class JwtClientService {
 
   constructor(private http:HttpClient){}
 
-  public generateToken(request){
+  public generateToken(request: any){
     return this.http.post("http://localhost:8080/authenticate", request, {responseType: 'text' as 'json'})
   }
 

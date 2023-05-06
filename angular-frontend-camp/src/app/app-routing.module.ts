@@ -4,7 +4,7 @@ import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { LoginComponent } from './login/login.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [

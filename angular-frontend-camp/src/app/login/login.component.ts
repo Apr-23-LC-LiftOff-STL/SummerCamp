@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../ModelInterfaces/user';
+import { User } from '../Models/user';
 import { LoginService } from '../Services/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent{
 
-  users!: User; 
+  user!: User;
 
   constructor(private loginService: LoginService){}
 

@@ -1,7 +1,7 @@
 
 <div class="container">
   <h2>Login</h2>
-  <form #loginform="ngForm">
+  <form>
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -10,10 +10,10 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
     </div>
-    <button type="submit" class="btn btn-default">Login</button>
+    <button type="submit" class="btn btn-primary">Login</button>
     <div class="checkbox">
       <label><input type="checkbox" name="remember"> Remember me</label>
     </div>
-    <button type="submit" class="btn btn-default">Create Account</button>
+    <button type="submit" class="btn btn-default"><a routerLink='/register'>Create Account</a></button>
   </form>
 </div>

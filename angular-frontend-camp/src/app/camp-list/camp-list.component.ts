@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Camp } from '../camp';
 import { CampService } from '../camp.service';
 
@@ -11,7 +12,9 @@ export class CampListComponent implements OnInit {
 
   camps: Camp[] = [];
 
-  constructor(private campService: CampService) { 
+  constructor(
+    private campService: CampService,
+    private route: ActivatedRoute) { 
   }
 
   ngOnInit(): void {
@@ -19,7 +22,9 @@ export class CampListComponent implements OnInit {
   }
 
   private getCamps(){
-    this.campService.getCampsList().subscribe(data => {
+    const gradeGrp = String(this.route.snapshot.paramMap.get('gradeGrp'))
+    console.log(gradeGrp)
+    this.campService.getCampsList(gradeGrp).subscribe(data => {
         this.camps = data;
     });
   }

@@ -6,8 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./camp-by-category.component.css']
 })
 export class CampByCategoryComponent {
-  display=false;
-  onClick() {
-    this.display = true;
-  }
 }

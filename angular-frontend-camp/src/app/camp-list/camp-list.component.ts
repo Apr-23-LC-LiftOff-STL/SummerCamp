@@ -14,8 +14,7 @@ export class CampListComponent implements OnInit {
 
   constructor(
     private campService: CampService,
-    private route: ActivatedRoute) { 
-  }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getCamps();

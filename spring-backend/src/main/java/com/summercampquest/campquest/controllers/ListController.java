@@ -21,7 +21,7 @@ public class ListController {
     CampRepository campRepository;
 
     @GetMapping("/camps")
-    public ResponseEntity<List<Camp>> getAllTutorials(@RequestParam(required = false) String name) {
+    public ResponseEntity<List<Camp>> getAllCamps(@RequestParam(required = false) String name) {
 
             List<Camp> camps = new ArrayList<>();
 

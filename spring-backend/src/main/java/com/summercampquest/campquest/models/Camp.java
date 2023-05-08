@@ -1,13 +1,11 @@
 package com.summercampquest.campquest.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
-public class Camp extends AbstractEntity{
+public class Camp {
 
     /* @NotBlank(message = "Required")
     @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
@@ -21,6 +19,13 @@ public class Camp extends AbstractEntity{
     mode: string;
     category: string;
     campLink: string;*/
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name="name")
+    private String name;
+
     @Column(name="description")
     private String description;
     @Column(name="price")
@@ -49,7 +54,8 @@ public class Camp extends AbstractEntity{
 
     public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
                 Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
-        super();
+
+        this.name=name;
         this.description = description;
         this.price = price;
         this.duration = duration;
@@ -62,6 +68,18 @@ public class Camp extends AbstractEntity{
         this.gradeGrp = gradeGrp;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public String getDescription() {
         return description;
@@ -143,18 +161,16 @@ public class Camp extends AbstractEntity{
         this.campLink = campLink;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Camp{" +
-//                "description='" + description + '\'' +
-//                ", price=" + price +
-//                ", duration='" + duration + '\'' +
-//                ", age=" + age +
-//                ", deadline=" + deadline +
-//                ", totalSeats=" + totalSeats +
-//                ", mode='" + mode + '\'' +
-//                ", category='" + category + '\'' +
-//                ", campLink='" + campLink + '\'' +
-//                '}';
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Camp camp = (Camp) o;
+        return id == camp.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

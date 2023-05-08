@@ -14,11 +14,9 @@ export class CampService {
 
   getCampsList(gradeGroup: any): Observable<Camp[]> {
     let gradeGrpParam = new HttpParams().set('gradeGrp', gradeGroup);
-    return this.httpClient.get<Camp[]>(this.baseUrl, { params: gradeGrpParam });
+    return this.httpClient.get<Camp[]>(this.baseURL, { params: gradeGrpParam });
   }
-  getCampsList(): Observable<Camp[]>{
-    return this.httpClient.get<Camp[]>(`${this.baseURL}`);
-  }
+  
 
   createCamp(camp: Camp): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,camp);

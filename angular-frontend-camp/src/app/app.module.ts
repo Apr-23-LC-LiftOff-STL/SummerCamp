@@ -12,7 +12,7 @@ import { CampByCategoryComponent } from './camp-by-category/camp-by-category.com
   declarations: [
     AppComponent,
     CampListComponent,
-    CampByCategoryComponent
+    CampByCategoryComponent,
     CampListComponent,
     CreateCampComponent
   ],

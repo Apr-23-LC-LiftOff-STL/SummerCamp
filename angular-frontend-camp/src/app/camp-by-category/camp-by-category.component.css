@@ -5,7 +5,7 @@
 }
 
 .image1 {
-    height: 250px;
+    height: 225px;
     width: 300px;
     left: 2.9289355278015137px;
     top: 148.88470458984375px;
@@ -13,7 +13,7 @@
 }
 
 .image5 {
-    height: 250px;
+    height: 225px;
     width: 300px;
     left:400.1px;
     top:  148.88470458984375px;
@@ -21,7 +21,7 @@
 }
 
 .image7 {
-    height: 250px;
+    height: 225px;
     width: 300px;
     left: 800px;
     top:  148.88470458984375px;
@@ -31,7 +31,6 @@
 
 .k-5 {
     color: rgba(0, 0, 0, 0.4699999988079071);
-    transform: rotate(-1deg);
     text-align: center;
     vertical-align: text-top;
     font-size: 48px;
@@ -39,7 +38,7 @@
     line-height: auto;
     border-style: hidden;
     outline: none;
-    top: 400px;
+    top: 370px;
     position: absolute;
     width: 320.39007568359375px;
 }
@@ -51,7 +50,7 @@
     font-size: 48px;
     font-family: Inter;
     left:390.6px;
-    top: 400px;
+    top: 370px;
     width: 320.39007568359375px;
     height: 68.68824768066406px;
     position: absolute;
@@ -68,7 +67,7 @@
     font-size: 48px;
     font-family: Inter;
     left: 780px;
-    top: 400px;
+    top: 370px;
     width: 320.39007568359375px;
     height: 68.68824768066406px;
     position: absolute;
@@ -81,9 +80,9 @@
 .explorecamps {
     color: #000000;
 
-    text-align: center;
+    text-align: left;
     vertical-align: text-top;
-    font-size: 48px;
+    font-size: 44px;
     font-family: Inter;
     left: 5%;
     top: 2%;
@@ -93,4 +92,10 @@
     line-height: auto;
     border-style: hidden;
     outline: none;
+}
+
+.rectangle11 {
+    width: 35%;
+    height: 15%;
+    padding-top: 10px;
 }

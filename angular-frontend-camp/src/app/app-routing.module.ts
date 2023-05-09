@@ -5,7 +5,7 @@ import { CreateCampComponent } from './create-camp/create-camp.component';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 
 const routes: Routes = [
-{ path: 'camps/:gradeGrp', component: CampListComponent },
+{ path: 'camps', component: CampListComponent },
 { path: '',component:CampByCategoryComponent},
   {path:'create-camp', component: CreateCampComponent}
   ];

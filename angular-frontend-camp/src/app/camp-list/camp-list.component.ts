@@ -21,11 +21,13 @@ export class CampListComponent implements OnInit {
   }
 
   private getCamps(){
-    const gradeGrp = String(this.route.snapshot.paramMap.get('gradeGrp'))
-    console.log(gradeGrp)
-    this.campService.getCampsList(gradeGrp).subscribe(data => {
-        this.camps = data;
-    });
+    this.route.queryParamMap.subscribe(parms => {
+      const gradeGrp = String(parms.get('gradeGrp'));
+      this.campService.getCampsList(gradeGrp).subscribe(data => {
+          this.camps = data;
+      });
+    })
+    
   }
 
 }

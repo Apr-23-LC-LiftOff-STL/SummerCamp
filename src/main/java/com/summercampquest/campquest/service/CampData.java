@@ -1,5 +1,6 @@
-package com.summercampquest.campquest.models;
+package com.summercampquest.campquest.service;
 
+import com.summercampquest.campquest.models.Camp;
 import com.summercampquest.campquest.models.data.CampRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,14 @@ public class CampData {
         this.campRepository = campRepository;
     }
 
-    public Optional<Camp> displayCampById(Integer id){
+    public Optional<Camp> displayCampById(Integer id) {
         return campRepository.findById(id);
     }
 
 
-    public List<Camp> displayCamps(){
+    public List<Camp> displayCamps() {
         return (List<Camp>) campRepository.findAll();
     }
-
 
 
 }

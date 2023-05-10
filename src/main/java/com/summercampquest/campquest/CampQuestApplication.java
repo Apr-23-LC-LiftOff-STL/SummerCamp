@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CampQuestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CampQuestApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CampQuestApplication.class, args);
+    }
 
 }

@@ -1,9 +1,8 @@
 package com.summercampquest.campquest.controllers;
 
 
-import com.summercampquest.campquest.models.CampData;
-import com.summercampquest.campquest.models.data.CampRepository;
 import com.summercampquest.campquest.models.Camp;
+import com.summercampquest.campquest.service.CampData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +21,18 @@ public class CampController {
     private CampData campData;
 
     @GetMapping
-    public ResponseEntity <List<Camp>> displayCamps(){
-        List<Camp> camp=  campData.displayCamps();
+    public ResponseEntity<List<Camp>> displayCamps() {
+        List<Camp> camp = campData.displayCamps();
         System.out.println(camp);
 
 //                orElseThrow(()->new ResourceNotFoundException("Camp details not present "+campId));
-        return new ResponseEntity<>(camp,HttpStatus.OK);
+        return new ResponseEntity<>(camp, HttpStatus.OK);
     }
 
     //Camp details display
     @GetMapping("/{id}")
-    public ResponseEntity<Camp> displayViewId(@PathVariable int campId){
-        Optional<Camp> camp= campData.displayCampById(campId);
+    public ResponseEntity<Camp> displayViewId(@PathVariable("id") Integer campId) {
+        Optional<Camp> camp = campData.displayCampById(campId);
 //                orElseThrow(()->new ResourceNotFoundException("Camp details not present "+campId));
         return new ResponseEntity<>(camp.get(), HttpStatus.OK);
     }
@@ -52,5 +51,5 @@ public class CampController {
 
 //    }
 
-    
+
 }

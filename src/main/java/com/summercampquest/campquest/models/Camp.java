@@ -10,52 +10,40 @@ import java.util.Objects;
 @CrossOrigin()
 public class Camp {
 
-    /* @NotBlank(message = "Required")
-    @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
-    description: string;
-    price: number;
-    duration: string;
-    age: number;
-    deadline: Date;
-    totalSeats: number;
-    mode: string;
-    category: string;
-    campLink: string;*/
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
-    @Column(name="price")
+    @Column(name = "price")
     private Integer price;
-    @Column(name="duration")
+    @Column(name = "duration")
     private String duration;
-    @Column(name="age")
+    @Column(name = "age")
     private Integer age;
-    @Column(name="deadline")
+    @Column(name = "deadline")
     private Date deadline;
-    @Column(name="totalSeats")
+    @Column(name = "totalSeats")
     private Integer totalSeats;
-    @Column(name="mode")
+    @Column(name = "mode")
     private String mode;
-    @Column(name="category")
+    @Column(name = "category")
     private String category;
-    @Column(name="campLink")
+    @Column(name = "campLink")
     private String campLink;
 
 
     //Constructors
-    public Camp(){
+    public Camp() {
     }
 
     public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
                 Integer totalSeats, String mode, String category, String campLink) {
-
-        this.name=name;
+//        super();
+        this.name = name;
         this.description = description;
         this.price = price;
         this.duration = duration;
@@ -65,19 +53,19 @@ public class Camp {
         this.mode = mode;
         this.category = category;
         this.campLink = campLink;
+
     }
 
     public int getId() {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getDescription() {

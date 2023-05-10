@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-camp.component.css']
 })
 export class CreateCampComponent implements OnInit {
- 
+
   /*camp: Camp = new Camp(0, '', '', 0, '', 0,
   new Date(0), 0, '', '', '');*/
   camp: Camp = new Camp();
-  
+
   constructor(private campService: CampService,
     private router: Router) { }
 

@@ -17,9 +17,13 @@ import { RegistrationValidators } from '../Validators/registration-validators';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
+
   registrationFormGroup!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  
+
+  constructor(private formBuilder: FormBuilder, 
+              private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.registrationFormGroup = this.formBuilder.group({
@@ -42,8 +46,6 @@ export class RegistrationComponent implements OnInit {
           Validators.required,
           RegistrationValidators.requiredFieldMinSize2NotOnlyWhitespace,
         ]),
-      }),
-      login: this.formBuilder.group({
         username: new FormControl('', [
           Validators.required,
           RegistrationValidators.requiredFieldMinSize2NotOnlyWhitespace,
@@ -51,16 +53,28 @@ export class RegistrationComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           RegistrationValidators.requiredFieldMinSize2NotOnlyWhitespace,
-        ]),
-      }),
+        ])
+      })
     });
   }
+
+
+
 
   onSubmit() {
     if (this.registrationFormGroup.invalid) {
       this.registrationFormGroup.markAllAsTouched();
+      return;
     }
+
+    this.loginService.register(this.registrationFormGroup.value)
+    
+    console.log(this.registrationFormGroup?.value)
   } //onSubmit method
+
+
+
+
 
   get firstName() {
     return this.registrationFormGroup.get('user.firstName');

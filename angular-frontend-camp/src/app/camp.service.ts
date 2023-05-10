@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camp } from './camp';
 import { Observable } from 'rxjs';
@@ -7,12 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CampService {
-
   //must be the port number for the backend api - Tomcat8080
   private baseURL = "http://localhost:8080/api/camps";
   constructor(private httpClient : HttpClient) {}
 
-  getCampsList(): Observable<Camp[]>{
+  getCampsList(): Observable<Camp[]> {
     return this.httpClient.get<Camp[]>(`${this.baseURL}`);
   }
 

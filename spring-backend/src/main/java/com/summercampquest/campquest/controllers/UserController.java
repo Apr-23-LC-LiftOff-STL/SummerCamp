@@ -6,20 +6,38 @@ import com.summercampquest.campquest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import java.security.Principal;
+
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/api/auth")
 public class UserController {
 
-    @Autowired
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+
+
+    //BasicAuthMethods
+    /*
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+        return user;
+    }
+
 
     @GetMapping("/login")
     public User loginUser(@RequestBody User user){
@@ -41,8 +59,20 @@ public class UserController {
 
          return userObj;
 
-
     }
+
+
+
+    @GetMapping("/getUsers")
+    public List<User> getUsers() {
+        List<User> userList = new ArrayList<>();
+        User user = new User("Billy", "Madison", "johndoe@example.com", 25, 3, "555-1234", "test", "password");
+        userList.add(user);
+        return userList;
+    }
+
+
+
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
@@ -67,8 +97,16 @@ public class UserController {
         }       // if email already used
         } //If user and email exist in db
 
-        userService.addUser(user);
+//        User _user = userService
+//                .addUser(new User(user.getFirstName(),user.getLastName(),user.getEmail(), user.getAge(),user.getGrade(),user.getPhone(),user.getUsername(),user.getPassword(),user.getFavorites(),user.getProfilePictureLink()));
+//
+//        userService.addUser(_user);
+
+
+        //userService.addUser(user);
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.OK);
 
     }       // registerUser method
+
+  */
 }

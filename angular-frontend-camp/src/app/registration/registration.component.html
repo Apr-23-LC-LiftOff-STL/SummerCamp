@@ -3,7 +3,7 @@
   <form [formGroup]="registrationFormGroup" (ngSubmit)="onSubmit()">
     
     <!-- Login form group -->
-    <div formGroupName="login" class="form-area">
+    <div formGroupName="user" class="form-area">
       <!-- Username field and validation -->
       <div class="form-group">
         <label for="username">Username:</label>
@@ -47,8 +47,7 @@
           </div>
     </div>
     </div>
-</div>
-    <div formGroupName="user">
+
       <div class="form-group">
         <label for="email">Email:</label>
         <input

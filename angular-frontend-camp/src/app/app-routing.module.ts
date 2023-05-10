@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 
 import { FormsModule} from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
+import { LoginLandingComponent } from './login-landing/login-landing.component';
 
 const routes: Routes = [
   //javascript object
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'create-camp', component: CreateCampComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
+  { path: 'login-landing', component: LoginLandingComponent },
   { path: '', redirectTo: 'camps', pathMatch: 'full' },
 ];
 

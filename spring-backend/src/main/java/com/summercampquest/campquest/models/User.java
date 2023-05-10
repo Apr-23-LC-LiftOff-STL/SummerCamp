@@ -4,9 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Entity
@@ -27,7 +25,7 @@ public class User extends AbstractEntity {
     @Column(name="grade")
     private Integer grade;
     @Column(name="phone")
-    private Integer phone;
+    private String phone;
     @Column(name="username")
     private String username;
     @Column(name="password")
@@ -37,10 +35,10 @@ public class User extends AbstractEntity {
     // TODO:connect to favorites table
     @OneToMany
     @JoinColumn(name = "camp_id")
-    private List<Camp> favorites = new ArrayList<>();
+    private Set<Camp> favorites = new HashSet<>();
 
     @Column(name="profilePictureLink")
-    private String profilePictureLink;
+    private String profilePictureLink = "profile image link here";
     @Column(name="admin")
     private boolean isAdmin=false;
 
@@ -48,10 +46,13 @@ public class User extends AbstractEntity {
     @CreationTimestamp
     private Date dateCreated;
 
+    private String[] authorities;
+    private String[] role;
+
     //Constructors
     public User(){}
 
-    public User(String firstName, String lastName, String email, Integer age, Integer grade, Integer phone, String username, String pwHash, List<Camp> favorites, String profilePictureLink) {
+    public User(String firstName, String lastName, String email, Integer age, Integer grade, String phone, String username, String password) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -60,9 +61,24 @@ public class User extends AbstractEntity {
         this.grade = grade;
         this.phone = phone;
         this.username = username;
-        this.password = encoder.encode(pwHash);
-        this.favorites = favorites;
-        this.profilePictureLink = profilePictureLink;
+        this.password = encoder.encode(password);
+
+    }
+
+    public String[] getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(String[] authorities) {
+        this.authorities = authorities;
+    }
+
+    public String[] getRole() {
+        return role;
+    }
+
+    public void setRole(String[] role) {
+        this.role = role;
     }
 
     public boolean isMatchingPassword(String pwd) {
@@ -116,11 +132,11 @@ public class User extends AbstractEntity {
         this.grade = grade;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -140,11 +156,11 @@ public class User extends AbstractEntity {
 //        this.password = password;
 //    }
 
-    public List<Camp> getFavorites() {
+    public Set<Camp> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(List<Camp> favorites) {
+    public void setFavorites(Set<Camp> favorites) {
         this.favorites = favorites;
     }
 
@@ -162,7 +178,7 @@ public class User extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "firstName='" + firstName + '\'' +
+        return super.toString() + ", " + "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +

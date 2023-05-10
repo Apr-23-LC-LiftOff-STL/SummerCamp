@@ -24,6 +24,10 @@ public class SecurityConstant {
 
     public static final String[] PUBLIC_URLS = {"/home/**", "/camps/**", "/login/**","/create-camp/**","/register/**", "/user/image/**"};
 
+    /***********************/
+    // Testing application with disabled security
+    //public static final String[] PUBLIC_URLS = {"**"};
+    /********************/
 
 }
 

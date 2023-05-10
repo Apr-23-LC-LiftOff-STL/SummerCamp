@@ -1,5 +1,6 @@
 package com.summercampquest.campquest.controllers;
 
+import com.summercampquest.campquest.exceptions.ExceptionHandlingController;
 import com.summercampquest.campquest.models.Camp;
 import com.summercampquest.campquest.models.User;
 import com.summercampquest.campquest.service.UserService;
@@ -21,7 +22,7 @@ import java.security.Principal;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/auth")
-public class UserController {
+public class UserController extends ExceptionHandlingController {
 
     private final UserService userService;
 

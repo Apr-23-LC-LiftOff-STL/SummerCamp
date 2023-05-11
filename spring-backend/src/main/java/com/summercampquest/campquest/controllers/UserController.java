@@ -1,6 +1,9 @@
 package com.summercampquest.campquest.controllers;
 
+import com.summercampquest.campquest.exceptions.EmailExistsException;
 import com.summercampquest.campquest.exceptions.ExceptionHandlingController;
+import com.summercampquest.campquest.exceptions.UserNotFoundException;
+import com.summercampquest.campquest.exceptions.UsernameExistsException;
 import com.summercampquest.campquest.models.Camp;
 import com.summercampquest.campquest.models.User;
 import com.summercampquest.campquest.service.UserService;
@@ -21,13 +24,30 @@ import java.security.Principal;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class UserController extends ExceptionHandlingController {
 
-    private final UserService userService;
+    private UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException, UsernameExistsException, EmailExistsException {
+
+       User userInfo = userService.register(
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getAge(),
+                user.getGrade(),
+                user.getPhone(),
+                user.getUsername(),
+                user.getPassword());
+
+       return new ResponseEntity<>(userInfo, HttpStatus.CREATED);
     }
 
 

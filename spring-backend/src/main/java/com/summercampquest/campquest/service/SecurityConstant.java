@@ -22,11 +22,12 @@ public class SecurityConstant {
     public static final String OPTIONS_HTTP_METHOD = "OPTIONS"; // Allow options request
 
 
-    public static final String[] PUBLIC_URLS = {"/home/**", "/camps/**", "/login/**","/create-camp/**","/register/**", "/user/image/**"};
+//    public static final String[] PUBLIC_URLS = { "/api/camps/**", "/auth/login","/api/create-camp/**","/auth/register"};
 
     /***********************/
     // Testing application with disabled security
-    //public static final String[] PUBLIC_URLS = {"**"};
+            //TODO: comment out
+    public static final String[] PUBLIC_URLS = {"**"};
     /********************/
 
 }

@@ -5,17 +5,22 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.summercampquest.campquest.models.data.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+
 import javax.persistence.NoResultException;
 import java.nio.file.AccessDeniedException;
 
+
 @RestControllerAdvice
-public class ExceptionHandlingController {
+public class ExceptionHandlingController{
+
+
 
     private Logger LOGGER = LoggerFactory.getLogger(getClass());
 
@@ -75,6 +80,7 @@ public class ExceptionHandlingController {
     }
 
 
+
     private ResponseEntity<HttpResponse> createHttpResponse(HttpStatus httpStatus, String message){
 
         HttpResponse httpResponse = new HttpResponse(httpStatus.value(), httpStatus, httpStatus.getReasonPhrase().toUpperCase(), message.toUpperCase());
@@ -82,6 +88,14 @@ public class ExceptionHandlingController {
         return new ResponseEntity<>(httpResponse, httpStatus);
     }
 
+
+    //whitelabel handler
+    /*
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<HttpResponse> noHandlerFound(NoHandlerFoundException exception){
+        return createHttpResponse(HttpStatus.BAD_REQUEST,"Page Not Found");
+    }
+    */
 }
 
 

@@ -47,7 +47,7 @@ public class User extends AbstractEntity {
     private Date dateCreated;
 
     private String[] authorities;
-    private String[] role;
+    private String role;
 
     //Constructors
     public User(){}
@@ -61,7 +61,7 @@ public class User extends AbstractEntity {
         this.grade = grade;
         this.phone = phone;
         this.username = username;
-        this.password = encoder.encode(password);
+        this.password = password;
 
     }
 
@@ -73,17 +73,19 @@ public class User extends AbstractEntity {
         this.authorities = authorities;
     }
 
-    public String[] getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(String[] role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
     public boolean isMatchingPassword(String pwd) {
         return encoder.matches(pwd, password);
     }
+
+
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -152,9 +154,9 @@ public class User extends AbstractEntity {
         return password;
     }
 
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Set<Camp> getFavorites() {
         return favorites;

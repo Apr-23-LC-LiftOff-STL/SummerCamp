@@ -1,6 +1,5 @@
-<h2>Camp List</h2>
-<h2 class = "text-right">{{userName}}</h2>
-<a routerLink = "/view-my-favorites" routerLinkActive = "active" class = "nav-link">View My Favorites</a>
+<h2>My Favorites</h2>
+<a routerLink = "/camps" routerLinkActive = "active" class = "nav-link">Back to Camp List</a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -17,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let camp of camps">
+        <tr *ngFor = "let camp of favoritesList">
             <td>{{camp.name}}</td>
             <td>{{camp.description}}</td>
             <td>{{camp.price}}</td>
@@ -28,11 +27,7 @@
             <td>{{camp.mode}}</td>
             <td>{{camp.category}}</td>
             <td>{{camp.campLink}}</td>
-            <td>
-            <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)" (click)="addToFavorites(camp.id)"></i>
-            <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)" (click)="removeFromFavorites(camp.id)"></i>
-            </td>
-           
         </tr>
     </tbody>
 </table>
+

@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             userRepository.save(user);
             UserPrincipal userPrincipal = new UserPrincipal(user);
             LOGGER.info("Found username "+ username);
-            return null;
+            return userPrincipal;
         }
 
     }
@@ -61,12 +61,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         return bCryptPasswordEncoder.encode(password);
     }
-
-
-    private String generatePassword(){
-        return RandomStringUtils.randomAlphanumeric(10);
-    }
-
 
 
     private User validateNewUsernameAndEmail(String currentUsername, String newUsername, String newEmail) throws UsernameExistsException, EmailExistsException {
@@ -108,44 +102,44 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
             validateNewUsernameAndEmail(StringUtils.EMPTY, username, email);
 
-            User user = new User();
+            User userRegistration = new User();
 
-            password = generatePassword();
             String encodedPassword = encodePassword(password);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setEmail(email);
-            user.setAge(age);
-            user.setGrade(grade);
-            user.setPhone(phone);
-            user.setUsername(username);
-            user.setPassword(encodedPassword);
-            user.setRole(Role.ROLE_USER.name());
-            user.setAuthorities(Role.ROLE_USER.getAuthorities());
 
-            userRepository.save(user);
+            userRegistration.setFirstName(firstName);
+            userRegistration.setLastName(lastName);
+            userRegistration.setEmail(email);
+            userRegistration.setAge(age);
+            userRegistration.setGrade(grade);
+            userRegistration.setPhone(phone);
+            userRegistration.setUsername(username);
+            userRegistration.setPassword(encodedPassword);
+            userRegistration.setRole(Role.ROLE_USER.name());
+            userRegistration.setAuthorities(Role.ROLE_USER.getAuthorities());
+
+            userRepository.save(userRegistration);
 
             // TODO: Remove logger code, for testing only
             //testing password functionality ************
             LOGGER.info("New User password: "+ password);
             //****************
-            return user;
+            return userRegistration;
 
         }
 
     @Override
     public List<User> getUsers() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public User findUserByUsername(String username) {
-        return null;
+        return userRepository.findUserByUsername(username);
     }
 
     @Override
     public User findUserByEmail(String email) {
-        return null;
+        return userRepository.findUserByEmail(email);
     }
 }
 

@@ -14,27 +14,28 @@ public class User extends AbstractEntity {
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Column(name="firstName")
-    private String firstName;
+    private String firstName = "";
 
     @Column(name="lastName")
-    private String lastName;
+    private String lastName = "";
     @Column(name="email")
-    private String email;
+    private String email="";
     @Column(name="age")
-    private Integer age;
+    private Integer age=0;
     @Column(name="grade")
-    private Integer grade;
+    private Integer grade=0;
     @Column(name="phone")
-    private String phone;
+    private String phone="";
     @Column(name="username")
-    private String username;
+    private String username="";
     @Column(name="password")
-    private String password;
+    private String password="";
 
 
     // TODO:connect to favorites table
     @OneToMany
     @JoinColumn(name = "camp_id")
+    @Column(name="favorites")
     private Set<Camp> favorites = new HashSet<>();
 
     @Column(name="profilePictureLink")
@@ -42,12 +43,8 @@ public class User extends AbstractEntity {
     @Column(name="admin")
     private boolean isAdmin=false;
 
-    @Column
-    @CreationTimestamp
-    private Date dateCreated;
-
     private String[] authorities;
-    private String role;
+    private String role="";
 
     //Constructors
     public User(){}
@@ -174,23 +171,22 @@ public class User extends AbstractEntity {
         this.profilePictureLink = profilePictureLink;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
     @Override
     public String toString() {
-        return super.toString() + ", " + "firstName='" + firstName + '\'' +
+        return "User{" +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", grade=" + grade +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", favorites=" + favorites +
                 ", profilePictureLink='" + profilePictureLink + '\'' +
                 ", isAdmin=" + isAdmin +
+                ", authorities=" + Arrays.toString(authorities) +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

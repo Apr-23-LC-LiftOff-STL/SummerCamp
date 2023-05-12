@@ -1,15 +1,15 @@
 .body {
     width: 90%;
-    height: 90%;
-    position: absolute;
+    height: 100%;
+    position: relative;
     padding-left: 5%;
 }
 
 .image1 {
     height: 275px;
     width: 350px;
-    left: 2.9289355278015137px;
-    top: 148.88470458984375px;
+    left: 2px;
+    top: 100px;
     position: absolute;
     padding-left: 5%;
 }
@@ -18,7 +18,7 @@
     height: 275px;
     width: 350px;
     left:400.1px;
-    top:  148.88470458984375px;
+    top:  100px;
     position: absolute;
     padding-left: 5%;
 }
@@ -27,7 +27,7 @@
     height: 275px;
     width: 350px;
     left: 800px;
-    top:  148.88470458984375px;
+    top:  100px;
     position: absolute;
     padding-left: 5%;
 }
@@ -42,7 +42,7 @@
     line-height: auto;
     border-style: hidden;
     outline: none;
-    top: 420px;
+    top: 360px;
     position: absolute;
     width: 320.39007568359375px;
     padding-left: 9%;
@@ -55,7 +55,7 @@
     font-size: 48px;
     font-family: Inter;
     left:390.6px;
-    top: 420px;
+    top: 360px;
     width: 320.39007568359375px;
     height: 68.68824768066406px;
     position: absolute;
@@ -73,7 +73,7 @@
     font-size: 48px;
     font-family: Inter;
     left: 780px;
-    top: 420px;
+    top: 360px;
     width: 320.39007568359375px;
     height: 68.68824768066406px;
     position: absolute;

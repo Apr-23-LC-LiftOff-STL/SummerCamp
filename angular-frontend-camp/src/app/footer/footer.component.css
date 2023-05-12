@@ -1,11 +1,33 @@
-.footer{
-    position:sticky;
-    top:100%;
-    bottom:0;
-    width:auto;
-    height: 30%;
-    background-color: blue;
-    text-align:center;
-    color:white;
+.footer {
+        height: fit-content;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 25%;
     }
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 12px;
+}
+
+.social {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.socials {
+    padding-right: 10%;
+}
     

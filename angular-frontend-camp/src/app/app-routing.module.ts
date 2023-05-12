@@ -5,10 +5,10 @@ import { CreateCampComponent } from './create-camp/create-camp.component';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 
 const routes: Routes = [
-{ path: 'camps', component: CampListComponent },
-{ path: '',component:CampByCategoryComponent},
-  {path:'create-camp', component: CreateCampComponent}
-  ];
+  { path: 'camps', component: CampListComponent },
+  { path: '', component: CampByCategoryComponent },
+  { path: 'create-camp', component: CreateCampComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

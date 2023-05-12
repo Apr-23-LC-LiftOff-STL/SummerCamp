@@ -2,45 +2,50 @@
     width: 90%;
     height: 90%;
     position: absolute;
+    padding-left: 5%;
 }
 
 .image1 {
-    height: 225px;
-    width: 300px;
+    height: 275px;
+    width: 350px;
     left: 2.9289355278015137px;
     top: 148.88470458984375px;
     position: absolute;
+    padding-left: 5%;
 }
 
 .image5 {
-    height: 225px;
-    width: 300px;
+    height: 275px;
+    width: 350px;
     left:400.1px;
     top:  148.88470458984375px;
     position: absolute;
+    padding-left: 5%;
 }
 
 .image7 {
-    height: 225px;
-    width: 300px;
+    height: 275px;
+    width: 350px;
     left: 800px;
     top:  148.88470458984375px;
     position: absolute;
+    padding-left: 5%;
 }
 
 
 .k-5 {
     color: rgba(0, 0, 0, 0.4699999988079071);
-    text-align: center;
+    text-align: left;
     vertical-align: text-top;
     font-size: 48px;
     font-family: Inter;
     line-height: auto;
     border-style: hidden;
     outline: none;
-    top: 370px;
+    top: 420px;
     position: absolute;
     width: 320.39007568359375px;
+    padding-left: 9%;
 }
 
 .g6-8 {
@@ -50,13 +55,14 @@
     font-size: 48px;
     font-family: Inter;
     left:390.6px;
-    top: 370px;
+    top: 420px;
     width: 320.39007568359375px;
     height: 68.68824768066406px;
     position: absolute;
     line-height: auto;
     border-style: hidden;
     outline: none;
+    padding-left: 9%;
 }
 
 .g9-12 {
@@ -67,13 +73,14 @@
     font-size: 48px;
     font-family: Inter;
     left: 780px;
-    top: 370px;
+    top: 420px;
     width: 320.39007568359375px;
     height: 68.68824768066406px;
     position: absolute;
     line-height: auto;
     border-style: hidden;
     outline: none;
+    padding-left: 12%;
 }
 
 
@@ -92,6 +99,7 @@
     line-height: auto;
     border-style: hidden;
     outline: none;
+    padding-left: 5%;
 }
 
 .rectangle11 {

@@ -7,6 +7,8 @@ import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { FormsModule } from '@angular/forms';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { CampByCategoryComponent } from './camp-by-category/camp-by-category.com
     CampListComponent,
     CampByCategoryComponent,
     CampListComponent,
-    CreateCampComponent
+    CreateCampComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

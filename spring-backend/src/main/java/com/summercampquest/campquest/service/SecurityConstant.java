@@ -9,9 +9,9 @@ public class SecurityConstant {
 
     public static final String TOKEN_CANNOT_BE_VERIFIED = "Token Cannot be verified";
 
-    public static final String GET_ARRAYS_LLC = "Get Arrays, LLC";
+    public static final String GET_ARRAYS_LLC = "Summer Camp Quest";
 
-    public static final String GET_ARRAYS_ADMINISTRATION= "User Management Portal";//token audience
+    public static final String GET_ARRAYS_ADMINISTRATION= "Camp Quest Users";//token audience
 
     public static final String AUTHORITIES = "authorities";
 

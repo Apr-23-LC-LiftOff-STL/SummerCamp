@@ -27,6 +27,8 @@ import java.util.List;
 @Qualifier("UserDetailsService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
+    public static final String EMAIL_ALREADY_REGISTERED = "Email already registered";
+    public static final String USERNAME_ALREADY_EXISTS = "Username already exists";
     private Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     private UserRepository userRepository;
@@ -64,34 +66,37 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 
     private User validateNewUsernameAndEmail(String currentUsername, String newUsername, String newEmail) throws UsernameExistsException, EmailExistsException {
+        User currentUser = findUserByUsername(currentUsername);
+        User userByUsername = findUserByUsername(newUsername);
+        User userByEmail = findUserByEmail(newEmail);
 
         if(StringUtils.isNotBlank(currentUsername)){
 
-            User currentUser = findUserByUsername(currentUsername);
+
             if(currentUser == null){
                 throw new UsernameNotFoundException("Username " + currentUsername + " not found");
             } //if username not in database
 
-            User userByNewUsername = findUserByUsername(newUsername);
+
             Long currentUserId = currentUser.getId();
-            if((userByNewUsername != null) && !currentUserId.equals(userByNewUsername.getId())){
-                throw new UsernameExistsException("Username unavailable");
+            if((userByUsername != null) && !currentUserId.equals(userByUsername.getId())){
+                throw new UsernameExistsException(USERNAME_ALREADY_EXISTS);
             }
 
             User userByNewEmail = findUserByEmail(newEmail);
-            if(userByNewEmail != null && !currentUserId.equals(userByNewUsername.getId())){
-                throw new EmailExistsException("Username already exists");
+            if(userByNewEmail != null && !currentUserId.equals(userByUsername.getId())){
+                throw new EmailExistsException(EMAIL_ALREADY_REGISTERED);
             }
             return currentUser;
         } //if currentUsername is not blank
         else {
-            User userByUsername = findUserByUsername(newUsername);
+
             if(userByUsername != null){
-                throw new EmailExistsException("Username already exists");
+                throw new EmailExistsException(USERNAME_ALREADY_EXISTS);
             }
-            User userByEmail = findUserByEmail(newEmail);
+
             if(userByEmail != null){
-                throw new EmailExistsException("Username already exists");
+                throw new EmailExistsException(EMAIL_ALREADY_REGISTERED);
             }
             return null;
         }

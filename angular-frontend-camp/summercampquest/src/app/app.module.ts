@@ -10,6 +10,8 @@ import { LoginService } from './Services/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginLandingComponent } from './login-landing/login-landing.component';
 import { RouterModule, Routes } from '@angular/router';
+import {AuthInterceptor} from './Interceptors/auth.interceptor';
+import { AuthenticationGuard } from './Guard/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,11 @@ import { RouterModule, Routes } from '@angular/router';
     RouterModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    AuthenticationGuard,
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptor, 
+      multi: true},
   ],
   bootstrap: [AppComponent],
 })

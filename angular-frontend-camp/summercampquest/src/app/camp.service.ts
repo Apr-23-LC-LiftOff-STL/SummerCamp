@@ -38,4 +38,8 @@ export class CampService {
   delete(id: any): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
+  getBaseUrl(): string {
+    return this.baseURL;
+  }
 }

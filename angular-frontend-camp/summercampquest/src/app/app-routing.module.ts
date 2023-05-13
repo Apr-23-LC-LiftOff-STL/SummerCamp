@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { LoginComponent } from './login/login.component';

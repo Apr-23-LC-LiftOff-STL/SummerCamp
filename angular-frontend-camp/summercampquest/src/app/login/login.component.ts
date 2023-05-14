@@ -1,80 +1,63 @@
 import { LoginService } from './../Services/login.service';
-import { HttpIntercepterBasicAuthService } from '../Services/http/HttpIntercepterBasicAuth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { User } from '../Models/user';
+import { Subscription } from 'rxjs';
+import { HeaderType } from '../Models/Enum/header-type.enum';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  credentials = {username: '', password: ''};
+  private subscriptions:Subscription[] = [];
 
-  errorMessage = 'Invalid Credentials'
-  invalidLogin = false
-  message:any
 
-  constructor(private router: Router,
-    private loginService: LoginService,
-    private http: HttpClient) {
-      this.loginService.authenticate(undefined, undefined);}
-
+  constructor(
+    private router:Router, 
+    private authenticationService:LoginService){}
 
   ngOnInit() {
+
+    if(this.authenticationService.isLoggedIn()){
+      this.router.navigateByUrl('/login-landing');
+    }else{
+      this.router.navigateByUrl('/login');
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach( 
+      sub => sub.unsubscribe());
+      
   }
  
-  login() {
-    this.loginService.authenticate(this.credentials, () => {
-      if (this.loginService.authenticated) {
-        this.router.navigateByUrl('/');
-      } else {
-        this.invalidLogin = true;
-      }
-    });
-    return false;
+  public login(user: User): void {
+    console.log(user);
+    this.subscriptions.push(
+      this.authenticationService.login(user).subscribe(
+        (response: HttpResponse<User> | HttpErrorResponse) => {
+          if (response instanceof HttpResponse) {
+            const token = response.headers.get('Jwt-token');
+            this.authenticationService.saveToken(token);
+            if (response.body) {
+              this.authenticationService.addUserToLocalCache(response.body);
+            }
+            this.router.navigateByUrl('/login-landing');
+          } else if (response instanceof HttpErrorResponse) {
+            console.log(response.error.message);
+          }
+        }
+      )
+    );
   }
+  
+ 
+
+
 
   
-/*
-  // attemptLogin(){
-  //   let response = this.loginService.login(this.username, this.password);
-  //   response.subscribe(
-  //     data=>{
-  //       this.message=data;
-  //       this.router.navigate([""])
-  //     }
-  //   )
-  // }
-
-  // attemptLogin() {
-  //   this.httpInterceptor = new HttpIntercepterBasicAuthService(this.username, this.password);
-  //   let response = this.loginService.login(this.username, this.password);
-  //   response.subscribe(
-  //     data => {
-  //       this.message = data;
-  //       this.router.navigate(['/login-landing']);
-  //     }
-  //   );
-  // }
-*/
- 
-  // verifyCredentials() {
-   
-  //   this.loginService.verifyCredentials(this.username, this.password)
-  //       .subscribe(
-  //         data => {
-  //           console.log(data)
-  //           this.router.navigate(['welcome', this.username])
-  //           this.invalidLogin = false      
-  //         },
-  //         error => {
-  //           console.log(error)
-  //           this.invalidLogin = true
-  //         }
-  //       )
-  // }
-
 }

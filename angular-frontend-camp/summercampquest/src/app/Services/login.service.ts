@@ -20,9 +20,9 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-    public login(user: User): Observable<HttpResponse<any> | HttpErrorResponse>{
+    public login(user: User): Observable<HttpResponse<User> | HttpErrorResponse>{
 
-      return this.http.post<HttpResponse<any> | HttpErrorResponse>(`${this.host}/auth/login`, user,{observe: 'response'})
+      return this.http.post<User>(`${this.host}/auth/login`, user,{observe: 'response'})
 
     }
 

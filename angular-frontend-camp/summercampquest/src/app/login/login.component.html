@@ -1,20 +1,93 @@
+<!-- 
 
-
-<div class="container">
+<div class="d-flex justify-content-center form_container">
   <h2>Login</h2>
-  <form role="form" (submit)="login()">
-    <div class="form-group">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+    <div class="input-group mb-3">
       <label for="username">Username:</label>
-      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" [(ngModel)]="credentials.username">
+      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" ngModel #usernameInput="ngModel" required>
     </div>
-    <div class="form-group">
+    <div class="help-block" style="color:red" *ngIf="usernameInput.invalid && usernameInput.touched">Username Required</div>
+    <div class="input-group mb-2">
       <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"[(ngModel)]="credentials.password">
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"ngModel #passwordInput="ngModel" required >
     </div>
+    <div class="help-block" style="color:red" *ngIf="passwordInput.invalid && passwordInput.touched">Password Required</div>
     <button type="submit" class="btn btn-success">Login</button>
   </form>
   <div class="checkbox">
     <label><input type="checkbox" name="remember"> Remember me</label>
   </div>
   <a routerLink='/register' class="btn btn-default">Create Account</a>
+</div> -->
+
+<br>
+<br>
+<br>
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-group mb-0">
+        <div class="card p-4">
+
+          <div class="card-body">
+            <h1>Login</h1>
+            <p class="text-muted">Sign In to your account</p>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+
+              <div class="input-group mb-3">
+                <!-- <label for="username">Username</label> -->
+                <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" ngModel #usernameInput="ngModel" required>
+              </div>
+
+              <div class="help-block" style="color:red" *ngIf="usernameInput.invalid && usernameInput.touched">Username Required</div>
+              
+              <div class="input-group mb-4">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <!-- <label for="password">Password  </label> -->
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" ngModel #passwordInput="ngModel" required>
+              </div>
+
+              <div class="help-block" style="color:red" *ngIf="passwordInput.invalid && passwordInput.touched">Password Required</div>
+
+              <div class="row">
+
+                <div class="col-6">
+                  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary px-4">Login</button>
+                </div>
+
+                <div class="col-6 text-right">
+                  <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                </div>
+
+              </div>
+
+
+
+            </form>
+          </div>
+
+          
+        </div>
+
+        <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+          <div class="card-body text-center">
+            <div>
+              <h2>Register</h2>
+              <p>Save your favorite camps and more, Register now!</p>
+              <a routerLink='/register'><button type="button" class="btn btn-primary active mt-3">Create Account</button></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

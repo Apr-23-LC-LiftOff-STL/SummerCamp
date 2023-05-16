@@ -28,6 +28,8 @@ public class Camp {
 
     @Column(name="description")
     private String description;
+    @Column(name="location")
+    private String location;
     @Column(name="price")
     private Integer price;
     @Column(name="duration")
@@ -52,11 +54,12 @@ public class Camp {
     public Camp() {
     }
 
-    public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
+    public Camp(String name, String description, String location,Integer price, String duration, Integer age, Date deadline,
                 Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
 
         this.name=name;
         this.description = description;
+        this.location=location;
         this.price = price;
         this.duration = duration;
         this.age = age;
@@ -66,6 +69,14 @@ public class Camp {
         this.category = category;
         this.campLink = campLink;
         this.gradeGrp = gradeGrp;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public int getId() {

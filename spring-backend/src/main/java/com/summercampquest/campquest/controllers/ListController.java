@@ -54,7 +54,7 @@ public class ListController {
     public ResponseEntity<Camp> createCamps(@RequestBody Camp camp) {
 
         Camp _camp = campRepository
-                .save(new Camp(camp.getName(), camp.getDescription(), camp.getPrice(), camp.getDuration(), camp.getAge(), camp.getDeadline(), camp.getTotalSeats(), camp.getMode(), camp.getCategory(), camp.getCampLink(), GradeGroup.G6TO8));
+                .save(new Camp(camp.getName(), camp.getDescription(),camp.getLocation(), camp.getPrice(), camp.getDuration(), camp.getAge(), camp.getDeadline(), camp.getTotalSeats(), camp.getMode(), camp.getCategory(), camp.getCampLink(), GradeGroup.G6TO8));
             return new ResponseEntity<>(_camp, HttpStatus.CREATED);
 
     }

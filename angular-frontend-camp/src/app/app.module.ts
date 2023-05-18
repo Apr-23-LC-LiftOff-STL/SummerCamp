@@ -9,6 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ViewMyFavoritesComponent } from './view-my-favorites/view-my-favorites.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
+
+
 
 @NgModule({
   declarations: [
@@ -18,13 +25,16 @@ import { FooterComponent } from './footer/footer.component';
     CampListComponent,
     CreateCampComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ViewMyFavoritesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

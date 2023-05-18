@@ -21,9 +21,9 @@ export class CampService {
   createCamp(camp: Camp): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,camp);
   }
+  
 
-
-  getAll(): Observable<Camp[]> {
+  /*getAll(): Observable<Camp[]> {
     return this.httpClient.get<Camp[]>(this.baseURL);
   }
 
@@ -41,7 +41,7 @@ export class CampService {
 
   delete(id: any): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
-  }
+  }*/
 
 
 

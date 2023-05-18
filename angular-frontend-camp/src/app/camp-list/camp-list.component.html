@@ -2,6 +2,8 @@
 <div id='body1' class='body1'>
     <div id='rectangle15' class='rectangle15'>
         <div id='camplist' class='camplist'>Camp List</div>
+      <h2 class = "text-right">{{userName}}</h2>
+      <a routerLink = "/view-my-favorites" routerLinkActive = "active"  class = "nav-link">View My Favorites</a>
     </div>
 </div>
 
@@ -24,7 +26,11 @@
                 <td>{{camp.location}}</td>
                 <td>{{camp.gradeGrp}}</td>
                 <td><a href="#">View Details</a></td>
-                <td><button (click)="addAsFavorite(camp.id,1)">Add as Favorite</button></td>
+              <td>
+                <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)" (click)="addToFavorites(camp.id)"></i>
+                <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)" (click)="removeFromFavorites(camp.id)"></i>
+              </td>
+
             </tr>
         </table>
     </div>

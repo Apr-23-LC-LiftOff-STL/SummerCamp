@@ -1,12 +1,11 @@
 package com.campquest.controller;
 
-import com.summercampquest.campquest.models.Camp;
+
+import com.campquest.models.Camp;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.summercampquest.campquest.models.data.CampRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
+import com.campquest.models.data.CampRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -72,7 +71,7 @@ public class ListController {
     public ResponseEntity<Camp> createCamps(@RequestBody Camp camp) {
 
             Camp _camp = campRepository
-                    .save(new Camp(camp.getName(), camp.getDescription(), camp.getPrice(),camp.getDuration(), camp.getAge(), camp.getDeadline(), camp.getTotalSeats(), camp.getMode(), camp.getCategory(), camp.getCampLink()));
+                    .save(new Camp(camp.getName(), camp.getDescription(),camp.getLocation(), camp.getPrice(),camp.getDuration(), camp.getAge(), camp.getDeadline(), camp.getTotalSeats(), camp.getMode(), camp.getCategory(), camp.getCampLink(),camp.getGradeGrp()));
             return new ResponseEntity<>(_camp, HttpStatus.CREATED);
 
     }

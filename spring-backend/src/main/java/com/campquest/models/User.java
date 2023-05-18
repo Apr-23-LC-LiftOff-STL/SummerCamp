@@ -10,7 +10,7 @@ public class User {
     private int id;
 
     @Column(nullable = false, unique = true)
-    private String userName;
+    private String username;
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -27,7 +27,7 @@ public class User {
     }
     public User(String userName, String email, String password, Role role) {
         super();
-        this.userName = userName;
+        this.username = userName;
         this.email = email;
         this.password = password;
         this.role = role;
@@ -42,11 +42,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getEmail() {

@@ -1,7 +1,7 @@
-package com.summercampquest.campquest.models.data;
+package com.campquest.models.data;
 
-import com.summercampquest.campquest.models.Camp;
-import com.summercampquest.campquest.models.GradeGroup;
+import com.campquest.models.Camp;
+import com.campquest.models.GradeGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

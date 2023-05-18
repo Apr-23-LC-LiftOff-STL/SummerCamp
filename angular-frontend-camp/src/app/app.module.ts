@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ViewMyFavoritesComponent } from './view-my-favorites/view-my-favorites.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { ToastrModule } from 'ngx-toastr';
 
 

@@ -1,70 +1,35 @@
 .rectangle15 {
     position: absolute;
-    width: 200px;
-    height: 65px;
-    left: 73px;
-
-
-    background: #B3E28E;
-    border-radius: 25px 0px;
-}
-
-.camplist {
-
-    position: absolute;
-    width: 230px;
-    height: 46px;
-    left: 30px;
-    padding-top: 4px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 48px;
-
-    color: #000000;
-
-}
-
-.body1 {
-    padding-top: 5px;
+    width: calc(15% + 1vw + 1vh);
+    height: calc(10% + 0.5vw + 1vh);
+    padding-top: 1%;
 }
 
 .rectangle17 {
-    box-sizing: border-box;
+    
 
     position: absolute;
-    width: 1200px;
-    height: 330px;
-    left: 50px;
-    top: 175px;
-
+    padding-top: 2%;
+    width: calc(95% + 1vw + 1vh);
     background: linear-gradient(180deg, rgba(185, 224, 103, 0.46) 5.21%, rgba(185, 224, 103, 0) 100%);
-    border: 2px solid rgba(153, 230, 161, 0.64);
-    border-radius: 75px 0px 75px;
+    border: none solid rgba(153, 230, 161, 0.64);
+    border-radius: 75px 0px 125px 0px;
 
 }
 
-.table {
-    position: absolute;
-    width: 20 px;
-    border: none;
-    height: auto;
-    border-collapse: collapse;
-    border-radius: 0%;
-    text-align: center;
 
-
-}
 
 th {
-    height: 30px;
+    
     font-weight: bold;
 }
 
 table, tr, td, th, thead {
     border: none;
+    padding-left: 5%;
+   
 }
+
 
 
 

@@ -4,6 +4,7 @@ import { Camp } from '../camp';
 import { CampService } from '../camp.service';
 import { FavoriteService } from '../favorite.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-camp-list',
@@ -37,8 +38,9 @@ export class CampListComponent implements OnInit {
           } else if (this.camps[i].gradeGrp === 'G9TO12') {
             this.camps[i].gradeGrp = '9-12'
           }
-        }
-      });
+        },(error:HttpErrorResponse)=>{
+          alert(error.message);
+        });
     })
 
   }

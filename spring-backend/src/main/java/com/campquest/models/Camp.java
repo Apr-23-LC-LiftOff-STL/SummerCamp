@@ -5,11 +5,8 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Camp {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    @Column(name="name")
+public class Camp extends AbstractEntity{
+        @Column(name="name")
     private String name;
 
     @Column(name="description")
@@ -42,7 +39,7 @@ public class Camp {
 
     public Camp(String name, String description, String location,Integer price, String duration, Integer age, Date deadline,
                 Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
-
+        super();
         this.name=name;
         this.description = description;
         this.location=location;
@@ -64,11 +61,6 @@ public class Camp {
     public void setLocation(String location) {
         this.location = location;
     }
-
-    public int getId() {
-        return id;
-    }
-
 
     public void setName(String name) {
         this.name = name;
@@ -159,15 +151,17 @@ public class Camp {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Camp camp = (Camp) o;
-        return id == camp.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", duration='" + duration + '\'' +
+                ", age=" + age +
+                ", deadline=" + deadline +
+                ", totalSeats=" + totalSeats +
+                ", mode='" + mode + '\'' +
+                ", category='" + category + '\'' +
+                ", campLink='" + campLink + '\'' +
+                '}';
     }
 }

@@ -1,10 +1,17 @@
-package com.campquest.models.data;
+package com.summercampquest.campquest.models.data;
 
-import com.campquest.models.User;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import com.summercampquest.campquest.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface UserRepository extends CrudRepository<User,Integer> {
-    User findByuserName(String userName);
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+    Optional<User> findByUsername(String username);
+
+    Boolean existsByUsername(String username);
+
+    Boolean existsByEmail(String email);
+
+    User findByEmailAndPassword(String email, String password);
 }

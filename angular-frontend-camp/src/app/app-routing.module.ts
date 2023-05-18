@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
+import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 
 const routes: Routes = [
-  //javascript object
-  {path:'camps', component: CampListComponent},
-  {path:'create-camp', component: CreateCampComponent},
-  {path:'', redirectTo:'camps', pathMatch:'full'}
+  { path: 'camps', component: CampListComponent },
+  { path: '', component: CampByCategoryComponent },
+  { path: 'create-camp', component: CreateCampComponent }
 ];
 
 @NgModule({

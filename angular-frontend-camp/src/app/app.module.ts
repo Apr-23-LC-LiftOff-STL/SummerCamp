@@ -6,12 +6,19 @@ import { AppComponent } from './app.component';
 import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { FormsModule } from '@angular/forms';
+import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CampListComponent,
-    CreateCampComponent
+    CampByCategoryComponent,
+    CampListComponent,
+    CreateCampComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

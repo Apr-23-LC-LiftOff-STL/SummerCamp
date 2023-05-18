@@ -5,21 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Camp {
-
-    /* @NotBlank(message = "Required")
-    @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
-
-    description: string;
-    price: number;
-    duration: string;
-    age: number;
-    deadline: Date;
-    totalSeats: number;
-    mode: string;
-    category: string;
-    campLink: string;*/
-
+public class Camp{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -28,33 +14,38 @@ public class Camp {
 
     @Column(name="description")
     private String description;
+    @Column(name="location")
+    private String location;
     @Column(name="price")
     private Integer price;
     @Column(name="duration")
     private String duration;
     @Column(name="age")
     private Integer age;
-    @Column(name="deadline")
+    @Column(name = "deadline")
     private Date deadline;
-    @Column(name="totalSeats")
+    @Column(name = "totalSeats")
     private Integer totalSeats;
-    @Column(name="mode")
+    @Column(name = "mode")
     private String mode;
-    @Column(name="category")
+    @Column(name = "category")
     private String category;
-    @Column(name="campLink")
+    @Column(name = "campLink")
     private String campLink;
-
+    @Column(name = "gradeGrp")
+    @Enumerated(EnumType.STRING)
+    private GradeGroup gradeGrp;
 
     //Constructors
-    public Camp(){
+    public Camp() {
     }
 
-    public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
-                Integer totalSeats, String mode, String category, String campLink) {
+    public Camp(String name, String description, String location,Integer price, String duration, Integer age, Date deadline,
+                Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
 
         this.name=name;
         this.description = description;
+        this.location=location;
         this.price = price;
         this.duration = duration;
         this.age = age;
@@ -63,6 +54,15 @@ public class Camp {
         this.mode = mode;
         this.category = category;
         this.campLink = campLink;
+        this.gradeGrp = gradeGrp;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public int getId() {
@@ -92,6 +92,14 @@ public class Camp {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public GradeGroup getGradeGrp() {
+        return gradeGrp;
+    }
+
+    public void setGradeGrp(GradeGroup gradeGrp) {
+        this.gradeGrp = gradeGrp;
     }
 
     public String getDuration() {

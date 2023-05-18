@@ -1,0 +1,26 @@
+.body {
+    width: 90%;
+    height: 100%;
+    position: relative;
+    padding-left: 5%;
+}
+
+.image {
+    height: 80%;
+    width: 100%;
+}
+
+
+.rectangle11 {
+    width: 25%;
+    height: 15%;
+    padding-top: 10px;
+    z-index: 0;
+}
+
+.top-buffer { margin-top:20px; }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    .top-buffer { margin-top:70px; }
+  }

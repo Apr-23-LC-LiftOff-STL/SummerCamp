@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camp } from './camp';
 import { Observable } from 'rxjs';
@@ -9,12 +9,14 @@ import { Observable } from 'rxjs';
 export class CampService {
 
   //must be the port number for the backend api - Tomcat8080
-  private baseURL = "http://localhost:8080/api/camps";
+  private baseURL = "http://localhost:8080/api/v1/camps";
   constructor(private httpClient : HttpClient) { }
 
-  getCampsList(): Observable<Camp[]>{
-    return this.httpClient.get<Camp[]>(`${this.baseURL}`);
+  getCampsList(gradeGroup: any): Observable<Camp[]> {
+    let gradeGrpParam = new HttpParams().set('gradeGrp', gradeGroup);
+    return this.httpClient.get<Camp[]>(this.baseURL, { params: gradeGrpParam });
   }
+  
 
   createCamp(camp: Camp): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,camp);

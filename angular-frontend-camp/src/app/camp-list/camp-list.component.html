@@ -1,32 +1,43 @@
-<div class="container">
-<div id='body1' class='body1'>
-    <div id='rectangle15' class='rectangle15'>
-        <div id='camplist' class='camplist'>Camp List</div>
+<div class="container-fluid">
+    <div class="row content"> 
+        <div class="col-sm-10">
+            <img class="rectangle15" src="../../assets/camp_list.png" />
+        </div>
+        <div class="col" style="float: right;">
+            <h2 class="text-right">{{userName}}</h2>
+            <a routerLink="/view-my-favorites" routerLinkActive="active" class="nav-link">View My Favorites</a>
+        </div>
     </div>
-</div>
 
-<div>
-    <div id='rectangle17' class='rectangle17'>
-        <table class="table" >
-            <!-- <thead> -->
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Location</th>
-                    <th>Grade group</th>
-
-                </tr>
-            <!-- </thead> -->
+     
+       <div  class="rectangle17 top-buffer">
+        <table>
+            
+            <tr >
+                <th  class="col-sm-1">Name</th>
+                <th  class="col-sm-1">Category</th>
+                <th class="col-sm-2">Location</th>
+                <th class="col-sm-1">Grade</th>
+                <th class="col-sm-1"></th>
+                <th class="col-sm-1"></th>
+            </tr>
+            
 
             <tr *ngFor="let camp of camps">
-                <td>{{camp.name}}</td>
-                <td>{{camp.category}}</td>
-                <td>{{camp.location}}</td>
-                <td>{{camp.gradeGrp}}</td>
-                <td><a href="#">View Details</a></td>
-                <td><button (click)="addAsFavorite(camp.id,1)">Add as Favorite</button></td>
+                <td class="col-sm-1">{{camp.name}}</td>
+                <td class="col-sm-1">{{camp.category}}</td>
+                <td class="col-sm-2">{{camp.location}}</td>
+                <td class="col-sm-1">{{camp.gradeGrp}}</td>
+                <td class="col-sm-1"><a href="#">View Details</a></td>
+                <td class="col-sm-1">
+                    <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)"
+                        (click)="addToFavorites(camp.id)"></i>
+                    <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
+                        (click)="removeFromFavorites(camp.id)"></i>
+                </td>
+
             </tr>
         </table>
-    </div>
-</div>
+    </div> 
+    
 </div>

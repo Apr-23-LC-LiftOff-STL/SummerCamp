@@ -1,4 +1,4 @@
-package com.summercampquest.campquest.controllers;
+package com.campquest.controller;
 
 import com.summercampquest.campquest.models.Camp;
 import org.springframework.web.bind.annotation.CrossOrigin;

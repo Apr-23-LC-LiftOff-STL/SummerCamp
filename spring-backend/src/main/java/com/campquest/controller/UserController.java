@@ -1,7 +1,7 @@
 package com.campquest.controller;
 
-import com.summercampquest.campquest.models.Camp;
-import com.summercampquest.campquest.models.User;
+import com.campquest.models.Camp;
+import com.campquest.models.User;
 import com.campquest.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +45,8 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
 
-        if(userService.findUserExists(user.getUsername())||userService.findEmailExists(user.getEmail())){
-        if (userService.findUserExists(user.getUsername())) {
+        if(userService.findUserExists(user.getUserName())||userService.findEmailExists(user.getEmail())){
+        if (userService.findUserExists(user.getUserName())) {
             try {
                 throw new Exception("Username taken");
             } catch (Exception e) {

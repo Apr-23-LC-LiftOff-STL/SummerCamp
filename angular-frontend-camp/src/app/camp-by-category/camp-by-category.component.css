@@ -5,105 +5,22 @@
     padding-left: 5%;
 }
 
-.image1 {
-    height: 275px;
-    width: 350px;
-    left: 2px;
-    top: 100px;
-    position: absolute;
-    padding-left: 5%;
+.image {
+    height: 80%;
+    width: 100%;
 }
 
-.image5 {
-    height: 275px;
-    width: 350px;
-    left:400.1px;
-    top:  100px;
-    position: absolute;
-    padding-left: 5%;
-}
-
-.image7 {
-    height: 275px;
-    width: 350px;
-    left: 800px;
-    top:  100px;
-    position: absolute;
-    padding-left: 5%;
-}
-
-
-.k-5 {
-    color: rgba(0, 0, 0, 0.4699999988079071);
-    text-align: left;
-    vertical-align: text-top;
-    font-size: 48px;
-    font-family: Inter;
-    line-height: auto;
-    border-style: hidden;
-    outline: none;
-    top: 360px;
-    position: absolute;
-    width: 320.39007568359375px;
-    padding-left: 9%;
-}
-
-.g6-8 {
-    color: rgba(0, 0, 0, 0.4699999988079071);
-    text-align: center;
-    vertical-align: text-top;
-    font-size: 48px;
-    font-family: Inter;
-    left:390.6px;
-    top: 360px;
-    width: 320.39007568359375px;
-    height: 68.68824768066406px;
-    position: absolute;
-    line-height: auto;
-    border-style: hidden;
-    outline: none;
-    padding-left: 9%;
-}
-
-.g9-12 {
-    color: rgba(0, 0, 0, 0.4699999988079071);
-    
-    text-align: center;
-    vertical-align: text-top;
-    font-size: 48px;
-    font-family: Inter;
-    left: 780px;
-    top: 360px;
-    width: 320.39007568359375px;
-    height: 68.68824768066406px;
-    position: absolute;
-    line-height: auto;
-    border-style: hidden;
-    outline: none;
-    padding-left: 12%;
-}
-
-
-.explorecamps {
-    color: #000000;
-
-    text-align: left;
-    vertical-align: text-top;
-    font-size: 44px;
-    font-family: Inter;
-    left: 5%;
-    top: 2%;
-    width: 352.16522216796875px;
-    height: 57.1231575012207px;
-    position: absolute;
-    line-height: auto;
-    border-style: hidden;
-    outline: none;
-    padding-left: 5%;
-}
 
 .rectangle11 {
-    width: 35%;
+    width: 25%;
     height: 15%;
     padding-top: 10px;
+    z-index: 0;
 }
+
+.top-buffer { margin-top:20px; }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    .top-buffer { margin-top:70px; }
+  }

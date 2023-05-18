@@ -3,50 +3,38 @@
 
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 400;
-    font-size: 60px;
-    line-height: 73px;
-
-    left: 108px;
-
+    font-weight: bold;
+    font-size: calc(100% + 1vw + 1vh);;
+   
     color: #000000;
 
     border: 1px solid rgba(0, 0, 0, 0.2);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-
+      
+ 
 
 }
 
+
 .logo {
     box-sizing: border-box;
-    width: 75px;
-    height: 75px;
+    width: calc(5% + 1vw + 1vh);
+    height: calc(5% + 1vw + 1vh);
     mix-blend-mode: darken;
     border-radius: 50px;
     transform: rotate(-0.32deg);
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin-left: 60px;
-    margin-bottom: 5px;
 
 }
 
 .login {
-    width: 70px;
-    height: 50px;
-    flex: none;
-    order: 1;
-    margin-top: 20px;
-    flex-grow: 0;
+    width: calc(5% + 0.5vw + 0.5vh);
+    height: calc(5% + 0.5vw + 0.5vh);
+    vertical-align: middle;
     float: right;
-    margin-right: 50px;
+    margin-top: 10px;
 }
 
 /* unvisited link */

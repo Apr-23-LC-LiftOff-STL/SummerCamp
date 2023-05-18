@@ -1,4 +1,30 @@
-<div id='body' class='body'>
+<div class="container">
+    <div class="row">
+        <img  class='rectangle11' src='../../assets/explore.png' alt="">
+    </div>
+    <div class="row top-buffer">
+        <div class="col-sm">
+            <a [routerLink]="['/camps']" [queryParams]="{ gradeGrp : 'GKTO5'}">
+                <img id='image1' class="image" src='../../assets/k25.png' />
+            </a>
+        </div>
+        <div class="col-sm">
+            <a [routerLink]="['/camps']" [queryParams]="{ gradeGrp : 'G6TO8'}">
+                <img id='image5' class='image' src='../../assets/628.png' />
+            </a>
+        </div>
+        <div class="col-sm">
+            <a [routerLink]="['/camps']" [queryParams]="{ gradeGrp : 'G9TO12'}">
+                <img id='image7' class='image' src='../../assets/9212.png' />
+            </a>
+        </div>
+    </div>
+  
+</div>
+
+
+
+<!-- <div id='body' class='container'>
     <img id='rectangle11' class='rectangle11' src='../../assets/explorecamp_rectangle.png' />
     <div id='explorecamps' class='explorecamps'>
         Explore Camps</div>
@@ -21,4 +47,4 @@
             9-12
         </div>
     </a>
-</div>
+</div> -->

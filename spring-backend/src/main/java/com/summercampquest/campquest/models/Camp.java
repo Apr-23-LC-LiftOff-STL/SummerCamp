@@ -5,21 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Camp {
-
-    /* @NotBlank(message = "Required")
-    @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
-
-    description: string;
-    price: number;
-    duration: string;
-    age: number;
-    deadline: Date;
-    totalSeats: number;
-    mode: string;
-    category: string;
-    campLink: string;*/
-
+public class Camp{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

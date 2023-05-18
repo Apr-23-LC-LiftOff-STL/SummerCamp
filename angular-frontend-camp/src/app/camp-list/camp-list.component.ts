@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Camp } from '../camp';
-import { CampService } from '../camp.service';
-import { FavoriteService } from '../favorite.service';
+import { Camp } from '../ModelInterfaces/camp';
+import { CampService } from '../Services/camp.service';
+import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
@@ -38,10 +38,11 @@ export class CampListComponent implements OnInit {
           } else if (this.camps[i].gradeGrp === 'G9TO12') {
             this.camps[i].gradeGrp = '9-12'
           }
-        },(error:HttpErrorResponse)=>{
-          alert(error.message);
-        });
-    })
+        }
+    }),(error:HttpErrorResponse)=>{
+      alert(error.message);
+    }
+  });
 
   }
   public addAsFavorite(campId: number, userId: number) {

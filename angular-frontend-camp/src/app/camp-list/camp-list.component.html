@@ -14,11 +14,11 @@
         <table>
             
             <tr >
-                <th  class="col-sm-1">Name</th>
+                <th  class="col-sm-2">Name</th>
                 <th  class="col-sm-1">Category</th>
-                <th class="col-sm-2">Location</th>
+                <th class="col-sm-1">Location</th>
                 <th class="col-sm-1">Grade</th>
-                <th class="col-sm-1"></th>
+                <th class="col-sm-2"></th>
                 <th class="col-sm-1"></th>
             </tr>
             
@@ -35,6 +35,7 @@
                     <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
                         (click)="removeFromFavorites(camp.id)"></i>
                 </td>
+                
 
             </tr>
         </table>

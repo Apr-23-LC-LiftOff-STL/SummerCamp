@@ -13,13 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { CreateCampComponent } from './create-camp/create-camp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CampListComponent,
     CampByCategoryComponent,
-    CampListComponent,
     CreateCampComponent,
     HeaderComponent,
     FooterComponent,

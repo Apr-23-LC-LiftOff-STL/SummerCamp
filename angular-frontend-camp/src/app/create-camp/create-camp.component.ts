@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Camp } from '../camp';
-import { CampService } from '../camp.service';
+import { Camp } from '../ModelInterfaces/camp';
+import { CampService } from '../Services/camp.service';
 import { Router } from '@angular/router';
 
 @Component({

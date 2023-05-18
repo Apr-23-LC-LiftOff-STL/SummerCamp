@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Camp } from './camp';
+import { Camp } from '../ModelInterfaces/camp';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,27 +21,6 @@ export class CampService {
   createCamp(camp: Camp): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, camp);
   }
-
-
-  /*getAll(): Observable<Camp[]> {
-    return this.httpClient.get<Camp[]>(this.baseURL);
-  }
-
-  get(id: any): Observable<any> {
-    return this.httpClient.get(`${this.baseURL}/${id}`);
-  }
-
-  create(data: any): Observable<any> {
-    return this.httpClient.post(this.baseURL, data);
-  }
-
-  update(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseURL}/${id}`, data);
-  }
-
-  delete(id: any): Observable<any> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
-  }*/
 
 
 }

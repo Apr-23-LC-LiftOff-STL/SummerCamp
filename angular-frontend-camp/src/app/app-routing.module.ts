@@ -14,8 +14,6 @@ const routes: Routes = [
   { path: '', component: CampByCategoryComponent },
   { path: 'create-camp', component: CreateCampComponent },
   {path:'view-my-favorites', component: ViewMyFavoritesComponent},
-  //javascript object
-
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent }
 

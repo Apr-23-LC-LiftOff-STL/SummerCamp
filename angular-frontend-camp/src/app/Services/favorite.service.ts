@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Camp } from './camp';
+import { Camp } from '../ModelInterfaces/camp';
 
 @Injectable({
   providedIn: 'root'

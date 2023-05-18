@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoriteService } from '../favorite.service';
-import { Camp } from '../camp';
+import { FavoriteService } from '../Services/favorite.service';
+import { Camp } from '../ModelInterfaces/camp';
 
 
 

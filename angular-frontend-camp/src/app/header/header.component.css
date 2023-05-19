@@ -17,7 +17,6 @@
 
 
 .logo {
-    box-sizing: border-box;
     width: calc(5% + 1vw + 1vh);
     height: calc(5% + 1vw + 1vh);
     mix-blend-mode: darken;

@@ -1,8 +1,10 @@
 package com.campquest.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 public class Camp extends AbstractEntity{

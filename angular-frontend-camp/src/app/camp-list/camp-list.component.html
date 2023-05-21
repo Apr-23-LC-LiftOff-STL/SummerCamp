@@ -1,31 +1,25 @@
-<h2>Camp List</h2>
+<h2 Style="font-size: 1.5rem;
+font-style: italic;
+padding-left: 15px;">Camp List</h2>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Description</th>
             <th>Price</th>
             <th>Duration</th>
             <th>Age</th>
-            <th>Deadline</th>
-            <th>TotalSeats</th>
-            <th>Mode</th>
             <th>Category</th>
-            <th>CampLink</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let camp of camps">
+        <tr *ngFor="let camp of camps">
             <td>{{camp.name}}</td>
-            <td>{{camp.description}}</td>
             <td>{{camp.price}}</td>
             <td>{{camp.duration}}</td>
             <td>{{camp.age}}</td>
-            <td>{{camp.deadline}}</td>
-            <td>{{camp.totalSeats}}</td>
-            <td>{{camp.mode}}</td>
             <td>{{camp.category}}</td>
-            <td>{{camp.campLink}}</td>
+            <td><button (click)='campDetails(camp.id)'>Camp Detail</button></td>
         </tr>
     </tbody>
+    
 </table>

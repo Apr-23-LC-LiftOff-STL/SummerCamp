@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CampDetailComponent } from './camp-detail/camp-detail.component';
 import { CampListComponent } from './camp-list/camp-list.component';
-import { CreateCampComponent } from './create-camp/create-camp.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
-  //javascript object
-  {path:'camps', component: CampListComponent},
-  {path:'create-camp', component: CreateCampComponent},
-  {path:'', redirectTo:'camps', pathMatch:'full'}
+
+  {path: 'camp-list', pathMatch: 'full', component: CampListComponent  },
+  {path: 'camp-detail/:id', pathMatch: 'full', component: CampDetailComponent  },
+  {path:'forgot-password',pathMatch:'full',component:ForgotPasswordComponent},
+  {path:'reset-password',pathMatch:'full',component:ResetPasswordComponent},
+  {path: '', pathMatch: 'full', redirectTo: '/camp-list'  }
+
 ];
 
 @NgModule({

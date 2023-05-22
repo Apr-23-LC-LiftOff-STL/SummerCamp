@@ -1,4 +1,4 @@
-package com.campquest.models;
+package com.summercampquest.campquest.models;
 
 import javax.persistence.*;
 

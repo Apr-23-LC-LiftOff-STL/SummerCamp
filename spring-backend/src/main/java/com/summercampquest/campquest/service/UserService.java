@@ -1,9 +1,9 @@
-package com.campquest.service;
+package com.summercampquest.campquest.service;
 
 
-import com.campquest.exception.UserNotFoundException;
-import com.campquest.models.User;
-import com.campquest.models.data.UserRepository;
+import com.summercampquest.campquest.exception.UserNotFoundException;
+import com.summercampquest.campquest.models.User;
+import com.summercampquest.campquest.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

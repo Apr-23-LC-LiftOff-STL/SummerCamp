@@ -27,7 +27,9 @@
                 <td class="col-sm-1">{{camp.name}}</td>
                 <td class="col-sm-1">{{camp.category}}</td>
                 <td class="col-sm-2">{{camp.location}}</td>
-                <td class="col-sm-1">{{camp.gradeGrp}}</td>
+                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'GKTO5'">K-5</td>
+                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'G6TO8'">6-8</td>
+                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'G9TO12'">9-12</td>
                 <td class="col-sm-1"><a href="#">View Details</a></td>
                 <td class="col-sm-1">
                     <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)"

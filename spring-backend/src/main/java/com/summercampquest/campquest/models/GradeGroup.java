@@ -1,4 +1,4 @@
-package com.campquest.models;
+package com.summercampquest.campquest.models;
 
 public enum GradeGroup {
     GKTO5,

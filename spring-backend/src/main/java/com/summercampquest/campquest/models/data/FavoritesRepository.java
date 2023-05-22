@@ -1,8 +1,8 @@
-package com.campquest.models.data;
+package com.summercampquest.campquest.models.data;
 
-import com.campquest.models.User;
-import com.campquest.models.Camp;
-import com.campquest.models.Favorites;
+import com.summercampquest.campquest.models.Camp;
+import com.summercampquest.campquest.models.Favorites;
+import com.summercampquest.campquest.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,14 +1,14 @@
-package com.campquest.controller;
+package com.summercampquest.campquest.controller;
 
 
-import com.campquest.exception.CampNotFoundException;
-import com.campquest.exception.UserNotFoundException;
-import com.campquest.models.Camp;
-import com.campquest.models.Favorites;
-import com.campquest.models.User;
-import com.campquest.models.data.CampRepository;
-import com.campquest.models.data.FavoritesRepository;
-import com.campquest.models.data.UserRepository;
+import com.summercampquest.campquest.exception.CampNotFoundException;
+import com.summercampquest.campquest.exception.UserNotFoundException;
+import com.summercampquest.campquest.models.Camp;
+import com.summercampquest.campquest.models.Favorites;
+import com.summercampquest.campquest.models.User;
+import com.summercampquest.campquest.models.data.CampRepository;
+import com.summercampquest.campquest.models.data.FavoritesRepository;
+import com.summercampquest.campquest.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,7 @@
-package com.campquest.models.data;
+package com.summercampquest.campquest.models.data;
 
 
-import com.campquest.models.User;
+import com.summercampquest.campquest.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

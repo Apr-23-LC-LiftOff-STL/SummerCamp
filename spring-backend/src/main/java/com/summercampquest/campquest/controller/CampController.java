@@ -1,8 +1,8 @@
-package com.campquest.controller;
+package com.summercampquest.campquest.controller;
 
-import com.campquest.models.Camp;
-import com.campquest.models.GradeGroup;
-import com.campquest.models.data.CampRepository;
+import com.summercampquest.campquest.models.Camp;
+import com.summercampquest.campquest.models.GradeGroup;
+import com.summercampquest.campquest.models.data.CampRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

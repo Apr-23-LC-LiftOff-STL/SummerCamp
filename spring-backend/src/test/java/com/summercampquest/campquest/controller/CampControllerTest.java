@@ -1,8 +1,8 @@
-package com.campquest.controller;
+package com.summercampquest.campquest.controller;
 
-import com.campquest.models.data.CampRepository;
-import com.campquest.models.Camp;
-import com.campquest.models.GradeGroup;
+import com.summercampquest.campquest.models.Camp;
+import com.summercampquest.campquest.models.GradeGroup;
+import com.summercampquest.campquest.models.data.CampRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -4,16 +4,23 @@ import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 import { ViewMyFavoritesComponent } from './view-my-favorites/view-my-favorites.component';
+import { LoginComponent } from './login/login.component';
+
+import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: 'camps', component: CampListComponent },
   { path: '', component: CampByCategoryComponent },
   { path: 'create-camp', component: CreateCampComponent },
-  {path:'view-my-favorites', component: ViewMyFavoritesComponent}
+  {path:'view-my-favorites', component: ViewMyFavoritesComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent }
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), FormsModule],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

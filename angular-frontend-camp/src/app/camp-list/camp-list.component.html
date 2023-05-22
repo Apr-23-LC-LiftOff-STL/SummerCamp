@@ -9,16 +9,16 @@
         </div>
     </div>
 
-     
+    <div  class="top-buffer"></div>
        <div  class="rectangle17 top-buffer">
         <table>
             
             <tr >
-                <th  class="col-sm-1">Name</th>
+                <th  class="col-sm-2">Name</th>
                 <th  class="col-sm-1">Category</th>
-                <th class="col-sm-2">Location</th>
+                <th class="col-sm-1">Location</th>
                 <th class="col-sm-1">Grade</th>
-                <th class="col-sm-1"></th>
+                <th class="col-sm-2"></th>
                 <th class="col-sm-1"></th>
             </tr>
             
@@ -27,7 +27,9 @@
                 <td class="col-sm-1">{{camp.name}}</td>
                 <td class="col-sm-1">{{camp.category}}</td>
                 <td class="col-sm-2">{{camp.location}}</td>
-                <td class="col-sm-1">{{camp.gradeGrp}}</td>
+                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'GKTO5'">K-5</td>
+                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'G6TO8'">6-8</td>
+                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'G9TO12'">9-12</td>
                 <td class="col-sm-1"><a href="#">View Details</a></td>
                 <td class="col-sm-1">
                     <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)"
@@ -35,6 +37,7 @@
                     <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
                         (click)="removeFromFavorites(camp.id)"></i>
                 </td>
+                
 
             </tr>
         </table>

@@ -1,33 +1,43 @@
-<h2>My Favorites</h2>
-<a routerLink = "/camps" routerLinkActive = "active" class = "nav-link">Back to Camp List</a>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Duration</th>
-            <th>Age</th>
-            <th>Deadline</th>
-            <th>TotalSeats</th>
-            <th>Mode</th>
-            <th>Category</th>
-            <th>CampLink</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let camp of favoritesList">
-            <td>{{camp.name}}</td>
-            <td>{{camp.description}}</td>
-            <td>{{camp.price}}</td>
-            <td>{{camp.duration}}</td>
-            <td>{{camp.age}}</td>
-            <td>{{camp.deadline}}</td>
-            <td>{{camp.totalSeats}}</td>
-            <td>{{camp.mode}}</td>
-            <td>{{camp.category}}</td>
-            <td>{{camp.campLink}}</td>
-        </tr>
-    </tbody>
-</table>
-
+<div class="row">
+    <div class="col-sm-8">
+        <h2>My Favorites</h2>
+    </div>
+    <div class="col-sm-2" style="float:left">
+        <a [routerLink] (click)="goBack()" class = "nav-link">
+            <h5>Back to Camp List</h5>
+        </a>
+    </div>
+</div>
+<div  class="overflow-auto">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Age</th>
+                <th>Deadline</th>
+                <th>TotalSeats</th>
+                <th>Mode</th>
+                <th>Category</th>
+                <th>CampLink</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let camp of favoritesList">
+                <td>{{camp.name}}</td>
+                <td>{{camp.description}}</td>
+                <td>{{camp.price}}</td>
+                <td>{{camp.duration}}</td>
+                <td>{{camp.age}}</td>
+                <td>{{camp.deadline}}</td>
+                <td>{{camp.totalSeats}}</td>
+                <td>{{camp.mode}}</td>
+                <td>{{camp.category}}</td>
+                <!-- <td> <a href="{{camp.campLink}}" class="nav-link">Link</a></td> -->
+                <td>{{camp.campLink}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

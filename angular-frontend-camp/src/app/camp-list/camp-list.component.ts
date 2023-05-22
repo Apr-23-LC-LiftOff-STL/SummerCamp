@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Camp } from '../camp';
-import { CampService } from '../camp.service';
-import { FavoriteService } from '../favorite.service';
+import { Camp } from '../ModelInterfaces/camp';
+import { CampService } from '../Services/camp.service';
+import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-camp-list',
@@ -29,21 +30,10 @@ export class CampListComponent implements OnInit {
       const gradeGrp = String(parms.get('gradeGrp'));
       this.campService.getCampsList(gradeGrp).subscribe(data => {
         this.camps = data;
-        for (let i = 0; i < this.camps.length; i++) {
-          if (this.camps[i].gradeGrp === 'GKTO5') {
-            this.camps[i].gradeGrp = 'K-5'
-          } else if (this.camps[i].gradeGrp === 'G6TO8') {
-            this.camps[i].gradeGrp = '6-8'
-          } else if (this.camps[i].gradeGrp === 'G9TO12') {
-            this.camps[i].gradeGrp = '9-12'
-          }
-        }
-      });
-    })
-
-  }
-  public addAsFavorite(campId: number, userId: number) {
-    console.log(`Camp id:${campId}`)
+    }),(error:HttpErrorResponse)=>{
+      alert(error.message);
+    }
+  });
 
   }
 

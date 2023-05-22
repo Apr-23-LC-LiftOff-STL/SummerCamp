@@ -1,8 +1,7 @@
-package com.campquest.controller;
+package com.summercampquest.campquest.controller;
 
-import com.campquest.models.Camp;
-import com.campquest.models.User;
-import com.campquest.service.UserService;
+import com.summercampquest.campquest.models.User;
+import com.summercampquest.campquest.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

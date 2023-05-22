@@ -1,4 +1,4 @@
-package com.campquest.exception;
+package com.summercampquest.campquest.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

@@ -30,23 +30,10 @@ export class CampListComponent implements OnInit {
       const gradeGrp = String(parms.get('gradeGrp'));
       this.campService.getCampsList(gradeGrp).subscribe(data => {
         this.camps = data;
-        for (let i = 0; i < this.camps.length; i++) {
-          if (this.camps[i].gradeGrp === 'GKTO5') {
-            this.camps[i].gradeGrp = 'K-5'
-          } else if (this.camps[i].gradeGrp === 'G6TO8') {
-            this.camps[i].gradeGrp = '6-8'
-          } else if (this.camps[i].gradeGrp === 'G9TO12') {
-            this.camps[i].gradeGrp = '9-12'
-          }
-        }
     }),(error:HttpErrorResponse)=>{
       alert(error.message);
     }
   });
-
-  }
-  public addAsFavorite(campId: number, userId: number) {
-    console.log(`Camp id:${campId}`)
 
   }
 

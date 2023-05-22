@@ -1,4 +1,4 @@
-package com.campquest.exception;
+package com.summercampquest.campquest.exception;
 
 
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.campquest;
+package com.summercampquest.campquest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

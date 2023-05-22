@@ -26,4 +26,10 @@ public class CampController {
     public Camp createCamp(@RequestBody Camp camp){
         return campRepository.save(camp);
     }
+
+    //Delete camp by ID REST API
+   // @DeleteMapping("{campId}")
+   // public void deleteCamp(@PathVariable("campId") Integer campId){
+     // campRepository.deleteById(campId);
+    //}
 }

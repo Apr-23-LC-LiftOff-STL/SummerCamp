@@ -51,6 +51,14 @@ public class Favorites {
         this.camp = camp;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public LocalDate getDate() {
         return date;
     }

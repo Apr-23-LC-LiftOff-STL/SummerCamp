@@ -22,5 +22,10 @@ export class CampService {
     return this.httpClient.post(`${this.baseURL}`, camp);
   }
 
+  deleteEmployee(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseURL}/${id}`, { responseType: 'text' });
+  }
+  
+
 
 }

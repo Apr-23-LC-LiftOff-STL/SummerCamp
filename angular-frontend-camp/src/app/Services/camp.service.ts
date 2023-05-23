@@ -21,6 +21,9 @@ export class CampService {
   createCamp(camp: Camp): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, camp);
   }
+  deleteCamp(campId: number): Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/`+ campId);
+  }
 
 
 }

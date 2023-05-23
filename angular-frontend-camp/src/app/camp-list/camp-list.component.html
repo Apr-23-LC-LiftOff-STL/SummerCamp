@@ -37,7 +37,7 @@
                     <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
                         (click)="removeFromFavorites(camp.id)"></i>
                 </td>
-                
+                <td class="col-sm-1"><a  [routerLink] (click)="deleteCamp(camp.id)" class = "nav-link">Delete</a></td>
 
             </tr>
         </table>

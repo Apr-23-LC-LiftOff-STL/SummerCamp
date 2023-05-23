@@ -61,6 +61,9 @@ export class CampListComponent implements OnInit {
   isFavorite(campId: number): boolean {
     return this.favoritesList.some(camp => camp.id === campId);
   }
+  deleteCamp(campId:number){
+    this.campService.deleteCamp(campId);
+  }
 
 }
 

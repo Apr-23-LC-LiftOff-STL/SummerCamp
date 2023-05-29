@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class CreateCampComponent implements OnInit {
  
-  camp: Camp = new Camp(0, '', '', 0, '', 0,
-  new Date(0), 0, '', '', '');
-  // camp: Camp = new Camp();
+  /*camp: Camp = new Camp(0, '', '', 0, '', 0,
+  new Date(0), 0, '', '', '');*/
+  camp: Camp = new Camp();
   
   constructor(private campService: CampService,
     private router: Router) { }
@@ -21,11 +21,11 @@ export class CreateCampComponent implements OnInit {
   }
 
   saveCamp(){
-    this.campService.createCamp(this.camp).subscribe((data: any) => {
+    this.campService.createCamp(this.camp).subscribe(data => {
        console.log(data);
        this.goToCampList();
     },
-      (    error: any) => console.log(error));
+    error => console.log(error));
   }
 
   goToCampList(){

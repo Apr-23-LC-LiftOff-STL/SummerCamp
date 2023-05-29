@@ -33,7 +33,7 @@ public class ResetPasswordController {
             return ResponseEntity.badRequest().body("User with email " + email + " not found");
         }
         String token = UUID.randomUUID().toString();
-        System.out.println(token);
+        // System.out.println(token);
         user.setForgotPasswordToken(token);
         Date tokenExpiryDt = new Date();
         long millis = tokenExpiryDt.getTime();
@@ -50,21 +50,20 @@ public class ResetPasswordController {
     public ResponseEntity<?> resetPassword(@RequestBody ResetPassword resetPassword) {
         String token = resetPassword.getToken();
         System.out.println(token);
-        String password=resetPassword.getPassword();
+        String password = resetPassword.getPassword();
         System.out.println(password);
-        User user=userRepository.findUserByToken(token);
+        User user = userRepository.findUserByToken(token);
         System.out.println(user);
         Date tokenValidation = new Date();
-          if (tokenValidation.before(user.getTokenExpiryDate())) {
+        if (tokenValidation.before(user.getTokenExpiryDate())) {
 
-                    user.setPassword(password);
-                    user.setTokenExpiryDate(null);
-                    user.setForgotPasswordToken(null);
-                    userRepository.save(user);
-                }
-             else {
-                return ResponseEntity.badRequest().body("Email verification time expired plz try again");
-            }
+            user.setPassword(password);
+            user.setTokenExpiryDate(null);
+            user.setForgotPasswordToken(null);
+            userRepository.save(user);
+        } else {
+            return ResponseEntity.badRequest().body("Email verification time expired plz try again");
+        }
 
         return ResponseEntity.ok("Password reset Successful");
     }

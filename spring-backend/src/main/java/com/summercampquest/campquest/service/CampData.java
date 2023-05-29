@@ -27,7 +27,11 @@ public class CampData {
 
 
     public List<Camp> displayCamps() {
-        return (List<Camp>) campRepository.findAll();
+        return campRepository.findAll();
+    }
+
+    public List<Camp> searchCamps(String name, String category) {
+        return campRepository.searchCampsByNameAndCategory(name, category);
     }
 
 

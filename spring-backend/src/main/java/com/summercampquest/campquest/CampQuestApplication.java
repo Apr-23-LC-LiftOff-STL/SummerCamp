@@ -3,12 +3,12 @@ package com.summercampquest.campquest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
 
+@SpringBootApplication
 public class CampQuestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CampQuestApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CampQuestApplication.class, args);
+    }
 
 }

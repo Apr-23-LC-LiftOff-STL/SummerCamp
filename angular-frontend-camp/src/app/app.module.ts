@@ -8,6 +8,7 @@ import { CampListComponent } from './camp-list/camp-list.component';
 import { CampDetailComponent } from './camp-detail/camp-detail.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FormsModule } from '@angular/forms';
 // import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

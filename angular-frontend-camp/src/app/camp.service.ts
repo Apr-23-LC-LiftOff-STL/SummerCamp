@@ -8,6 +8,9 @@ import { Camp } from './camp';
 })
 
 export class CampService {
+  createCamp(camp: Camp) {
+    throw new Error('Method not implemented.');
+  }
 
   private baseURL = "http://localhost:8080/api/camps";
 

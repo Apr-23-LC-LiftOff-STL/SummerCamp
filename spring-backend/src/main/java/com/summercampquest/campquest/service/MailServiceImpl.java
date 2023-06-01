@@ -1,9 +1,9 @@
 package com.summercampquest.campquest.service;
 
 import com.sendgrid.Method;
+import com.sendgrid.Request;
 import com.sendgrid.Response;
 import com.sendgrid.SendGrid;
-import com.sendgrid.Request;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
@@ -53,7 +53,8 @@ public class MailServiceImpl {
 
     @Autowired
     SendGrid sendGrid;
-    public String sendEmail(String email, String token)  {
+
+    public String sendEmail(String email, String token) {
 
         try {
             Mail mail = prepareMail(email, token);
@@ -66,10 +67,10 @@ public class MailServiceImpl {
 
             Response response = sendGrid.api(request);
 
-            if(response!=null) {
+            if (response != null) {
 
 
-                System.out.println("response code from sendgrid"+response.getStatusCode() + "," + response.getBody());
+                System.out.println("response code from sendgrid" + response.getStatusCode() + "," + response.getBody());
 
             }
 
@@ -90,7 +91,7 @@ public class MailServiceImpl {
 
         Content content = new Content();
         content.setType("text/html");
-        content.setValue("http://localhost:4200/reset-password?token="+token);
+        content.setValue("http://localhost:4200/reset-password?token=" + token);
 
         mail.addContent(content);
 

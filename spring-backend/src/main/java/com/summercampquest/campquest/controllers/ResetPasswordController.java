@@ -5,6 +5,7 @@ import com.summercampquest.campquest.models.ResetPassword;
 import com.summercampquest.campquest.models.User;
 import com.summercampquest.campquest.models.data.UserRepository;
 import com.summercampquest.campquest.service.MailServiceImpl;
+import com.summercampquest.campquest.service.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,8 @@ public class ResetPasswordController {
     private UserRepository userRepository;
 
     @Autowired
+    private UserData userData;
+    @Autowired
     private MailServiceImpl mailService;
 
     @PostMapping("/api/forgot-password")
@@ -33,8 +36,8 @@ public class ResetPasswordController {
             return ResponseEntity.badRequest().body("User with email " + email + " not found");
         }
         String token = UUID.randomUUID().toString();
-        System.out.println(token);
-        user.setForgotPasswordToken(token);
+//         System.out.println(token);
+        user.setToken(token);
         Date tokenExpiryDt = new Date();
         long millis = tokenExpiryDt.getTime();
         millis += 60 * 60 * 1000;
@@ -49,22 +52,21 @@ public class ResetPasswordController {
     @PostMapping("/api/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody ResetPassword resetPassword) {
         String token = resetPassword.getToken();
-        System.out.println(token);
-        String password=resetPassword.getPassword();
+//        System.out.println(token+"token");
+        String password = resetPassword.getPassword();
         System.out.println(password);
-        User user=userRepository.findUserByToken(token);
+        User user = userRepository.findUserByToken(token);
         System.out.println(user);
         Date tokenValidation = new Date();
-          if (tokenValidation.before(user.getTokenExpiryDate())) {
+        if (tokenValidation.before(user.getTokenExpiryDate())) {
 
-                    user.setPassword(password);
-                    user.setTokenExpiryDate(null);
-                    user.setForgotPasswordToken(null);
-                    userRepository.save(user);
-                }
-             else {
-                return ResponseEntity.badRequest().body("Email verification time expired plz try again");
-            }
+            user.setPassword(password);
+            user.setTokenExpiryDate(null);
+            user.setToken(null);
+            userRepository.save(user);
+        } else {
+            return ResponseEntity.badRequest().body("Email verification time expired plz try again");
+        }
 
         return ResponseEntity.ok("Password reset Successful");
     }

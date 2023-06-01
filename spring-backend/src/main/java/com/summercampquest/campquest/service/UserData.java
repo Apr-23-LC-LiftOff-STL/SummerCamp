@@ -53,10 +53,11 @@ public class UserData {
         return userRepository.findByEmailAndPassword(email, password);
     }
 
-    public User findUserByToken(String token){
-        return userRepository.findUserByToken(token);
+    public User findUserByToken(String token) {
+       return userRepository.findUserByToken(token);
     }
 
 
 }
+
 

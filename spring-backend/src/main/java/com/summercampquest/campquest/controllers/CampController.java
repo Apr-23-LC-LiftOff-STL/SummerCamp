@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http:localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/camps")
 public class CampController {
@@ -36,12 +36,20 @@ public class CampController {
         List<Camp> camps = new ArrayList<>(0);
         if ((name == null || name.trim().isEmpty()) && (category == null || category.trim().isEmpty())) {
             camps.addAll(campData.displayCamps());
-        } else {
+        } else  {
             camps.addAll(campData.searchCamps(name, category));
         }
         return new ResponseEntity<>(camps, HttpStatus.OK);
     }
 
+//    @GetMapping
+//    public ResponseEntity<List<Camp>> displayCamps() {
+//        List<Camp> camp = campData.displayCamps();
+//        System.out.println(camp);
+//
+////                orElseThrow(()->new ResourceNotFoundException("Camp details not present "+campId));
+//        return new ResponseEntity<>(camp, HttpStatus.OK);
+//    }
     @GetMapping("/{id}")
     public ResponseEntity<Camp> displayViewId(@PathVariable("id") Integer campId) {
         Optional<Camp> camp = campData.displayCampById(campId);

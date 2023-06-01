@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, NavigationCancel, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute,  NavigationEnd, Router } from '@angular/router';
 import { ForgotpasswordService } from '../forgotpassword.service';
 
 @Component({

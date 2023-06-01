@@ -52,7 +52,7 @@ public class ResetPasswordController {
     @PostMapping("/api/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody ResetPassword resetPassword) {
         String token = resetPassword.getToken();
-        System.out.println(token+"token");
+//        System.out.println(token+"token");
         String password = resetPassword.getPassword();
         System.out.println(password);
         User user = userRepository.findUserByToken(token);

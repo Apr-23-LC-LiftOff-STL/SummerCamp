@@ -26,6 +26,7 @@ constructor(private http: HttpClient,private route:Router,private forgotPassword
         if (url.indexOf('token=')!=-1) {
           let token = url.substring(url.indexOf('token=')+'token='.length);
           console.log(token);
+          this.token=token;
         }
       }
      });
@@ -60,9 +61,11 @@ onSubmit() {
 
   const password = this.resetPasswordForm.value.password;
   const token = this.token;
+  console.log(token);
   // this.forgotpassword.getForgotPassword(email).subscribe((response: any) => {
-  this.http.post('http://localhost:8080/api/reset-password', { password, token}).subscribe((response) => {
+  this.http.post('http://localhost:8080/api/reset-password', { password:password, token:this.token}).subscribe((response) => {
     console.log('Password reset success');
+
     // display a success message to the user
   }, (error: any) => {
     console.error('Failed to send update password request:', error);

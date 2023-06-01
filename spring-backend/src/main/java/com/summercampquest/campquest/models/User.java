@@ -145,13 +145,13 @@ public class User {
         this.password = password;
     }
 
-    public String getForgotPasswordToken() {
-        return token;
-    }
-
-    public void setForgotPasswordToken(String forgotPasswordToken) {
-        this.token = forgotPasswordToken;
-    }
+//    public String getForgotPasswordToken() {
+//        return token;
+//    }
+//
+//    public void setForgotPasswordToken(String forgotPasswordToken) {
+//        this.token = forgotPasswordToken;
+//    }
 
     //    public List<Camp> getFavorites() {
 //        return favorites;
@@ -176,6 +176,14 @@ public class User {
 
     public void setTokenExpiryDate(Date tokenExpiryDate) {
         this.tokenExpiryDate = tokenExpiryDate;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override

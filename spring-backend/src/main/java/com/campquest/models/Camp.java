@@ -170,4 +170,21 @@ public class Camp {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+        return "Camp{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", duration='" + duration + '\'' +
+                ", age=" + age +
+                ", deadline=" + deadline +
+                ", totalSeats=" + totalSeats +
+                ", mode='" + mode + '\'' +
+                ", category='" + category + '\'' +
+                ", campLink='" + campLink + '\'' +
+                '}';
+    }
 }

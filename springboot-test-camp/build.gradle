@@ -1,3 +1,4 @@
+<<<<<<< HEAD:springboot-test-camp/build.gradle
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.11'
@@ -27,3 +28,42 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+=======
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.11'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+//	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.summercampquest'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'https://repo.clojars.org'
+		name 'Clojars'
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	/*implementation 'org.springframework.boot:spring-boot-starter-security'*/
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation group: 'com.sendgrid', name: 'sendgrid-java', version: '4.9.3'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.mysql:mysql-connector-j:8.0.32'
+	implementation 'sendgrid:sendgrid:0.1.0'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+>>>>>>> Saran_new:spring-backend/build.gradle

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/SummerCamp.iml" filepath="$PROJECT_DIR$/.idea/SummerCamp.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Complete Project.iml" filepath="$PROJECT_DIR$/.idea/Complete Project.iml" />
+>>>>>>> Saran_new
     </modules>
   </component>
 </project>

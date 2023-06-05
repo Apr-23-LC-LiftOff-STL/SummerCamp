@@ -1,9 +1,9 @@
-# SummerCamp
+# CampQuest
 
 ### Overview
 
-This project is "Summer Camp Quest" which helps parents/students to explore all
-available summer camps options in 'St. Louis' location in one website.
+This project is " Camp Quest" which helps parents/students to explore all
+available camps options in 'St. Louis' location in one website.
 Users can view camps using price, age, category etc. & mark their favorite ones.
 Admin users will add / update / delete the camp details.
 Why did we get motivated? As parents, we face hard time finding the camps at

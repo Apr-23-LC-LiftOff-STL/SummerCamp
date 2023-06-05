@@ -1,0 +1,15 @@
+.item-a {
+   grid-area: header;
+       }
+.item-d {
+        grid-area: footer;
+      }
+      
+ .container {
+    display: grid;
+         width: inherit;
+         background-color: antiquewhite;
+         padding-left: 5px;
+         width: inherit;
+      }
+      

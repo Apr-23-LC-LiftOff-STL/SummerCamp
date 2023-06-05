@@ -1,14 +1,19 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Camp } from './camp';
 import { Observable } from 'rxjs';
+import { Camp } from './camp';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CampService {
+  createCamp(camp: Camp) {
+    throw new Error('Method not implemented.');
+  }
 
   //must be the port number for the backend api - Tomcat8080
+
   private baseURL = "http://localhost:8080/api/v1/camps";
   constructor(private httpClient : HttpClient) { }
 
@@ -16,12 +21,12 @@ export class CampService {
     let gradeGrpParam = new HttpParams().set('gradeGrp', gradeGroup);
     return this.httpClient.get<Camp[]>(this.baseURL, { params: gradeGrpParam });
   }
-  
 
-  createCamp(camp: Camp): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,camp);
+
+  public getCamp(id: any): Observable<Camp>{
+    const url = this.baseURL + "/" + id;
+    return this.httpClient.get<Camp>(url);
   }
-  
 
   /*getAll(): Observable<Camp[]> {
     return this.httpClient.get<Camp[]>(this.baseURL);
@@ -42,7 +47,6 @@ export class CampService {
   delete(id: any): Observable<any> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }*/
-
 
 
 }

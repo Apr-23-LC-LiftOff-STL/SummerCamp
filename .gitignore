@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .idea
 /node_modules
 /angular-frontend-camp/node_modules
@@ -75,3 +76,6 @@ spring-backend/build/classes/java/main/com/summercampquest/campquest/controllers
 spring-backend/build/classes/java/main/com/summercampquest/campquest/models/Camp.class
 spring-backend/build/classes/java/main/com/summercampquest/campquest/models/data/CampRepository.class
 spring-backend/build/tmp/compileJava/previous-compilation-data.bin
+=======
+node_modules
+>>>>>>> Saran_new

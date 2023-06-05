@@ -4,25 +4,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
     private int id;
-
-    //@NotBlank(message = "Required field")
-    //@Size(min = 3, max = 120, message = "Must be between 3 and 120 characters")
-
 
     public int getId() {
         return id;
     }
-
-//    @Override
-//    public String toString() {
-//        return name;
-//    }
 
     @Override
     public boolean equals(Object o) {
@@ -35,6 +26,11 @@ public abstract class AbstractEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id;
     }
 
 }

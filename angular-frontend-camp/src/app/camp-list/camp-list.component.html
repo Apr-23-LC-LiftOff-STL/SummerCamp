@@ -1,5 +1,6 @@
+<<<<<<< HEAD
 <div class="container-fluid">
-    <div class="row content"> 
+    <div class="row content">
         <div class="col-sm-10">
             <img class="rectangle15" src="../../assets/camp_list.png" />
         </div>
@@ -9,10 +10,10 @@
         </div>
     </div>
 
-     
+
        <div  class="rectangle17 top-buffer">
         <table>
-            
+
             <tr >
                 <th  class="col-sm-1">Name</th>
                 <th  class="col-sm-1">Category</th>
@@ -21,14 +22,16 @@
                 <th class="col-sm-1"></th>
                 <th class="col-sm-1"></th>
             </tr>
-            
+
 
             <tr *ngFor="let camp of camps">
                 <td class="col-sm-1">{{camp.name}}</td>
                 <td class="col-sm-1">{{camp.category}}</td>
                 <td class="col-sm-2">{{camp.location}}</td>
                 <td class="col-sm-1">{{camp.gradeGrp}}</td>
-                <td class="col-sm-1"><a href="#">View Details</a></td>
+                <td class="col-sm-1"><button (click)='campDetails(camp.id)'>View Detail</button></td>
+<!--            Commenting out for view detail camp-->
+<!--              <td class="col-sm-1"><a href="#">View Details</a></td>-->
                 <td class="col-sm-1">
                     <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)"
                         (click)="addToFavorites(camp.id)"></i>
@@ -38,6 +41,43 @@
 
             </tr>
         </table>
-    </div> 
-    
+    </div>
+
 </div>
+=======
+<h2 Style="font-size: 1.5rem;
+font-style: italic;
+padding-left: 15px;">Camp List</h2>
+<table>
+    <tr>
+        <td>Search By</td>
+    </tr>
+    <tr>
+        <td>Name: </td>
+        <td><input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Enter search text"></td>
+        <td><button name="Search" (click)="search();" id="search" name="search">Search</button></td>
+    </tr>
+</table>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Age</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let camp of camps">
+            <td>{{camp.name}}</td>
+            <td>{{camp.price}}</td>
+            <td>{{camp.duration}}</td>
+            <td>{{camp.age}}</td>
+            <td>{{camp.category}}</td>
+            <td><button (click)='campDetails(camp.id)'>Camp Detail</button></td>
+        </tr>
+    </tbody>
+
+</table>
+>>>>>>> Saran_new

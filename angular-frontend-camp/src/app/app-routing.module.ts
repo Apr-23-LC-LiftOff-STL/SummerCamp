@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 
 import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
+import { UpdateCampComponent } from './update-camp/update-camp.component';
 
 const routes: Routes = [
   { path: 'camps', component: CampListComponent },
@@ -15,12 +16,13 @@ const routes: Routes = [
   { path: 'create-camp', component: CreateCampComponent },
   {path:'view-my-favorites', component: ViewMyFavoritesComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationComponent }
+  { path: 'register', component: RegistrationComponent },
+  {path:'update-camp/:id',component:UpdateCampComponent}
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), FormsModule],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }), FormsModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

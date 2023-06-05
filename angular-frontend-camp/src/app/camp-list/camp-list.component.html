@@ -1,46 +1,49 @@
-<div class="container-fluid">
-    <div class="row content"> 
+<div class="container-fluid" >
+    <div class="row content">
         <div class="col-sm-10">
-            <img class="rectangle15" src="../../assets/camp_list.png" />
+            <h2 style="padding-left: 5%; padding-top: 1%;">Camp List</h2>
         </div>
         <div class="col" style="float: right;">
+
             <h2 class="text-right">{{userName}}</h2>
-            <a routerLink="/view-my-favorites" routerLinkActive="active" class="nav-link">View My Favorites</a>
+            <a class="bi bi-plus-circle-fill nav-link" style="color: rgb(65, 64, 155);" [routerLink]="['/create-camp']"
+                data-toggle="tooltip" data-placement="bottom" title="Add Camp"><b>&nbsp;&nbsp;Add Camp</b></a>
         </div>
     </div>
 
-    <div  class="top-buffer"></div>
-       <div  class="rectangle17 top-buffer">
-        <table>
-            
-            <tr >
-                <th  class="col-sm-2">Name</th>
-                <th  class="col-sm-1">Category</th>
-                <th class="col-sm-1">Location</th>
-                <th class="col-sm-1">Grade</th>
-                <th class="col-sm-2"></th>
-                <th class="col-sm-1"></th>
-            </tr>
-            
+    <div class="top-buffer"></div>
+    <div style="overflow-y: scroll; max-height: min-content">
+        <table class="table table-striped camp-table">
+            <thead class="table-success">
+                <tr>
+                    <th class="col-sm-1">Name</th>
+                    <th class="col-sm-1">Category</th>
+                    <th class="col-sm-1">Location</th>
+                    <th class="col-sm-1">Price</th>
+                    <th class="col-sm-1">Actions</th>
+                </tr>
+            </thead>
 
-            <tr *ngFor="let camp of camps">
-                <td class="col-sm-1">{{camp.name}}</td>
-                <td class="col-sm-1">{{camp.category}}</td>
-                <td class="col-sm-2">{{camp.location}}</td>
-                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'GKTO5'">K-5</td>
-                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'G6TO8'">6-8</td>
-                <td class="col-sm-1" *ngIf="camp.gradeGrp === 'G9TO12'">9-12</td>
-                <td class="col-sm-1"><a href="#">View Details</a></td>
-                <td class="col-sm-1">
-                    <i class="fa-regular fa-star fa-lg" *ngIf="!isFavorite(camp.id)"
-                        (click)="addToFavorites(camp.id)"></i>
-                    <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
-                        (click)="removeFromFavorites(camp.id)"></i>
-                </td>
-                <td class="col-sm-1"><a  [routerLink] (click)="deleteCamp(camp.id)" class = "nav-link">Delete</a></td>
-
-            </tr>
+            <tbody>
+                <tr *ngFor="let camp of camps">
+                    <td class="col-sm-1">{{camp.name}}</td>
+                    <td class="col-sm-1">{{camp.category}}</td>
+                    <td class="col-sm-1">{{camp.location}}</td>
+                    <td class="col-sm-1">{{camp.price}}</td>
+                    <td class="col-sm-1">
+                        <i class="bi bi-eye-fill" data-toggle="tooltip" data-placement="bottom" title="View"></i>
+                        <i class="p-3 bi bi-star" *ngIf="!isFavorite(camp.id)" (click)="addToFavorites(camp.id)"
+                            data-toggle="tooltip" data-placement="bottom" title="Add Favorite"></i>
+                        <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
+                            (click)="removeFromFavorites(camp.id)" data-toggle="tooltip" data-placement="bottom"
+                            title="Remove Favorite"></i>
+                        <i class="bi bi-dash-circle-fill" style="color:  #8f0b0b;" (click)="deleteCamp(camp.id)"
+                            data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+                        <i class="p-3 bi bi-pencil" [routerLink]="['/update-camp',camp.id]" data-toggle="tooltip"
+                            data-placement="bottom" title="Edit"></i>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-    </div> 
-    
+    </div>
 </div>

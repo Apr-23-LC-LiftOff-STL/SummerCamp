@@ -7,6 +7,8 @@ import com.summercampquest.campquest.models.GradeGroup;
 import com.summercampquest.campquest.models.data.CampRepository;
 import com.summercampquest.campquest.models.data.FavoritesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class CampController {
 
     @GetMapping
     public List<Camp> findByGrade(@RequestParam GradeGroup gradeGrp) {
-        System.out.println("CampController.findByGrade " + gradeGrp);
+
         List<Camp> camps = campRepository.findByGradeGrp(gradeGrp);
         return camps;
     }
@@ -35,8 +37,8 @@ public class CampController {
     }
 
     //Delete camp by ID REST API
-    @DeleteMapping("{campId}")
-    public void deleteCamp(@PathVariable("campId") Integer campId) {
+    @DeleteMapping("/{campId}")
+    public ResponseEntity<Object> deleteCamp(@PathVariable Integer campId) {
         Optional<Camp> campOpt = campRepository.findById(campId);
         if (campOpt.isPresent()) {
             List<Favorites> favorites = favoritesRepository.findByCamp(campOpt.get());
@@ -46,10 +48,31 @@ public class CampController {
                 }
             }
             campRepository.deleteById(campId);
+            return new ResponseEntity<>( HttpStatus.OK);
         } else {
             throw new CampNotFoundException("No Camp found");
         }
 
 
+    }
+    @PutMapping("/{campId}")
+    public Camp updateCamp(@PathVariable Integer campId,@RequestBody Camp camp){
+        boolean campOpt = campRepository.existsById(campId);
+        if (campOpt) {
+          campRepository.save(camp);
+        } else {
+            throw new CampNotFoundException("No Camp found");
+        }
+        return camp;
+    }
+
+    @GetMapping("/{campId}")
+    public Camp getCampById(@PathVariable Integer campId){
+        Optional<Camp> campOpt = campRepository.findById(campId);
+        if(campOpt.isPresent()){
+            return campOpt.get();
+        }else{
+            throw new CampNotFoundException("No camp found");
+        }
     }
 }

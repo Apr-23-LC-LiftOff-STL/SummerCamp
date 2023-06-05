@@ -21,13 +21,22 @@ export class CampService {
   createCamp(camp: Camp): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, camp);
   }
+  
   deleteCamp(campId: number): Observable<Object> {
-    return this.httpClient.delete(`${this.baseURL}/`+ campId);
+    console.log(campId)
+    return this.httpClient.delete(`${this.baseURL}/${campId}`);
+ 
   }
 
-  deleteEmployee(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`, { responseType: 'text' });
+  updateCamp(id: number,camp: Camp): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/${id}`, camp);
   }
+
+  getCampById(id: number): Observable<Object> {
+    return this.httpClient.get(`${this.baseURL}/${id}`);
+  }
+  
+
   
 
 

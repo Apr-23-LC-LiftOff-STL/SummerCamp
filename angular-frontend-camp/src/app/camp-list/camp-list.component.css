@@ -1,33 +1,14 @@
-.rectangle15 {
-    position: absolute;
-    width: calc(15% + 1vw + 1vh);
-    height: calc(10% + 0.5vw + 1vh);
-    padding-top: 1%;
-}
-
-.rectangle17 {
-    
-
-    position: absolute;
-    padding-top: 2%;
-    width: calc(95% + 1vw + 1vh);
-    background: linear-gradient(180deg, rgba(185, 224, 103, 0.46) 5.21%, rgba(185, 224, 103, 0) 100%);
-    border: none solid rgba(153, 230, 161, 0.64);
-    border-radius: 75px 0px 125px 0px;
-
-}
-
-
-
-th {
-    
-    font-weight: bold;
-}
-
-table, tr, td, th, thead {
-    border: none;
+tr, td, th, thead {
     padding-left: 5%;
    
+}
+
+.camp-table {
+    width: 100%; 
+    align-self: center; 
+    /* overflow: auto;
+    display:inline-block;
+    max-height: none; */
 }
 
 

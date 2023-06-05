@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoriteService } from '../favorite.service';
-import { Camp } from '../camp';
-
+import { FavoriteService } from '../Services/favorite.service';
+import { Camp } from '../ModelInterfaces/camp';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class ViewMyFavoritesComponent implements OnInit {
   favoritesList: Camp[] = [];
   userName = 'raam';
   
-  constructor(private favoriteService: FavoriteService) {}
+  constructor(private favoriteService: FavoriteService, private location:Location) {}
    
 
   ngOnInit(): void {
@@ -27,6 +27,10 @@ export class ViewMyFavoritesComponent implements OnInit {
       console.log(data);
       this.favoritesList = data;
   });
+  }
+
+  public goBack(){
+    this.location.back();
   }
   
 }

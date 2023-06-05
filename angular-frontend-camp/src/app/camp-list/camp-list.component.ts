@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Camp } from '../camp';
 import { CampService } from '../camp.service';
-<<<<<<< HEAD
 import { FavoriteService } from '../favorite.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -15,40 +14,26 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./camp-list.component.css']
 })
 export class CampListComponent implements OnInit {
-<<<<<<< HEAD
+
   camps: Camp[] = [];
-
-
   favoritesList: Camp[] = [];
+  name: string  = '';
+  searchResults: string[] | undefined;
   userName = 'raam';
 
 
-  constructor(private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute) { }
-=======
+  constructor(private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute,private router:Router,private http: HttpClient) { }
 
-  camps: Camp[] = [];
-  name: string  = '';
-  searchResults: string[] | undefined;
-
-  constructor(private campService: CampService,private router:Router,private http: HttpClient) {
-  }
->>>>>>> Saran_new
 
   ngOnInit(): void {
     this.getCamps();
     this.getFavorites();
   }
-<<<<<<< HEAD
+
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
       const gradeGrp = String(parms.get('gradeGrp'));
       this.campService.getCampsList(gradeGrp).subscribe(data => {
-=======
-
-  private getCamps(){
-    this.campService.getCampsList().subscribe(data => {
-      console.log(data);
->>>>>>> Saran_new
         this.camps = data;
         for (let i = 0; i < this.camps.length; i++) {
           if (this.camps[i].gradeGrp === 'GKTO5') {
@@ -75,7 +60,6 @@ export class CampListComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   addToFavorites(campId: number) {
     this.favoriteService.addToFavorites(campId, this.userName).subscribe(() => {
       this.getFavorites();
@@ -93,13 +77,12 @@ export class CampListComponent implements OnInit {
   isFavorite(campId: number): boolean {
     return this.favoritesList.some(camp => camp.id === campId);
   }
-=======
+
 
  public campDetails(id: any){
   console.log(id);
   this.router.navigate(['camp-detail', id]);
 }
-
 
 
 search() {
@@ -110,7 +93,6 @@ search() {
       this.camps = response;
     });
 }
->>>>>>> Saran_new
 
 }
 

@@ -1,0 +1,62 @@
+.header-main {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: bold;
+    font-size: calc(100% + 1vw + 1vh);;
+   
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: rgb(233, 231, 231);
+
+}
+
+
+.logo {
+    width: calc(4.5% + 1vw + 1vh);
+    height: calc(4.5% + 1vw + 1vh);
+    mix-blend-mode: darken;
+    border-radius: 50px;
+    transform: rotate(-0.32deg);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-left: calc(2% + 0.5vw + 0.5vh);;
+    
+}
+
+.login {
+    width: calc(4.5% + 0.5vw + 0.5vh);
+    height: calc(4.5% + 0.5vw + 0.5vh);
+    vertical-align: middle;
+    float: right;
+    margin-top: 10px;
+    margin-right: calc(5% + 0.5vw + 0.5vh);
+}
+
+/* unvisited link */
+a:link {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  /* selected link */
+  a:active {
+    color: #000000;
+    text-decoration: none;
+  }

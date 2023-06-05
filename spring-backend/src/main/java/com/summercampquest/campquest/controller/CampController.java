@@ -11,8 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import static java.util.Comparator.comparing;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -74,5 +75,51 @@ public class CampController {
         }else{
             throw new CampNotFoundException("No camp found");
         }
+    }
+    //get unique categories from list of camps
+    @GetMapping("unique-categories")
+    public Set<String> getUniqueCategories(){
+        //get all camps
+        List<Camp> camps = campRepository.findAll();
+        Set<String> uniqueCategories = new HashSet<>();
+        for(Camp camp : camps){
+            uniqueCategories.add(camp.getCategory());
+        }
+        return uniqueCategories;
+    }
+
+    public List<Camp> getCampsBySelectedCategories(List<Camp> camps, String[] categories) {
+        List<Camp> filteredCamps = new ArrayList<>();
+        for (Camp camp : camps) {
+            for (String item : categories) {
+                if (camp.getCategory().equalsIgnoreCase(item)) {
+                    filteredCamps.add(camp);
+                }
+            }
+        }
+        return filteredCamps;
+    }
+
+    @GetMapping("price")
+    public List<Camp> getSelectedCampsSortedByPrice(@RequestParam String[] categories, @RequestParam String order) {
+        List<Camp> filteredCamps = new ArrayList<>();
+        List<Camp> camps = campRepository.findAll();
+        if(order.equalsIgnoreCase("price: low to high")) {
+            if (categories.length == 0)
+                filteredCamps = campRepository.findAllByOrderByPriceAsc();
+            else{
+                getCampsBySelectedCategories(camps, categories);
+                filteredCamps.sort(comparing(Camp::getPrice));
+            }
+
+        } else if(order.equalsIgnoreCase("price: high to low")) {
+            if(categories.length == 0)
+                filteredCamps = campRepository.findAllByOrderByPriceDesc();
+            else{
+                getCampsBySelectedCategories(camps, categories);
+                filteredCamps.sort(comparing(Camp::getPrice).reversed());
+            }
+        }
+        return filteredCamps;
     }
 }

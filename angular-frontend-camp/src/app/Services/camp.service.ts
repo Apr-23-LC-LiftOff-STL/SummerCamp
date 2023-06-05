@@ -36,7 +36,16 @@ export class CampService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
   
+  getUniqueCategoriesArray(): Observable<string[]>{
+    return this.httpClient.get<string[]>(`${this.baseURL}/unique-categories`);
+  }
 
+  getSelectedCampsSortedByPrice(categories: string[],order: string): Observable<Camp[]>{
+    const params = new HttpParams()
+    .set('categories',categories.join(','))
+    .set('order', order);
+    return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { params });
+  }
   
 
 

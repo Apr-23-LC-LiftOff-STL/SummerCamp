@@ -14,17 +14,21 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 })
 export class CampListComponent implements OnInit {
   camps: Camp[] = [];
-
-
+  uniqueCategories: string[] = [];
+  priceOptions: string[] = ['price: low to high','price: high to low'];
+  selectedPriceOption: string = this.priceOptions[0];
+  selectedItems: string[] = [];
   favoritesList: Camp[] = [];
-  userName = 'raam';
-
+  userName: string = 'raam';
+  
 
   constructor(private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.getCamps();
+    this.getUniqueCategories();
     this.getFavorites();
+  
   }
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
@@ -36,6 +40,34 @@ export class CampListComponent implements OnInit {
       }
     });
 
+  }
+
+  private getUniqueCategories(){
+    this.campService.getUniqueCategoriesArray().subscribe(data => {
+      console.log("categories: "+data);
+      this.uniqueCategories = data;
+    });
+  }
+
+  getCampsBySelectedCategories(event: any, category:string){
+    if(event.target.checked){
+      console.log(category+' Checked');
+      this.selectedItems.push(category);
+
+    }else{
+      console.log(category+' Unchecked');
+      this.selectedItems = this.selectedItems.filter(data => data!=category);
+    }
+    console.log(this.selectedItems);
+    this.getSelectedCampsSortedByPrice();
+  }
+
+  getSelectedCampsSortedByPrice(){
+    this.campService.getSelectedCampsSortedByPrice(this.selectedItems,this.selectedPriceOption).subscribe(data => {
+      console.log("SelectedCampsSortedByPrice: ");
+      console.log(data);
+      this.camps = data;
+    })
   }
 
   private getFavorites() {

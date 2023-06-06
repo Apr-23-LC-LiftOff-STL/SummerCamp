@@ -25,10 +25,13 @@ public class CampController {
     private FavoritesRepository favoritesRepository;
 
     @GetMapping
-    public List<Camp> findByGrade(@RequestParam GradeGroup gradeGrp) {
+    public List<Camp> findByGrade(@RequestParam GradeGroup gradeGrp, @RequestParam(defaultValue = "price: low to high") String order) {
 
-        List<Camp> camps = campRepository.findByGradeGrp(gradeGrp);
-        return camps;
+        if("price: low to high".equalsIgnoreCase(order)){
+            return campRepository.findByGradeGrpOrderByPriceAsc(gradeGrp);
+        } else{
+            return campRepository.findByGradeGrpOrderByPriceDesc(gradeGrp);
+        }
     }
 
     //create camp REST API
@@ -88,38 +91,12 @@ public class CampController {
         return uniqueCategories;
     }
 
-    public List<Camp> getCampsBySelectedCategories(List<Camp> camps, String[] categories) {
-        List<Camp> filteredCamps = new ArrayList<>();
-        for (Camp camp : camps) {
-            for (String item : categories) {
-                if (camp.getCategory().equalsIgnoreCase(item)) {
-                    filteredCamps.add(camp);
-                }
-            }
-        }
-        return filteredCamps;
-    }
-
     @GetMapping("price")
-    public List<Camp> getSelectedCampsSortedByPrice(@RequestParam String[] categories, @RequestParam String order) {
-        List<Camp> filteredCamps = new ArrayList<>();
-        List<Camp> camps = campRepository.findAll();
-        if(order.equalsIgnoreCase("price: low to high")) {
-            if (categories.length == 0)
-                filteredCamps = campRepository.findAllByOrderByPriceAsc();
-            else{
-                getCampsBySelectedCategories(camps, categories);
-                filteredCamps.sort(comparing(Camp::getPrice));
-            }
-
-        } else if(order.equalsIgnoreCase("price: high to low")) {
-            if(categories.length == 0)
-                filteredCamps = campRepository.findAllByOrderByPriceDesc();
-            else{
-                getCampsBySelectedCategories(camps, categories);
-                filteredCamps.sort(comparing(Camp::getPrice).reversed());
-            }
+    public List<Camp> getSelectedCampsSortedByPrice(@RequestParam String[] categories, @RequestParam(defaultValue = "price: low to high") String order,@RequestParam GradeGroup gradeGroup) {
+        if("price: low to high".equalsIgnoreCase(order)){
+            return campRepository.findByGradeGrpAndCategoryInOrderByPriceAsc(gradeGroup,categories);
+        } else{
+            return campRepository.findByGradeGrpAndCategoryInOrderByPriceDesc(gradeGroup,categories);
         }
-        return filteredCamps;
     }
 }

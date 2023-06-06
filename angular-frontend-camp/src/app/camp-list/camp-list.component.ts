@@ -20,6 +20,7 @@ export class CampListComponent implements OnInit {
   selectedItems: string[] = [];
   favoritesList: Camp[] = [];
   userName: string = 'raam';
+  gradeGrp: string = '';
   
 
   constructor(private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
@@ -32,8 +33,8 @@ export class CampListComponent implements OnInit {
   }
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
-      const gradeGrp = String(parms.get('gradeGrp'));
-      this.campService.getCampsList(gradeGrp).subscribe(data => {
+      this.gradeGrp = String(parms.get('gradeGrp'));
+      this.campService.getCampsList(this.gradeGrp, this.selectedPriceOption).subscribe(data => {
         this.camps = data;
       }), (error: HttpErrorResponse) => {
         alert(error.message);
@@ -63,7 +64,7 @@ export class CampListComponent implements OnInit {
   }
 
   getSelectedCampsSortedByPrice(){
-    this.campService.getSelectedCampsSortedByPrice(this.selectedItems,this.selectedPriceOption).subscribe(data => {
+    this.campService.getSelectedCampsSortedByPrice(this.selectedItems,this.selectedPriceOption, this.gradeGrp).subscribe(data => {
       console.log("SelectedCampsSortedByPrice: ");
       console.log(data);
       this.camps = data;

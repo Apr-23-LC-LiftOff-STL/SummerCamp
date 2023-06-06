@@ -34,8 +34,8 @@ public class CampControllerTest {
         camp.setCategory("test");
         camp.setGradeGrp(GradeGroup.GKTO5);
         campResponse.add(camp);
-        Mockito.when(campRepository.findByGradeGrp(ArgumentMatchers.any(GradeGroup.class))).thenReturn(campResponse);
-        List<Camp> actuals = campController.findByGrade(GradeGroup.G6TO8);
+        Mockito.when(campRepository.findByGradeGrpOrderByPriceAsc(ArgumentMatchers.any(GradeGroup.class))).thenReturn(campResponse);
+        List<Camp> actuals = campController.findByGrade(GradeGroup.G6TO8, "price: low to high");
         Assert.assertTrue(!actuals.isEmpty());
         Assert.assertEquals(campResponse, actuals);
     }

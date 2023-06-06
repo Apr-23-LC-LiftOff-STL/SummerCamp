@@ -12,8 +12,8 @@ export class CampService {
   private baseURL = "http://localhost:8080/api/v1/camps";
   constructor(private httpClient : HttpClient) {}
 
-  getCampsList(gradeGroup: any): Observable<Camp[]> {
-    let gradeGrpParam = new HttpParams().set('gradeGrp', gradeGroup);
+  getCampsList(gradeGroup: any, order: string): Observable<Camp[]> {
+    let gradeGrpParam = new HttpParams().set('gradeGrp', gradeGroup).set('order', order);
     return this.httpClient.get<Camp[]>(this.baseURL, { params: gradeGrpParam });
   }
 
@@ -36,7 +36,20 @@ export class CampService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
   
+  getUniqueCategoriesArray(): Observable<string[]>{
+    return this.httpClient.get<string[]>(`${this.baseURL}/unique-categories`);
+  }
 
+  getSelectedCampsSortedByPrice(categories: string[],order: string, gradeGrp: string): Observable<Camp[]>{
+    if(categories.length == 0){
+      return this.getCampsList(gradeGrp, order);
+    }
+    const params = new HttpParams()
+    .set('categories',categories.join(','))
+    .set('order', order)
+    .set('gradeGroup', gradeGrp);
+    return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { params });
+  }
   
 
 

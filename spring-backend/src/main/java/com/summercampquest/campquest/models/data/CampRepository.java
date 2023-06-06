@@ -15,5 +15,11 @@ public interface CampRepository extends JpaRepository<Camp, Integer> {
 
     List<Camp> findByDeadline(Date deadline);
 
-    List<Camp> findByGradeGrp(GradeGroup gradeGroup);
+    List<Camp> findByGradeGrpOrderByPriceAsc(GradeGroup gradeGroup);
+    List<Camp> findByGradeGrpOrderByPriceDesc(GradeGroup gradeGroup);
+
+
+    List<Camp> findByGradeGrpAndCategoryInOrderByPriceAsc(GradeGroup gradeGroup, String[] categories);
+
+    List<Camp> findByGradeGrpAndCategoryInOrderByPriceDesc(GradeGroup gradeGroup, String[] categories);
 }

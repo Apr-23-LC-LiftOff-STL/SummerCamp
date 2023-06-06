@@ -10,8 +10,27 @@
                 data-toggle="tooltip" data-placement="bottom" title="Add Camp"><b>&nbsp;&nbsp;Add Camp</b></a>
         </div>
     </div>
-
     <div class="top-buffer"></div>
+    <div class="row">
+        <div class = "col-sm-9 text-left">
+            <div class="font-weight-bold">
+                <label for="dropdown"><b>Filter by:</b></label>
+            </div>
+            <div *ngFor="let category of uniqueCategories">
+                <input type="checkbox" name="{{category}}" [value]="category" (change)="getCampsBySelectedCategories($event,category)">&nbsp;&nbsp;{{ category }}
+            </div>  
+        </div>
+        <div class="col-sm-3 text-left text-right">
+            <div class="font-weight-bold">
+                <label for="radio"><b>Sort by:</b></label>
+            </div>
+            <div *ngFor="let option of priceOptions">
+                <input type="radio" name="priceGroup" [(ngModel)]="selectedPriceOption" [value]="option" (change)="getSelectedCampsSortedByPrice()"> {{option}}  
+            </div>
+        </div>
+    </div>
+
+   
     <div style="overflow-y: scroll; max-height: min-content">
         <table class="table table-striped camp-table">
             <thead class="table-success">

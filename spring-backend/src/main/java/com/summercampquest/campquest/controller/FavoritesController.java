@@ -1,8 +1,6 @@
 package com.summercampquest.campquest.controller;
 
 
-import com.summercampquest.campquest.exception.CampNotFoundException;
-import com.summercampquest.campquest.exception.UserNotFoundException;
 import com.summercampquest.campquest.models.Camp;
 import com.summercampquest.campquest.models.Favorites;
 import com.summercampquest.campquest.models.User;
@@ -10,18 +8,12 @@ import com.summercampquest.campquest.models.data.CampRepository;
 import com.summercampquest.campquest.models.data.FavoritesRepository;
 import com.summercampquest.campquest.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/camps/favorites")
 @PreAuthorize("hasRole('User')")

@@ -13,4 +13,5 @@ public interface FavoritesRepository extends CrudRepository<Favorites,Integer> {
     Favorites findByUserAndCamp(User user, Camp camp);
     List<Favorites> findByUser(User user);
 
+    List<Favorites> findByCamp(Camp camp);
 }

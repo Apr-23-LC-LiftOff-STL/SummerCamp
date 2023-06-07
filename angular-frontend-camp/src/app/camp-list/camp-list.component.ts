@@ -26,7 +26,7 @@ export class CampListComponent implements OnInit {
   gradeGrp: string = '';
 
 
-  constructor(private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
+  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.getCamps();

@@ -1,15 +1,12 @@
 package com.summercampquest.campquest.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name = "camps")
-public class Camp extends AbstractEntity{
+public class Camp{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -37,7 +34,7 @@ public class Camp extends AbstractEntity{
     public Camp() {
     }
 
-    public Camp(String name, String description, String location,Integer price, String duration, Integer age, Date deadline,
+    public Camp(String name, String description, String location,Integer price, String duration, Integer age, LocalDate deadline,
                 Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
         super();
         this.name=name;

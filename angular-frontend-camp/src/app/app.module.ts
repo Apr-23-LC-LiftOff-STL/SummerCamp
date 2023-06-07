@@ -15,8 +15,6 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { UpdateCampComponent } from './update-camp/update-camp.component';
-
-import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
@@ -37,7 +35,7 @@ import { UserService } from './_services/user.service';
     ViewMyFavoritesComponent,
     LoginComponent,
     RegistrationComponent,
-    UpdateCampComponent
+    UpdateCampComponent,
     ForbiddenComponent
   ],
   imports: [

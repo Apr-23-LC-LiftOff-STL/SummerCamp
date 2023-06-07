@@ -9,13 +9,19 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { UpdateCampComponent } from './update-camp/update-camp.component';
+import { ViewMyFavoritesComponent } from './view-my-favorites/view-my-favorites.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'camps', component: CampListComponent },
+  //javascript object
+  {path:'camps', component: CampListComponent},
+  {path:'create-camp', component: CreateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
+  {path:'view-my-favorites', component: ViewMyFavoritesComponent, canActivate:[AuthGuard], data:{roles:['User']} },
+  {path:'login', component: LoginComponent},
+  {path:'forbidden', component: ForbiddenComponent}
   { path: '', component: CampByCategoryComponent },
-  { path: 'create-camp', component: CreateCampComponent },
-  {path:'view-my-favorites', component: ViewMyFavoritesComponent},
-  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   {path:'update-camp/:id',component:UpdateCampComponent}
 

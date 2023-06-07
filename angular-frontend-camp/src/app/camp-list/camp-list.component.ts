@@ -5,6 +5,9 @@ import { CampService } from '../Services/camp.service';
 import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { UserAuthService } from '../_services/user-auth.service';
+import { UserService } from '../_services/user.service';
+
 
 
 @Component({
@@ -19,9 +22,9 @@ export class CampListComponent implements OnInit {
   selectedPriceOption: string = this.priceOptions[0];
   selectedItems: string[] = [];
   favoritesList: Camp[] = [];
-  userName: string = 'raam';
+  userName: string = '';
   gradeGrp: string = '';
-  
+
 
   constructor(private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
 
@@ -29,12 +32,16 @@ export class CampListComponent implements OnInit {
     this.getCamps();
     this.getUniqueCategories();
     this.getFavorites();
-  
-  }
+    this.userName = this.userAuthService.getAccountName();
+      if(this.userService.roleMatch(['User'])){
+        this.getFavorites();
+      }
+    }
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
       this.gradeGrp = String(parms.get('gradeGrp'));
       this.campService.getCampsList(this.gradeGrp, this.selectedPriceOption).subscribe(data => {
+        console.log(data);
         this.camps = data;
       }), (error: HttpErrorResponse) => {
         alert(error.message);

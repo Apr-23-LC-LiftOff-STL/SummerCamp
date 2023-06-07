@@ -1,75 +1,102 @@
 package com.summercampquest.campquest.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
 public class User {
-   @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
 
-    @Column(name = "user_name",nullable = false, unique = true)
-    private String username;
+
+    @Id
+    private String userName;
+
+    @Column(nullable = false)
+    private String userFirstName;
+    @Column(nullable = false)
+    private String userLastName;
     @Column(nullable = false, unique = true)
-    private String email;
+    private String userEmail;
 
     @Column(nullable = false)
-    private String password;
+    private String userPassword;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLE",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID")
+            }
+    )
+    private Set<Role> role;
 
     // constructors, getters and setters
 
     public User(){
     }
-    public User(String userName, String email, String password, Role role) {
-        super();
-        this.username = userName;
-        this.email = email;
-        this.password = password;
+
+
+
+    public User(String userName, String userFirstName, String userLastName, String email, String password, Set<Role> role) {
+        this.userName = userName;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.userEmail = email;
+        this.userPassword = password;
         this.role = role;
     }
 
-    public int getId() {
-        return id;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
     }
 
-    public String getUserName() {
-        return username;
+    public String getUserLastName() {
+        return userLastName;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
+    public Set<Role> getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Set<Role> role) {
         this.role = role;
     }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String email) {
+        this.userEmail = email;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+
+
 }

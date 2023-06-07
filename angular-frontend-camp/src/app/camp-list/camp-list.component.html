@@ -1,9 +1,30 @@
 <h2>Camp List</h2>
+<div class="text-right">
+    <h2 *ngIf="userAuthService.isLoggedIn()">Welcome,{{userName}}</h2>
+    <a routerLink = "/view-my-favorites" routerLinkActive = "active" class = "nav-link"
+    *ngIf="userService.roleMatch(['User'])">View My Favorites</a>
+</div>
+<div class = "text-left">
+    <div class="font-weight-bold">
+        <label for="dropdown">Filter by:</label>
+    </div>
+    <div *ngFor="let category of uniqueCategories">
+        <input type="checkbox" name="{{category}}" [value]="category" (change)="getCampsBySelectedCategories($event,category)">{{ category }}
+    </div>  
+</div>
+<div class="text-right">
+    <div class="font-weight-bold">
+        <label for="radio">Sort by:</label>
+    </div>
+    <div *ngFor="let option of priceOptions">
+        <input type="radio" name="priceGroup" [(ngModel)]="selectedPriceOption" [value]="option" (change)="getSelectedCampsSortedByPrice()"> {{option}}  
+    </div>
+</div>    
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Description</th>
+            <th>Description</th>        
             <th>Price</th>
             <th>Duration</th>
             <th>Age</th>
@@ -26,6 +47,14 @@
             <td>{{camp.mode}}</td>
             <td>{{camp.category}}</td>
             <td>{{camp.campLink}}</td>
+            <td>
+            <i class="fa-regular fa-star fa-lg" *ngIf="userService.roleMatch(['User']) && !isFavorite(camp.id)" (click)="addToFavorites(camp.id)"></i>
+            <i class="fa-solid fa-star fa-lg" style="color: #fcd12a;" *ngIf="userService.roleMatch(['User']) && isFavorite(camp.id)" (click)="removeFromFavorites(camp.id)"></i>
+            </td>
+        
         </tr>
     </tbody>
 </table>
+   
+   
+    

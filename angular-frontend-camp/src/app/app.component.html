@@ -7,9 +7,14 @@
             <a routerLink = "camps" routerLinkActive = "active" class = "nav-link">Camp List</a>
         </li>
         <li class="nav-item">
-            <a routerLink = "create-camp" routerLinkActive = "active" class = "nav-link">Add Camp</a>
+            <a routerLink = "create-camp" routerLinkActive = "active" class = "nav-link" 
+            *ngIf="userService.roleMatch(['Admin'])">Add Camp</a>
         </li>
     </ul>
+    <div class="col-md-14 offset-md-8">
+    <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink = "login">Login</button>
+    <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
+    </div>
 </nav>
 </header>
 

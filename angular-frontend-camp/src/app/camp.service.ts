@@ -1,46 +1,40 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camp } from './camp';
 import { Observable } from 'rxjs';
+import { UserService } from './_services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampService {
 
-  //must be the port number for the backend api - Tomcat8080
   private baseURL = "http://localhost:8080/api/camps";
-  constructor(private httpClient : HttpClient) { }
+
+  requestHeader = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
+
+  constructor(private httpClient : HttpClient, private userService : UserService) { }
 
   getCampsList(): Observable<Camp[]>{
-    return this.httpClient.get<Camp[]>(`${this.baseURL}`);
+    return this.httpClient.get<Camp[]>(`${this.baseURL}`,{ headers:this.requestHeader});
   }
 
   createCamp(camp: Camp): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,camp);
   }
 
-
-  getAll(): Observable<Camp[]> {
-    return this.httpClient.get<Camp[]>(this.baseURL);
+  getUniqueCategoriesArray(): Observable<string[]>{
+    return this.httpClient.get<string[]>(`${this.baseURL}/unique-categories`,{ headers:this.requestHeader});
   }
 
-  get(id: any): Observable<any> {
-    return this.httpClient.get(`${this.baseURL}/${id}`);
+  getSelectedCampsSortedByPrice(categories: string[],order: string): Observable<Camp[]>{
+    const params = new HttpParams()
+    .set('categories',categories.join(','))
+    .set('order', order);
+
+    //return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { params });
+    return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { headers:this.requestHeader, params });
   }
-
-  create(data: any): Observable<any> {
-    return this.httpClient.post(this.baseURL, data);
-  }
-
-  update(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseURL}/${id}`, data);
-  }
-
-  delete(id: any): Observable<any> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
-  }
-
-
-
 }

@@ -1,59 +1,33 @@
 package com.summercampquest.campquest.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
+@Table(name = "camps")
 public class Camp {
-
-    /* @NotBlank(message = "Required")
-    @Size(min = 3, max = 50, message = "Must be between 3 and 50 characters")
-
-    description: string;
-    price: number;
-    duration: string;
-    age: number;
-    deadline: Date;
-    totalSeats: number;
-    mode: string;
-    category: string;
-    campLink: string;*/
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="name")
     private String name;
-
-    @Column(name="description")
     private String description;
-    @Column(name="price")
-    private Integer price;
-    @Column(name="duration")
+    private int price;
     private String duration;
-    @Column(name="age")
-    private Integer age;
-    @Column(name="deadline")
-    private Date deadline;
-    @Column(name="totalSeats")
-    private Integer totalSeats;
-    @Column(name="mode")
+    private int age;
+    private LocalDate deadline;
+    private int totalSeats;
     private String mode;
-    @Column(name="category")
     private String category;
-    @Column(name="campLink")
     private String campLink;
 
-
-    //Constructors
     public Camp(){
+
     }
 
-    public Camp(String name, String description, Integer price, String duration, Integer age, Date deadline,
-                Integer totalSeats, String mode, String category, String campLink) {
-
-        this.name=name;
+    public Camp(String name, String description, int price, String duration, int age, LocalDate deadline, int totalSeats, String mode, String category, String campLink) {
+        super();
+        this.name = name;
         this.description = description;
         this.price = price;
         this.duration = duration;
@@ -69,13 +43,16 @@ public class Camp {
         return id;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -86,11 +63,11 @@ public class Camp {
         this.description = description;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -102,27 +79,27 @@ public class Camp {
         this.duration = duration;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public Date getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
-    public Integer getTotalSeats() {
+    public int getTotalSeats() {
         return totalSeats;
     }
 
-    public void setTotalSeats(Integer totalSeats) {
+    public void setTotalSeats(int totalSeats) {
         this.totalSeats = totalSeats;
     }
 
@@ -148,18 +125,5 @@ public class Camp {
 
     public void setCampLink(String campLink) {
         this.campLink = campLink;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Camp camp = (Camp) o;
-        return id == camp.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }

@@ -1,31 +1,79 @@
-<h2>Camp List</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Duration</th>
-            <th>Age</th>
-            <th>Deadline</th>
-            <th>TotalSeats</th>
-            <th>Mode</th>
-            <th>Category</th>
-            <th>CampLink</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let camp of camps">
-            <td>{{camp.name}}</td>
-            <td>{{camp.description}}</td>
-            <td>{{camp.price}}</td>
-            <td>{{camp.duration}}</td>
-            <td>{{camp.age}}</td>
-            <td>{{camp.deadline}}</td>
-            <td>{{camp.totalSeats}}</td>
-            <td>{{camp.mode}}</td>
-            <td>{{camp.category}}</td>
-            <td>{{camp.campLink}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-10">
+            <h2 style="padding-left: 5%; padding-top: 1%;">Camp List</h2>
+        </div>
+        <div class="col" style="float: right;">
+
+          <h2 *ngIf="userAuthService.isLoggedIn()">Welcome,{{userName}}</h2>
+            <a class="bi bi-plus-circle-fill nav-link" style="color: rgb(65, 64, 155);" [routerLink]="['/create-camp']"
+                data-toggle="tooltip" data-placement="bottom" title="Add Camp"><b>&nbsp;&nbsp;Add Camp</b></a>
+        </div>
+    </div>
+    <div class="top-buffer"></div>
+    <div class="row">
+        <div class = "col-sm-9 text-left">
+          <div  class="font-weight-bold" >
+            <label><b>Search By</b></label>
+               <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Enter search text">
+                <button name="Search" (click)="search();" id="search" name="search">Search</button>
+
+          </div>
+            <div class="font-weight-bold">
+                <label for="dropdown"><b>Filter by:</b></label>
+            </div>
+            <div *ngFor="let category of uniqueCategories">
+                <input type="checkbox" name="{{category}}" [value]="category" (change)="getCampsBySelectedCategories($event,category)">&nbsp;&nbsp;{{ category }}
+            </div>
+        </div>
+        <div class="col-sm-3 text-left text-right">
+            <div class="font-weight-bold">
+                <label for="radio"><b>Sort by:</b></label>
+            </div>
+            <div *ngFor="let option of priceOptions">
+                <input type="radio" name="priceGroup" [(ngModel)]="selectedPriceOption" [value]="option" (change)="getSelectedCampsSortedByPrice()"> {{option}}
+            </div>
+        </div>
+    </div>
+
+
+    <div style="overflow-y: scroll; max-height: min-content">
+        <table class="table table-striped camp-table">
+            <thead class="table-success">
+                <tr>
+                    <th class="col-sm-1">Name</th>
+                    <th class="col-sm-1">Category</th>
+                    <th class="col-sm-1">Location</th>
+                    <th class="col-sm-1">Price</th>
+                    <th class="col-sm-1">Info</th>
+                    <th class="col-sm-1">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let camp of camps">
+                    <td class="col-sm-1">{{camp.name}}</td>
+                    <td class="col-sm-1">{{camp.category}}</td>
+                    <td class="col-sm-1">{{camp.location}}</td>
+                    <td class="col-sm-1">{{camp.price}}</td>
+                    <td class="col-sm-1"><button (click)='campDetails(camp.id)'>View Detail</button></td>
+
+                  <td class="col-sm-1">
+                        <i class="bi bi-eye-fill" data-toggle="tooltip" data-placement="bottom" title="View"></i>
+                        <i class="p-3 bi bi-star" *ngIf="!isFavorite(camp.id)" (click)="addToFavorites(camp.id)"
+                            data-toggle="tooltip" data-placement="bottom" title="Add Favorite"></i>
+                        <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
+                            (click)="removeFromFavorites(camp.id)" data-toggle="tooltip" data-placement="bottom"
+                            title="Remove Favorite"></i>
+                        <i class="bi bi-dash-circle-fill" style="color:  #8f0b0b;" (click)="deleteCamp(camp.id)"
+                            data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+                        <i class="p-3 bi bi-pencil" [routerLink]="['/update-camp',camp.id]" data-toggle="tooltip"
+                            data-placement="bottom" title="Edit"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- c -->
+

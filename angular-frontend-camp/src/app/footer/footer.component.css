@@ -1,0 +1,56 @@
+.footer {
+        height: fit-content;
+        color: black;
+        display:flex;
+        justify-content: space-between;
+        padding-left: 25%;
+        bottom: 0;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-size: small;
+        position: relative;
+        
+    }
+
+
+.copyright {
+    text-align: center;
+    font-size: smaller;
+}
+
+.social {
+    width: calc(5% + 0.5vw + 1vh);
+    height: calc(5% + 1vw + 1vh);
+    border-radius: 2px;
+}
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {  
+    .socials {
+        padding-left:52%;
+    }
+  }
+   
+  /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+  @media (min-width: 768px) {  
+    .socials {
+        padding-left: 2%;
+    }
+  }
+   
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) { 
+    .socials {
+        padding-left: 2%;
+    }
+  }
+   
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {  
+    .socials {
+        padding-left: 2%;
+    } 
+  }
+   
+  
+
+    

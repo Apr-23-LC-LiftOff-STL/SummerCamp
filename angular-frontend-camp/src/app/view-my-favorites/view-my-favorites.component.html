@@ -1,0 +1,39 @@
+
+<h2>My Favorites</h2>
+<a [routerLink]="[]" (click)="goBack()" class = "nav-link">Back to Camp List</a>
+<div *ngIf="favoritesList.length>0">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Age</th>
+            <th>Deadline</th>
+            <th>TotalSeats</th>
+            <th>Mode</th>
+            <th>Category</th>
+            <th>CampLink</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let camp of favoritesList">
+            <td>{{camp.name}}</td>
+            <td>{{camp.description}}</td>
+            <td>{{camp.price}}</td>
+            <td>{{camp.duration}}</td>
+            <td>{{camp.age}}</td>
+            <td>{{camp.deadline}}</td>
+            <td>{{camp.totalSeats}}</td>
+            <td>{{camp.mode}}</td>
+            <td>{{camp.category}}</td>
+            <td>{{camp.campLink}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div *ngIf="favoritesList.length == 0">
+    <h3 class="text-center">"No favorites for {{userName}}, mark one!</h3>
+</div>
+

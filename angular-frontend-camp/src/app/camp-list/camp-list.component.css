@@ -1,0 +1,16 @@
+tr, td, th, thead {
+    padding-left: 5%;
+   
+}
+
+.camp-table {
+    width: 100%; 
+    align-self: center; 
+    /* overflow: auto;
+    display:inline-block;
+    max-height: none; */
+}
+
+
+
+

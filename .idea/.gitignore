@@ -1,0 +1,16 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+node_modules
+spring-backend/build/**
+spring-backend/bin/**
+spring-backend/.gradle
+spring-backend/.idea/**
+.idea/**
+.gradle/**
+./.idea
+../.idea
+./build
+.gradle/7.6.1
+.gradle/buildOutputCleanup
+.gradle/file-system.probe

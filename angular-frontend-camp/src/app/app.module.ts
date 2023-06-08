@@ -4,6 +4,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CampListComponent } from './camp-list/camp-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CampListComponent } from './camp-list/camp-list.component';
+import { CampDetailComponent } from './camp-detail/camp-detail.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FormsModule } from '@angular/forms';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,8 +30,6 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +43,14 @@ import { UserService } from './_services/user.service';
     RegistrationComponent,
     UpdateCampComponent,
     ForbiddenComponent
+    CampDetailComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,

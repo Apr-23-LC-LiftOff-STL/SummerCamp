@@ -1,16 +1,16 @@
 export interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
+//   id: number;
+  userFirstName: string;
+  userLastName: string;
+  userEmail: string;
   age: number;
   grade: number;
   phone: number;
-  username: string;
+  userName: string;
   password: string;
   favorites: [];
   profilePictureLink: string;
-  
+
 /*
   constructor(
     id: number,

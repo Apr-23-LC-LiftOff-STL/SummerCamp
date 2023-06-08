@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
-
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 @Component({
@@ -16,6 +16,7 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./camp-list.component.css']
 })
 export class CampListComponent implements OnInit {
+
   camps: Camp[] = [];
   uniqueCategories: string[] = [];
   priceOptions: string[] = ['price: low to high','price: high to low'];
@@ -24,9 +25,12 @@ export class CampListComponent implements OnInit {
   favoritesList: Camp[] = [];
   userName: string = '';
   gradeGrp: string = '';
+  favoritesList: Camp[] = [];
+  name: string  = '';
+  searchResults: string[] | undefined;
 
-
-  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
+  constructor(private campService: CampService, private favoriteService: FavoriteService,public userAuthService: UserAuthService,
+   public userService: UserService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute,private http: HttpClient ) { }
 
   ngOnInit(): void {
     this.getCamps();
@@ -37,6 +41,8 @@ export class CampListComponent implements OnInit {
         this.getFavorites();
       }
     }
+  }
+
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
       this.gradeGrp = String(parms.get('gradeGrp'));
@@ -94,7 +100,7 @@ export class CampListComponent implements OnInit {
   }
 
   removeFromFavorites(campId: number) {
-    this.favoriteService.removeFromFavorites(campId, this.userName).subscribe(() => {
++    this.favoriteService.removeFromFavorites(campId, this.userName).subscribe(() => {
       this.getFavorites();
       this.toastr.info('removed from my favorites!');
     });
@@ -103,7 +109,6 @@ export class CampListComponent implements OnInit {
   isFavorite(campId: number): boolean {
     return this.favoritesList.some(camp => camp.id === campId);
   }
-
 
   deleteCamp(campId: number) {
     if (confirm("Are you sure you want to delete this camp?")) {
@@ -122,6 +127,20 @@ export class CampListComponent implements OnInit {
     }
 
   }
+
+ public campDetails(id: any){
+  console.log(id);
+  this.router.navigate(['camp-detail', id]);
+}
+
+search() {
+
+  console.log(this.name);
+
+  this.http.get('http://localhost:8080/api/camps/search?name='+this.name).subscribe((response: any) => {
+      this.camps = response;
+    });
+}
 
 }
 

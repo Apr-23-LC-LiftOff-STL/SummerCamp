@@ -81,3 +81,4 @@ spring-backend/build/tmp/compileJava/previous-compilation-data.bin
 /spring-backend/bin/
 /spring-backend/.gradle/
 /.idea/
+node_modules

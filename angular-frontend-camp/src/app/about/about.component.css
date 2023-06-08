@@ -14,11 +14,10 @@
       
 }
 
-.person {
+.container {
     font-family: 'Inter';
     font-style: normal;
     vertical-align: top;
-    text-align: center;
 }
 
 .name {

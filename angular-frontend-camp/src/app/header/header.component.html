@@ -5,11 +5,17 @@
                 <img id='logo' class='logo' src="../../assets/Logo.png">
                 Camp Quest
             </a>
+         
+            <h2 *ngIf="userAuthService.isLoggedIn()">Welcome, {{userName}}</h2>
+            
         </span>
         <span class="col-sm-2" style="padding-top: 1%; float: right; justify-items: space-between;">
             <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" routerLink="/view-my-favorites"></i>
-            <a routerLink="/login">
+            <a *ngIf="!isLoggedIn()" routerLink="/login">
                 <img id='login' class='login' src="../../assets/login.png">
+            </a>
+            <a *ngIf="isLoggedIn()" (click)="logout()">
+                <img id='logout' class='logout' src="../../assets/logout.png">
             </a>
         </span>
     </div> 

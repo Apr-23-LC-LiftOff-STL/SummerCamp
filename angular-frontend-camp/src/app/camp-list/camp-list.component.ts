@@ -26,17 +26,19 @@ export class CampListComponent implements OnInit {
   gradeGrp: string = '';
 
 
-  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router, private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService, private route: ActivatedRoute ) { }
+  constructor(public userAuthService: UserAuthService, public userService: UserService, 
+  private router: Router, private campService: CampService, private favoriteService: FavoriteService, 
+  private toastr: ToastrService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.getCamps();
     this.getUniqueCategories();
-    this.getFavorites();
     this.userName = this.userAuthService.getAccountName();
       if(this.userService.roleMatch(['User'])){
         this.getFavorites();
       }
     }
+
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
       this.gradeGrp = String(parms.get('gradeGrp'));
@@ -86,7 +88,7 @@ export class CampListComponent implements OnInit {
   }
 
   addToFavorites(campId: number) {
-    console.log(campId)
+    console.log(campId);
     this.favoriteService.addToFavorites(campId, this.userName).subscribe(() => {
       this.getFavorites();
       this.toastr.info('marked as my favorite!');

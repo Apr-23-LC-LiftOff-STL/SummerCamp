@@ -27,14 +27,15 @@ export class LoginComponent implements OnInit {
         console.log(response.user.userName);
         //console.log(response.jwtToken);
         //console.log(response.user.role);
+        this.userAuthService.setAccountName(response.user.userName);
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
-        this.userAuthService.setAccountName(response.user.userName);
+      
 
         const role = response.user.role[0].roleName;
         //if account login is success, then redirect the account to respective url path
         if(role === 'Admin' || role === 'User'){
-          this.router.navigate(['/camps']);
+          this.router.navigate(['']);
         }
       },
       (error) => {

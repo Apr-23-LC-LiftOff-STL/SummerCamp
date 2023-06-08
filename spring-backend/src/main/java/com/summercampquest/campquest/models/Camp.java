@@ -51,6 +51,10 @@ public class Camp{
         this.gradeGrp = gradeGrp;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getLocation() {
         return location;
     }

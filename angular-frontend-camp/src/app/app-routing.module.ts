@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'forbidden', component: ForbiddenComponent},
   { path: '', component: CampByCategoryComponent },
   { path: 'register', component: RegistrationComponent },
-  {path:'update-camp/:id',component:UpdateCampComponent}
+  {path:'update-camp/:id',component:UpdateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} }
 
 ];
 

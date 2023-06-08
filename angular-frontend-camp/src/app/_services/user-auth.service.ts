@@ -37,8 +37,13 @@ export class UserAuthService {
   
   }
 
-  public clear() {
-    localStorage.clear()
+
+  public clear(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      localStorage.clear();
+      console.log("cleared local storage");
+      resolve();
+    });
   }
 
   //if roles and jwt token is present in local storage => user logged in

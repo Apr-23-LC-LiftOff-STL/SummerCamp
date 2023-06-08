@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Camp } from '../camp';
+import { Camp } from '../ModelInterfaces/camp';
 import { ActivatedRoute } from '@angular/router';
 import { CampService } from '../camp.service';
 

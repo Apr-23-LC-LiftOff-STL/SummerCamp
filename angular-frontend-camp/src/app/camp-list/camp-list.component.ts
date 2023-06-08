@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { Camp } from '../ModelInterfaces/camp';
+import { Camp } from '../ModelInterfaces/camp';
 import { CampService } from '../Services/camp.service';
 import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams} from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Camp } from '../camp';
+
+
 
 @Component({
   selector: 'app-camp-list',
@@ -16,7 +16,6 @@ import { Camp } from '../camp';
   styleUrls: ['./camp-list.component.css']
 })
 export class CampListComponent implements OnInit {
-
   camps: Camp[] = [];
   uniqueCategories: string[] = [];
   priceOptions: string[] = ['price: low to high','price: high to low'];
@@ -25,33 +24,24 @@ export class CampListComponent implements OnInit {
   favoritesList: Camp[] = [];
   userName: string = '';
   gradeGrp: string = '';
-  // favoritesList: Camp[] = [];
-  name: string  = '';
+  name: String='';
   searchResults: string[] | undefined;
 
-  constructor(private campService: CampService, private favoriteService: FavoriteService,public userAuthService: UserAuthService,
-   public userService: UserService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute,private http: HttpClient ) { }
+
+
+  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router,
+     private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService,
+      private route: ActivatedRoute,private http:HttpClient ) { }
 
   ngOnInit(): void {
     this.getCamps();
     this.getUniqueCategories();
-    // this.getFavorites();
+    this.getFavorites();
     this.userName = this.userAuthService.getAccountName();
       if(this.userService.roleMatch(['User'])){
         this.getFavorites();
       }
     }
-  getCamps() {
-    throw new Error('Method not implemented.');
-  }
-  getUniqueCategories() {
-    throw new Error('Method not implemented.');
-  }
-  getFavorites() {
-    throw new Error('Method not implemented.');
-  }
-  }
-
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
       this.gradeGrp = String(parms.get('gradeGrp'));
@@ -109,7 +99,7 @@ export class CampListComponent implements OnInit {
   }
 
   removeFromFavorites(campId: number) {
-+    this.favoriteService.removeFromFavorites(campId, this.userName).subscribe(() => {
+    this.favoriteService.removeFromFavorites(campId, this.userName).subscribe(() => {
       this.getFavorites();
       this.toastr.info('removed from my favorites!');
     });
@@ -118,6 +108,26 @@ export class CampListComponent implements OnInit {
   isFavorite(campId: number): boolean {
     return this.favoritesList.some(camp => camp.id === campId);
   }
+
+  // Camp Detail display
+
+
+  public campDetails(id: any){
+    console.log(id);
+    this.router.navigate(['camp-detail', id]);
+  }
+  
+  //Search functionality by name
+  
+  search() {
+  
+    console.log(this.name);
+  
+    this.http.get('http://localhost:8080/api/camps?name='+this.name).subscribe((response: any) => {
+        this.camps = response;
+      });
+  }
+
 
   deleteCamp(campId: number) {
     if (confirm("Are you sure you want to delete this camp?")) {
@@ -137,65 +147,4 @@ export class CampListComponent implements OnInit {
 
   }
 
- public campDetails(id: any){
-  console.log(id);
-  this.router.navigate(['camp-detail', id]);
 }
-
-search() {
-
-  console.log(this.name);
-
-  this.http.get('http://localhost:8080/api/camps/search?name='+this.name).subscribe((response: any) => {
-      this.camps = response;
-    });
-}
-
-}
-
-
-
-function getCamps() {
-  throw new Error('Function not implemented.');
-}
-
-function getUniqueCategories() {
-  throw new Error('Function not implemented.');
-}
-
-function getCampsBySelectedCategories(event: Event | undefined, any: any, category: any, string: any) {
-  throw new Error('Function not implemented.');
-}
-
-function getSelectedCampsSortedByPrice() {
-  throw new Error('Function not implemented.');
-}
-
-function getFavorites() {
-  throw new Error('Function not implemented.');
-}
-
-function addToFavorites(campId: any, number: any) {
-  throw new Error('Function not implemented.');
-}
-
-function removeFromFavorites(campId: any, number: any) {
-  throw new Error('Function not implemented.');
-}
-
-function isFavorite(campId: any, number: any) {
-  throw new Error('Function not implemented.');
-}
-
-function deleteCamp(campId: any, number: any) {
-  throw new Error('Function not implemented.');
-}
-
-function campDetails(id: any, any: any) {
-  throw new Error('Function not implemented.');
-}
-
-function search() {
-  throw new Error('Function not implemented.');
-}
-

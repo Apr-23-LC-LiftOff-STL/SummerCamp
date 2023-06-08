@@ -10,6 +10,8 @@ export interface User {
   password: string;
   favorites: [];
   profilePictureLink: string;
+  forgotPasswordToken :String;
+
 
 /*
   constructor(

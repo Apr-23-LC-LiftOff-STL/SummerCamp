@@ -3,35 +3,38 @@
     <form (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" id="name" [(ngModel)]="camp.name" name="name">
+            <input type="text" class="form-control" id="name" [(ngModel)]="camp.name" placeholder="Enter camp name" name="name">
         </div>
         <div class="form-group">
             <label>Description</label>
-            <input type="text" class="form-control" id="description" [(ngModel)]="camp.description" name="description">
+            <input type="text" class="form-control" id="description" [(ngModel)]="camp.description" placeholder="Enter description" name="description">
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input type="text" class="form-control" id="price" [(ngModel)]="camp.price" name="price">
+            <input type="text" class="form-control" id="price" [(ngModel)]="camp.price" placeholder="Enter price" name="price">
         </div>
         <div class="form-group">
             <label>Duration</label>
-            <input type="text" class="form-control" id="duration" [(ngModel)]="camp.duration" name="duration">
+            <input type="text" class="form-control" id="duration" [(ngModel)]="camp.duration" placeholder="Enter duration in weeks/days" name="duration">
         </div>
         <div class="form-group">
             <label>Age</label>
-            <input type="text" class="form-control" id="age" [(ngModel)]="camp.age" name="age">
+            <input type="text" class="form-control" id="age" [(ngModel)]="camp.age" placeholder="Enter age" name="age">
         </div>
         <div class="form-group">
             <label>Deadline</label>
-            <input type="date" class="form-control" id="deadline" [(ngModel)]="camp.deadline" name="deadline">
+            <input type="date" class="form-control" id="deadline" [(ngModel)]="camp.deadline" placeholder="Enter deadline" name="deadline">
         </div>
         <div class="form-group">
             <label>Total Seats</label>
-            <input type="text" class="form-control" id="totalSeats" [(ngModel)]="camp.totalSeats" name="totalSeats">
+            <input type="text" class="form-control" id="totalSeats" [(ngModel)]="camp.totalSeats" placeholder="Enter total# of seats" name="totalSeats">
         </div>
         <div class="form-group">
             <label>Mode</label>
-            <input type="text" class="form-control" id="mode" [(ngModel)]="camp.mode" name="mode">
+            <select id="mode" name="mode" class="form-select" [(ngModel)]="camp.mode">
+                <option value="In person">In person</option>
+                <option value="Online">Online</option>
+            </select>
         </div>
         <div class="form-group">
             <label>Category</label>
@@ -43,7 +46,7 @@
         </div>
         <div class="form-group">
             <label>Camp Link</label>
-            <input type="text" class="form-control" id="campLink" [(ngModel)]="camp.campLink" name="campLink">
+            <input type="text" class="form-control" id="campLink" [(ngModel)]="camp.campLink" placeholder="Provide camp's link" name="campLink">
         </div>
         <div class="form-group">
             <label>Grade Group</label>
@@ -56,7 +59,7 @@
         </div>
         <div class="form-group">
             <label>Location</label>
-            <input type="text" class="form-control" id="location" [(ngModel)]="camp.location" name="location">
+            <input type="text" class="form-control" id="location" [(ngModel)]="camp.location" placeholder="Enter location" name="location">
         </div>
 
         <button class="btn btn-success top-buffer" type="submit">Submit</button>

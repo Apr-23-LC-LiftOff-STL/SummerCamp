@@ -1,4 +1,5 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+//import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camp } from '../ModelInterfaces/camp';
 import { Observable } from 'rxjs';
@@ -10,11 +11,14 @@ export class CampService {
 
   //must be the port number for the backend api - Tomcat8080
   private baseURL = "http://localhost:8080/api/v1/camps";
+  requestHeader = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
   constructor(private httpClient : HttpClient) {}
 
   getCampsList(gradeGroup: any, order: string): Observable<Camp[]> {
     let gradeGrpParam = new HttpParams().set('gradeGrp', gradeGroup).set('order', order);
-    return this.httpClient.get<Camp[]>(this.baseURL, { params: gradeGrpParam });
+    return this.httpClient.get<Camp[]>(this.baseURL, { params: gradeGrpParam , headers:this.requestHeader});
   }
 
 
@@ -37,7 +41,7 @@ export class CampService {
   }
   
   getUniqueCategoriesArray(): Observable<string[]>{
-    return this.httpClient.get<string[]>(`${this.baseURL}/unique-categories`);
+    return this.httpClient.get<string[]>(`${this.baseURL}/unique-categories`, { headers:this.requestHeader});
   }
 
   getSelectedCampsSortedByPrice(categories: string[],order: string, gradeGrp: string): Observable<Camp[]>{
@@ -48,7 +52,7 @@ export class CampService {
     .set('categories',categories.join(','))
     .set('order', order)
     .set('gradeGroup', gradeGrp);
-    return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { params });
+    return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { params, headers:this.requestHeader });
   }
   
 

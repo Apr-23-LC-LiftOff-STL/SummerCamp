@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../ModelInterfaces/user';
 import { LoginService } from '../Services/login.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -11,17 +12,28 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegistrationComponent implements OnInit{
 
-  users!: User; 
+  user: User = new User();
 
-  constructor(private registrationService: LoginService){}
+  constructor(private registrationService: LoginService,
+  private router: Router,
+  private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.createUsers();
+  }
+  
+
+  createNewUser(){
+    this.registrationService.createNewUser(this.user).subscribe(data => {
+       console.log(data);
+       this.toastr.info('New User created!');
+       this.router.navigate(['/login']);
+    },
+    error => console.log(error));
   }
 
-
-  public createUsers():void {
-    this.registrationService.create('formdata');
+  onSubmit(){
+    console.log(this.user);
+    this.createNewUser();
   }
 
   

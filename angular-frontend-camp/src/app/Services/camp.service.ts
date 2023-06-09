@@ -14,6 +14,7 @@ export class CampService {
 
   //must be the port number for the backend api - Tomcat8080
   private baseURL = "http://localhost:8080/api/v1/camps";
+  
   requestHeader = new HttpHeaders(
     { "No-Auth":"True"}
   );

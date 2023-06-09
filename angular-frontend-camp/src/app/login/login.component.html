@@ -1,28 +1,34 @@
-<div class="container mt-5">
-    <div class="card" style="padding: 20px;">
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-            <input type="text"
-            ngModel
-            name="userName"
-            id="userName"
-            placeholder="Enter your username"
-            class="form-control mb-3"
-            >
-            <input type="text"
-            ngModel
-            name="userPassword"
-            id="userPassword"
-            type="password"
-            placeholder="Enter your password"
-            class="form-control mb-3"
-            >
-            <input type="submit"
-            value="Login"
-            class="btn btn-outline-primary form-control rounded-0">
-
-            <h6>New to CampQuest?</h6><a routerLink = "/register" routerLinkActive = "active">Create an account</a>
-            
-        </form>
-
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="col-sm-5">
+            <img style="width: 75%;"src="../../assets/login.png">
+        </div>
+        <div class="card col" style="padding: 20px; width: 50%;margin-right: 5%;">
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                <input type="text"
+                ngModel
+                name="userName"
+                id="userName"
+                placeholder="Enter your username"
+                class="form-control mb-3"
+                >
+                <input type="text"
+                ngModel
+                name="userPassword"
+                id="userPassword"
+                type="password"
+                placeholder="Enter your password"
+                class="form-control mb-3"
+                >
+                <input type="submit"
+                value="Login"
+                class="btn btn-outline-success form-control">
+    
+                <h6 class="top-buffer">New to CampQuest?&nbsp;<a routerLink = "/register" routerLinkActive = "active">Sign Up</a></h6>
+                
+            </form>
+    
+        </div>
     </div>
+    
 </div>

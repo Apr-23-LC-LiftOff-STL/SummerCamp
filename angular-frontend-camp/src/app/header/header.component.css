@@ -27,37 +27,3 @@
     flex-grow: 0;
     margin-left: calc(5% + 0.5vw + 0.5vh);;
 }
-
-.login {
-    width: calc(20% + 0.5vw + 0.5vh);
-    height: calc(5% + 0.5vw + 0.5vh);
-    vertical-align: middle;
-    float: right;
-    margin-top: 10px;
-    margin-right: calc(15% + 0.5vw + 0.5vh);
-    
-}
-
-/* unvisited link */
-a:link {
-    color: #000000;
-    text-decoration: none;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: #000000;
-    text-decoration: none;
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: #000000;
-    text-decoration: none;
-  }
-  
-  /* selected link */
-  a:active {
-    color: #000000;
-    text-decoration: none;
-  }

@@ -12,8 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CreateCampComponent implements OnInit {
  
-  /*camp: Camp = new Camp(0, '', '', 0, '', 0,
-  new Date(0), 0, '', '', '');*/
+  uniqueCategories: string[] = [];
   camp: Camp = new Camp();
   
   constructor(private campService: CampService,
@@ -21,6 +20,9 @@ export class CreateCampComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.campService.getUniqueCategoriesArray().subscribe(data => {
+      this.uniqueCategories = data;
+    });
   }
 
   saveCamp(){

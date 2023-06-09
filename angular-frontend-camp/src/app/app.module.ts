@@ -20,6 +20,9 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { CampTipsComponent } from './camp-tips/camp-tips.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 
 
@@ -36,7 +39,10 @@ import { UserService } from './_services/user.service';
     LoginComponent,
     RegistrationComponent,
     UpdateCampComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AboutusComponent,
+    CampTipsComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,

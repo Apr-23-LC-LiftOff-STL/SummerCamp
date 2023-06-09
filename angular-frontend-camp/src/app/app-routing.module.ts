@@ -12,6 +12,9 @@ import { UpdateCampComponent } from './update-camp/update-camp.component';
 
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './_auth/auth.guard';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { CampTipsComponent } from './camp-tips/camp-tips.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 const routes: Routes = [
   //javascript object
@@ -22,7 +25,10 @@ const routes: Routes = [
   {path:'forbidden', component: ForbiddenComponent},
   { path: '', component: CampByCategoryComponent },
   { path: 'register', component: RegistrationComponent },
-  {path:'update-camp/:id',component:UpdateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} }
+  {path:'update-camp/:id',component:UpdateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
+  {path:'about-us', component: AboutusComponent},
+  {path:'camp-tips', component: CampTipsComponent},
+  {path:'contact-us', component: ContactusComponent},
 
 ];
 

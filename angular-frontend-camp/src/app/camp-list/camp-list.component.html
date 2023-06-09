@@ -6,7 +6,7 @@
         <div class="col" style="float: right;">
 
             <div class="text-right">
-                <a routerLink = "/view-my-favorites" routerLinkActive = "active" class = "nav-link"
+                <a routerLink = "/view-my-favorites" routerLinkActive = "active"
                 *ngIf="userService.roleMatch(['User'])">View My Favorites</a>
             </div>
             <a class="bi bi-plus-circle-fill nav-link" style="color: rgb(65, 64, 155);" [routerLink]="['/create-camp']"

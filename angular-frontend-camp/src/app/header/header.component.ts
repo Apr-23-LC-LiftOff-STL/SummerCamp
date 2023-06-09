@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from '../_services/user.service';
-import { Router } from '@angular/router';
 import { UserAuthService } from '../_services/user-auth.service';
+import { Router } from '@angular/router';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +9,41 @@ import { UserAuthService } from '../_services/user-auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(public userService: UserService, private router: Router, private userAuthService: UserAuthService){}
 
-  public isLoggedIn(){
-    return this.userAuthService.isLoggedIn();
-  }
+  userName: string = '';
 
-  public logout() {
-    this.userAuthService.clear();
-    this.router.navigate(['']);
-  }
+  constructor(public userAuthService: UserAuthService,
+    private router: Router,
+    public userService: UserService){}
+
+    ngOnInit() : void {
+
+    }
+
+    public isLoggedIn(){
+      this.userName = this.userAuthService.getAccountName();
+      if(!this.userName){
+        this.userName = '';
+      }
+      console.log("userName: "+this.userName);
+      return this.userAuthService.isLoggedIn();
+    }
+
+
+
+    public logout() {
+    this.userAuthService.clear()
+    .then(() => {
+      // Code that relies on cleared localStorage
+      this.router.navigate(['']);
+    })
+    .catch(error => {
+      // Handle any errors that occur during the clearing process
+      console.error(error);
+    });
+
+    }
+
 }
+
+

@@ -1,21 +1,21 @@
-<header class="card" style="width:100%;">
-    <div class="card-header header-text">
+
+    <div class="header-text">
         <span class="col-sm-7">
             <a href="">
                 <img id='logo' class='logo' src="../../assets/Logo.png">
                 Camp Quest
             </a>
+
+            <!-- <h2 *ngIf="userAuthService.isLoggedIn()">Welcome, {{userName}}</h2> -->
+
         </span>
         <span class="col-sm-2" style="padding-top: 1%; float: right; justify-items: space-between;">
-            <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" *ngIf="userService.roleMatch(['User'])" routerLink="/view-my-favorites"></i>
-        
-            <a *ngIf="!isLoggedIn()" routerLink="/login">
+           <a *ngIf="!isLoggedIn()" routerLink="/login">
                 <img id='login' class='login' src="../../assets/login.png">
             </a>
             <a *ngIf="isLoggedIn()" (click)="logout()">
                 <img id='login' class='login' src="../../assets/login.png">
             </a>
         </span>
-    </div> 
+    </div>
 
-</header>

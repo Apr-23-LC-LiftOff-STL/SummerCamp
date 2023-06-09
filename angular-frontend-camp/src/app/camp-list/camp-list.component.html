@@ -5,9 +5,13 @@
         </div>
         <div class="col" style="float: right;">
 
-          <h2 *ngIf="userAuthService.isLoggedIn()">Welcome,{{userName}}</h2>
+            <div class="text-right">
+                <a routerLink = "/view-my-favorites" routerLinkActive = "active" class = "nav-link"
+                *ngIf="userService.roleMatch(['User'])">View My Favorites</a>
+            </div>
             <a class="bi bi-plus-circle-fill nav-link" style="color: rgb(65, 64, 155);" [routerLink]="['/create-camp']"
-                data-toggle="tooltip" data-placement="bottom" title="Add Camp"><b>&nbsp;&nbsp;Add Camp</b></a>
+                data-toggle="tooltip" data-placement="bottom" title="Add Camp" *ngIf="userService.roleMatch(['Admin'])"><b>&nbsp;&nbsp;Add Camp</b></a>
+          
         </div>
     </div>
     <div class="top-buffer"></div>
@@ -31,7 +35,7 @@
     </div>
 
 
-    <div style="overflow-y: scroll; max-height: min-content">
+    <div>
         <table class="table table-striped camp-table">
             <thead class="table-success">
                 <tr>
@@ -51,14 +55,14 @@
                     <td class="col-sm-1">{{camp.price}}</td>
                     <td class="col-sm-1">
                         <i class="bi bi-eye-fill" data-toggle="tooltip" data-placement="bottom" title="View"></i>
-                        <i class="p-3 bi bi-star" *ngIf="!isFavorite(camp.id)" (click)="addToFavorites(camp.id)"
+                        <i class="p-3 bi bi-star" *ngIf="userService.roleMatch(['User']) && !isFavorite(camp.id)" (click)="addToFavorites(camp.id)"
                             data-toggle="tooltip" data-placement="bottom" title="Add Favorite"></i>
-                        <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" *ngIf="isFavorite(camp.id)"
+                        <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" *ngIf="userService.roleMatch(['User']) && isFavorite(camp.id)"
                             (click)="removeFromFavorites(camp.id)" data-toggle="tooltip" data-placement="bottom"
                             title="Remove Favorite"></i>
-                        <i class="bi bi-dash-circle-fill" style="color:  #8f0b0b;" (click)="deleteCamp(camp.id)"
+                        <i class="p-3 bi bi-dash-circle-fill" style="color:  #8f0b0b;" *ngIf="userService.roleMatch(['Admin'])" (click)="deleteCamp(camp.id)"
                             data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
-                        <i class="p-3 bi bi-pencil" [routerLink]="['/update-camp',camp.id]" data-toggle="tooltip"
+                        <i class="bi bi-pencil" *ngIf="userService.roleMatch(['Admin'])" [routerLink]="['/update-camp',camp.id]" data-toggle="tooltip"
                             data-placement="bottom" title="Edit"></i>
                     </td>
                 </tr>

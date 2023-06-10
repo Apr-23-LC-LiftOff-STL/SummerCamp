@@ -1,0 +1,39 @@
+html,
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  flex: none;
+ 
+  height: 100px;
+  overflow: hidden;
+}
+
+.footer {
+  flex: none;
+ 
+  height: 75px;
+  overflow: hidden;
+}
+
+.body.outer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+
+.body.inner {
+  overflow-y: scroll;
+  flex: 1;
+  
+}
+

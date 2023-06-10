@@ -9,13 +9,14 @@ import com.summercampquest.campquest.models.data.FavoritesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-import static java.util.Comparator.comparing;
-
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/api/v1/camps")
 public class CampController {
@@ -36,12 +37,14 @@ public class CampController {
 
     //create camp REST API
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public Camp createCamp(@RequestBody Camp camp){
         return campRepository.save(camp);
     }
 
     //Delete camp by ID REST API
     @DeleteMapping("/{campId}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Object> deleteCamp(@PathVariable Integer campId) {
         Optional<Camp> campOpt = campRepository.findById(campId);
         if (campOpt.isPresent()) {
@@ -60,6 +63,7 @@ public class CampController {
 
     }
     @PutMapping("/{campId}")
+    @PreAuthorize("hasRole('Admin')")
     public Camp updateCamp(@PathVariable Integer campId,@RequestBody Camp camp){
         boolean campOpt = campRepository.existsById(campId);
         if (campOpt) {

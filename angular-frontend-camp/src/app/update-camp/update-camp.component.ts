@@ -10,8 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./update-camp.component.css']
 })
 export class UpdateCampComponent implements OnInit {
-
-  camp: any = new Camp();
+  uniqueCategories: string[] = [];
+ camp: any = new Camp();
   constructor(private campService: CampService, private route: ActivatedRoute,
     private router: Router, private toastr: ToastrService) { }
 
@@ -22,6 +22,11 @@ export class UpdateCampComponent implements OnInit {
     this.campService.getCampById(id).subscribe(data => {
       this.camp = data;
     }, error => console.log(error));
+
+    this.campService.getUniqueCategoriesArray().subscribe(data => {
+      this.uniqueCategories = data;
+    });
+    
   }
 
   onSubmit() {

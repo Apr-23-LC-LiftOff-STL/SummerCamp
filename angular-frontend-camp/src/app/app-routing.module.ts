@@ -10,14 +10,25 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { UpdateCampComponent } from './update-camp/update-camp.component';
 
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AuthGuard } from './_auth/auth.guard';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { CampTipsComponent } from './camp-tips/camp-tips.component';
+import { ContactusComponent } from './contactus/contactus.component';
+
 const routes: Routes = [
-  { path: 'camps', component: CampListComponent },
+  //javascript object
+  {path:'camps', component: CampListComponent},
+  {path:'create-camp', component: CreateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
+  {path:'view-my-favorites', component: ViewMyFavoritesComponent, canActivate:[AuthGuard], data:{roles:['User']} },
+  {path:'login', component: LoginComponent},
+  {path:'forbidden', component: ForbiddenComponent},
   { path: '', component: CampByCategoryComponent },
-  { path: 'create-camp', component: CreateCampComponent },
-  {path:'view-my-favorites', component: ViewMyFavoritesComponent},
-  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  {path:'update-camp/:id',component:UpdateCampComponent}
+  {path:'update-camp/:id',component:UpdateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
+  {path:'about-us', component: AboutusComponent},
+  {path:'camp-tips', component: CampTipsComponent},
+  {path:'contact-us', component: ContactusComponent},
 
 ];
 

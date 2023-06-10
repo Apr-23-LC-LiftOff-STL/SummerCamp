@@ -1,17 +1,16 @@
 package com.summercampquest.campquest.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-public class Camp extends AbstractEntity{
-        @Column(name="name")
+@Table(name = "camps")
+public class Camp{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
-
-    @Column(name="description")
     private String description;
     @Column(name="location")
     private String location;
@@ -19,13 +18,9 @@ public class Camp extends AbstractEntity{
     private Integer price;
     @Column(name="duration")
     private String duration;
-    @Column(name="age")
-    private Integer age;
-    @Column(name = "deadline")
-    private Date deadline;
-    @Column(name = "totalSeats")
-    private Integer totalSeats;
-    @Column(name = "mode")
+    private int age;
+    private LocalDate deadline;
+    private int totalSeats;
     private String mode;
     @Column(name = "category")
     private String category;
@@ -39,7 +34,7 @@ public class Camp extends AbstractEntity{
     public Camp() {
     }
 
-    public Camp(String name, String description, String location,Integer price, String duration, Integer age, Date deadline,
+    public Camp(String name, String description, String location,Integer price, String duration, Integer age, LocalDate deadline,
                 Integer totalSeats, String mode, String category, String campLink, GradeGroup gradeGrp) {
         super();
         this.name=name;
@@ -56,6 +51,10 @@ public class Camp extends AbstractEntity{
         this.gradeGrp = gradeGrp;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -64,12 +63,16 @@ public class Camp extends AbstractEntity{
         this.location = location;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -80,11 +83,11 @@ public class Camp extends AbstractEntity{
         this.description = description;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -104,27 +107,27 @@ public class Camp extends AbstractEntity{
         this.duration = duration;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public Date getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
-    public Integer getTotalSeats() {
+    public int getTotalSeats() {
         return totalSeats;
     }
 
-    public void setTotalSeats(Integer totalSeats) {
+    public void setTotalSeats(int totalSeats) {
         this.totalSeats = totalSeats;
     }
 

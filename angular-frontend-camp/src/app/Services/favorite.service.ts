@@ -8,7 +8,7 @@ import { Camp } from '../ModelInterfaces/camp';
 })
 export class FavoriteService {
 
-  private baseURL = "http://localhost:8080/api/camps/favorites";
+  private baseURL = "http://localhost:8080/api/v1/camps/favorites";
 
   constructor(private httpClient : HttpClient) { }
 

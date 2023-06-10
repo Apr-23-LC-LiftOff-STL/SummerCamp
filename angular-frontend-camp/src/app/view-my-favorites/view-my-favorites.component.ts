@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FavoriteService } from '../Services/favorite.service';
 import { Camp } from '../ModelInterfaces/camp';
 import {Location} from '@angular/common';
-
+import { UserAuthService } from '../_services/user-auth.service';
 
 @Component({
   selector: 'app-view-my-favorites',
@@ -13,12 +13,13 @@ export class ViewMyFavoritesComponent implements OnInit {
 
   
   favoritesList: Camp[] = [];
-  userName = 'raam';
+  userName : string = '';
   
-  constructor(private favoriteService: FavoriteService, private location:Location) {}
+  constructor(private favoriteService: FavoriteService, private location: Location, private userAuthService: UserAuthService) {}
    
 
   ngOnInit(): void {
+    this.userName = this.userAuthService.getAccountName();
     this.getFavorites();
   }
 
@@ -26,10 +27,14 @@ export class ViewMyFavoritesComponent implements OnInit {
     this.favoriteService.viewFavorites(this.userName).subscribe(data => {
       console.log(data);
       this.favoritesList = data;
-  });
+    },
+    (error) => {
+    console.log(error);
+    });
   }
 
-  public goBack(){
+  goBack() {
+    console.log("called goBack fn");
     this.location.back();
   }
   

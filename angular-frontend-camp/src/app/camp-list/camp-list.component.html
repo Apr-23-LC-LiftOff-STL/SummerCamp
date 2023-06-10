@@ -4,7 +4,9 @@
             <h2 style="padding-left: 5%; padding-top: 1%;">Camp List</h2>
         </div>
         <div class="col" style="float: right;">
-
+            <div> 
+            <i [routerLink]="['']" class="bi bi-house-fill" style="font-size: 150%;"></i>
+            </div>
             <div class="text-right">
                 <a routerLink = "/view-my-favorites" routerLinkActive = "active"
                 *ngIf="userService.roleMatch(['User'])">View My Favorites</a>

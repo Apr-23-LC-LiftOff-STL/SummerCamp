@@ -22,9 +22,13 @@ chrome-profiler-events*.json
 .settings/
 *.sublime-workspace
 
+<<<<<<< HEAD
 
 # IDE - VSCode
 # Visual Studio Code
+=======
+# IDE - VSCode
+>>>>>>> feature/Integration-Saran
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -43,10 +47,16 @@ testem.log
 /typings
 
 # System Files
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature/Integration-Saran
 .DS_Store
 Thumbs.db
 
 *.iml
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> feature/Integration-Saran

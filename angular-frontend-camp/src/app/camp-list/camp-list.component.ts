@@ -4,7 +4,7 @@ import { Camp } from '../ModelInterfaces/camp';
 import { CampService } from '../Services/camp.service';
 import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams} from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
 
@@ -24,11 +24,20 @@ export class CampListComponent implements OnInit {
   favoritesList: Camp[] = [];
   userName: string = '';
   gradeGrp: string = '';
+  name: String='';
+  searchResults: string[] | undefined;
 
 
+<<<<<<< HEAD
   constructor(public userAuthService: UserAuthService, public userService: UserService, 
   private router: Router, private campService: CampService, private favoriteService: FavoriteService, 
   private toastr: ToastrService, private route: ActivatedRoute ) { }
+=======
+
+  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router,
+     private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService,
+      private route: ActivatedRoute,private http:HttpClient ) { }
+>>>>>>> main
 
   ngOnInit(): void {
     this.getCamps();
@@ -106,6 +115,25 @@ export class CampListComponent implements OnInit {
     return this.favoritesList.some(camp => camp.id === campId);
   }
 
+  // Camp Detail display
+
+
+  public campDetails(id: any){
+    console.log(id);
+    this.router.navigate(['camp-detail', id]);
+  }
+  
+  //Search functionality by name
+  
+  search() {
+  
+    console.log(this.name);
+  
+    this.http.get('http://localhost:8080/api/camps?name='+this.name).subscribe((response: any) => {
+        this.camps = response;
+      });
+  }
+
 
   deleteCamp(campId: number) {
     if (confirm("Are you sure you want to delete this camp?")) {
@@ -126,6 +154,3 @@ export class CampListComponent implements OnInit {
   }
 
 }
-
-
-

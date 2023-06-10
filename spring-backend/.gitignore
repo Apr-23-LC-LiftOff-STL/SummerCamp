@@ -1,0 +1,9 @@
+.gradle/**
+./.idea
+../.idea
+./build
+build
+.gradle/7.6.1
+.gradle/buildOutputCleanup
+.gradle/file-system.probem
+spring-backend/.gradle/buildOutputCleanup/buildOutputCleanup.logick

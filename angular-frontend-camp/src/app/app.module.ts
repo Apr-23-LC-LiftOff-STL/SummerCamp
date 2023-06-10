@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CampListComponent } from './camp-list/camp-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,11 +20,17 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
+<<<<<<< HEAD
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { CampTipsComponent } from './camp-tips/camp-tips.component';
 import { ContactusComponent } from './contactus/contactus.component';
 
 
+=======
+import { CampDetailComponent } from './camp-detail/camp-detail.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+>>>>>>> main
 
 
 @NgModule({
@@ -40,15 +46,22 @@ import { ContactusComponent } from './contactus/contactus.component';
     RegistrationComponent,
     UpdateCampComponent,
     ForbiddenComponent,
+<<<<<<< HEAD
     AboutusComponent,
     CampTipsComponent,
     ContactusComponent
+=======
+    CampDetailComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule

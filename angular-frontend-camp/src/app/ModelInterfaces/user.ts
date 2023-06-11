@@ -4,9 +4,5 @@ export class User {
   userLastName!: string;
   userEmail!: string;
   userPassword!: string;
-  age!: number;
-  grade!: number;
-  phone!: number;
-  profilePictureLink!: string;
   forgotPasswordToken!: String;
 }

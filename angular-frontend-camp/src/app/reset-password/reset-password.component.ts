@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,  NavigationEnd, Router } from '@angular/router';
@@ -17,6 +17,11 @@ resetPasswordForm!: FormGroup;
 
 submitted = false;
   user: any;
+
+  requestHeader: HttpHeaders = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
+
 
 constructor(private http: HttpClient,private route:Router,private forgotPasswordService : ForgotpasswordService){
      route.events.subscribe(s=>{
@@ -63,7 +68,7 @@ onSubmit() {
   const token = this.token;
   console.log(token);
   // this.forgotpassword.getForgotPassword(email).subscribe((response: any) => {
-  this.http.post('http://localhost:8080/api/reset-password', { password:password, token:this.token}).subscribe((response) => {
+  this.http.post('http://localhost:8080/api/reset-password', { password:password, token:this.token},{ headers: this.requestHeader} ).subscribe((response) => {
     console.log('Password reset success');
 
     // display a success message to the user

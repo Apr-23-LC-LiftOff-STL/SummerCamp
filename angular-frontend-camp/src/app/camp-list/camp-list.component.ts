@@ -4,7 +4,7 @@ import { Camp } from '../ModelInterfaces/camp';
 import { CampService } from '../Services/camp.service';
 import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams} from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams, HttpHeaders} from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
 
@@ -24,20 +24,18 @@ export class CampListComponent implements OnInit {
   favoritesList: Camp[] = [];
   userName: string = '';
   gradeGrp: string = '';
-  name: String='';
-  searchResults: string[] | undefined;
+  name: string='';
+  searchResults: string[] = [];
+  requestHeader: HttpHeaders = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
 
 
-<<<<<<< HEAD
   constructor(public userAuthService: UserAuthService, public userService: UserService, 
   private router: Router, private campService: CampService, private favoriteService: FavoriteService, 
-  private toastr: ToastrService, private route: ActivatedRoute ) { }
-=======
+  private toastr: ToastrService, private route: ActivatedRoute, private http: HttpClient ) { }
 
-  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router,
-     private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService,
-      private route: ActivatedRoute,private http:HttpClient ) { }
->>>>>>> main
+
 
   ngOnInit(): void {
     this.getCamps();
@@ -128,8 +126,10 @@ export class CampListComponent implements OnInit {
   search() {
   
     console.log(this.name);
-  
-    this.http.get('http://localhost:8080/api/camps?name='+this.name).subscribe((response: any) => {
+    //this.http.get('http://localhost:8080/api/camps/?name='+this.name).subscribe((response: any) => {
+    return this.http.get<Camp[]>('http://localhost:8080/api/v1/camps/search?name='+this.name, 
+    { headers:this.requestHeader}).subscribe((response: any) => {
+        console.log(response);
         this.camps = response;
       });
   }

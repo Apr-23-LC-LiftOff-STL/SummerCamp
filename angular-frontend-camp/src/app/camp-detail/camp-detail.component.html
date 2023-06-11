@@ -51,7 +51,7 @@ padding-left: 15px;position: absolute;top: 100px;">Camp Details</h2>
        
 </div>
 
-<button class="btn1" routerLink="/camp-list" >Back </button>
+<button class="btn1" [routerLink]="[]" (click)="goBack()">Back </button>
 
 <button class="btn2" (click)="reDirect(camp.campLink)">Visit Website</button>
 

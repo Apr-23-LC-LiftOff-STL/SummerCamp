@@ -26,15 +26,12 @@ export class CreateCampComponent implements OnInit {
   }
 
   saveCamp(){
-<<<<<<< HEAD
     this.campService.createCamp(this.camp).subscribe(data => {
        console.log(data);
        this.toastr.info('New Camp created!');
        this.goToCampList();
     },
     error => console.log(error));
-=======
->>>>>>> main
   }
 
   goToCampList(){

@@ -18,19 +18,14 @@
     </div>
     <div class="top-buffer"></div>
     <div class="row">
-<<<<<<< HEAD
         <div class = "col-sm-9 text-left" >
-            <div class="font-weight-bold" style="margin-left: 6%;">
-=======
-        <div class = "col-sm-9 text-left">
-          <div  class="font-weight-bold" >
-            <label><b>Search By</b></label>
-               <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Enter search text">
-                <button name="Search" (click)="search();" id="search" name="search">Search</button>
-
-          </div>
             <div class="font-weight-bold">
->>>>>>> main
+                <label><b>Search By</b></label>
+                <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Enter search text">
+                <button name="Search" (click)="search();" id="search" name="search">Search</button>
+            </div>          
+            <div class="font-weight-bold" style="margin-left: 6%;">
+
                 <label for="dropdown"><b>Filter by:</b></label>
             </div>
             <div *ngFor="let category of uniqueCategories" style="margin-left: 6%;">
@@ -56,7 +51,6 @@
                     <th class="col-sm-1">Category</th>
                     <th class="col-sm-1">Location</th>
                     <th class="col-sm-1">Price</th>
-                    <th class="col-sm-1">Info</th>
                     <th class="col-sm-1">Actions</th>
                 </tr>
             </thead>
@@ -67,10 +61,10 @@
                     <td class="col-sm-1">{{camp.category}}</td>
                     <td class="col-sm-1">{{camp.location}}</td>
                     <td class="col-sm-1">{{camp.price}}</td>
-                    <td class="col-sm-1"><button (click)='campDetails(camp.id)'>View Detail</button></td>
+                    
 
                   <td class="col-sm-1">
-                        <i class="bi bi-eye-fill" data-toggle="tooltip" data-placement="bottom" title="View"></i>
+                        <i class="bi bi-eye-fill" data-toggle="tooltip" data-placement="bottom" title="View" (click)='campDetails(camp.id)'></i>
                         <i class="p-3 bi bi-star" *ngIf="userService.roleMatch(['User']) && !isFavorite(camp.id)" (click)="addToFavorites(camp.id)"
                             data-toggle="tooltip" data-placement="bottom" title="Add Favorite"></i>
                         <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" *ngIf="userService.roleMatch(['User']) && isFavorite(camp.id)"

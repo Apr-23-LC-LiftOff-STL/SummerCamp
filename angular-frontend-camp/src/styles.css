@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 .top-buffer { margin-top:20px; }
 
 /* Extra large devices (large desktops, 1200px and up) */
  @media (min-width: 1200px) {
     .top-buffer { margin-top:30px; }
   }
-=======
 /* You can add global styles to this file, and also import other style files */
->>>>>>> Saran_new
 

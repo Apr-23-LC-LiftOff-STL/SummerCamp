@@ -1,10 +1,9 @@
 import { UserAuthService } from './_services/user-auth.service';
 import { UserService } from './_services/user.service';
 import { Component,ViewEncapsulation } from '@angular/core';
-// import { Camp } from '../ModelInterfaces/camp';
-import { CampService } from './camp.service';
 import { Router } from '@angular/router';
 import { Camp } from './ModelInterfaces/camp';
+import { CampService } from './Services/camp.service';
 
 @Component({
   selector: 'app-root',

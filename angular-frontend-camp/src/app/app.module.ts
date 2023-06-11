@@ -20,17 +20,12 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
-<<<<<<< HEAD
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { CampTipsComponent } from './camp-tips/camp-tips.component';
 import { ContactusComponent } from './contactus/contactus.component';
-
-
-=======
 import { CampDetailComponent } from './camp-detail/camp-detail.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
->>>>>>> main
 
 
 @NgModule({
@@ -46,15 +41,12 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegistrationComponent,
     UpdateCampComponent,
     ForbiddenComponent,
-<<<<<<< HEAD
     AboutusComponent,
     CampTipsComponent,
-    ContactusComponent
-=======
+    ContactusComponent,
     CampDetailComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent
->>>>>>> main
   ],
   imports: [
     BrowserModule,

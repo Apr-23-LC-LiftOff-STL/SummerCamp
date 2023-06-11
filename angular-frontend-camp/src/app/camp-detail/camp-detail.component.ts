@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Camp } from '../ModelInterfaces/camp';
 import { ActivatedRoute } from '@angular/router';
-import { CampService } from '../camp.service';
+import { CampService } from '../Services/camp.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-camp-detail',
@@ -15,7 +15,7 @@ export class CampDetailComponent implements OnInit {
    id:any;
    camp: any;
 
-  constructor(private route :ActivatedRoute,private campService : CampService ) { }
+  constructor(private route :ActivatedRoute,private campService : CampService,private location: Location) { }
 
   ngOnInit(): void {
     this.id= this.route.snapshot.params['id'];
@@ -24,6 +24,11 @@ export class CampDetailComponent implements OnInit {
       this.camp = data;
     });
 
+  }
+
+  goBack() {
+    console.log("called goBack fn");
+    this.location.back();
   }
 
   reDirect(link:any){

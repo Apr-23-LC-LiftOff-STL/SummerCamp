@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-//import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camp } from '../ModelInterfaces/camp';
 import { Observable } from 'rxjs';
@@ -42,6 +41,11 @@ export class CampService {
 
   getCampById(id: number): Observable<Object> {
     return this.httpClient.get(`${this.baseURL}/${id}`, { headers:this.requestHeader });
+  }
+
+  public getCamp(id: any): Observable<Camp>{
+    const url = this.baseURL + "/" + id;
+    return this.httpClient.get<Camp>(url, { headers:this.requestHeader});
   }
 
   getUniqueCategoriesArray(): Observable<string[]>{

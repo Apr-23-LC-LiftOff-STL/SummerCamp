@@ -1,0 +1,58 @@
+<!-- <div style="background-color:green; width: ; height: 1000vh;"></div> -->
+<h2 Style="font-size: 1.5rem;
+font-style: italic;
+padding-left: 55px;position: absolute;top: 100px;">Camp Details</h2>
+
+<div style="height: 80%; width: inherit;margin-left: 0.5cm;">
+<div>
+
+  <!-- <div class="container" style="background-color: beige;height: 20%;width:30% ;font-display:left; nav-left: auto;">
+        Camp Details
+  </div> -->
+    <table style="margin-left: 200px; width:80%;position: absolute;
+    top: 150px;">
+        <tr>
+          <th>Name:</th>
+          <td>{{camp.name}}</td>
+        </tr>
+        <tr>
+          <th>Description:</th>
+          <td>{{camp.description}}</td>
+        </tr>
+        <tr>
+          <th>Deadline:</th>
+          <td>{{camp.deadline}}</td>
+        </tr>
+        <tr>
+          <th>Price:</th>
+          <td>{{camp.price}}</td>
+        </tr>
+        <tr>
+          <th>Duration:</th>
+          <td>{{camp.duration}}</td>
+          </tr>
+          <tr>
+            <th>Age :</th>
+            <td>{{camp.age}}</td>
+          </tr>
+          <tr>
+            <th>Total Seats:</th>
+            <td>{{camp.totalSeats}}</td>
+          </tr>
+          <tr>
+            <th>Mode:</th>
+            <td>{{camp.mode}}</td>
+          </tr>
+          <tr>
+            <th>Category:</th>
+            <td>{{camp.category}}</td>
+          </tr>
+      </table>
+
+</div>
+
+<button class="btn1" [routerLink]="[]" (click)="goBack()">Back </button>
+
+<button class="btn2" (click)="reDirect(camp.campLink)">Visit Website</button>
+
+</div>

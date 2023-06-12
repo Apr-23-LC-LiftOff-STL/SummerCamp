@@ -4,7 +4,7 @@ import { Camp } from '../ModelInterfaces/camp';
 import { CampService } from '../Services/camp.service';
 import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams, HttpHeaders} from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
 
@@ -24,11 +24,18 @@ export class CampListComponent implements OnInit {
   favoritesList: Camp[] = [];
   userName: string = '';
   gradeGrp: string = '';
+  name: string='';
+  searchResults: string[] = [];
+  requestHeader: HttpHeaders = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
 
 
   constructor(public userAuthService: UserAuthService, public userService: UserService, 
   private router: Router, private campService: CampService, private favoriteService: FavoriteService, 
-  private toastr: ToastrService, private route: ActivatedRoute ) { }
+  private toastr: ToastrService, private route: ActivatedRoute, private http: HttpClient ) { }
+
+
 
   ngOnInit(): void {
     this.getCamps();
@@ -106,6 +113,27 @@ export class CampListComponent implements OnInit {
     return this.favoritesList.some(camp => camp.id === campId);
   }
 
+  // Camp Detail display
+
+
+  public campDetails(id: any){
+    console.log(id);
+    this.router.navigate(['camp-detail', id]);
+  }
+  
+  //Search functionality by name
+  
+  search() {
+  
+    console.log(this.name);
+    //this.http.get('http://localhost:8080/api/camps/?name='+this.name).subscribe((response: any) => {
+    return this.http.get<Camp[]>('http://localhost:8080/api/v1/camps/search?name='+this.name, 
+    { headers:this.requestHeader}).subscribe((response: any) => {
+        console.log(response);
+        this.camps = response;
+      });
+  }
+
 
   deleteCamp(campId: number) {
     if (confirm("Are you sure you want to delete this camp?")) {
@@ -126,6 +154,3 @@ export class CampListComponent implements OnInit {
   }
 
 }
-
-
-

@@ -6,16 +6,14 @@ import com.summercampquest.campquest.models.Favorites;
 import com.summercampquest.campquest.models.GradeGroup;
 import com.summercampquest.campquest.models.data.CampRepository;
 import com.summercampquest.campquest.models.data.FavoritesRepository;
+import com.summercampquest.campquest.service.CampData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/camps")
@@ -24,6 +22,9 @@ public class CampController {
     private CampRepository campRepository;
     @Autowired
     private FavoritesRepository favoritesRepository;
+
+    @Autowired
+    private CampData campData;
 
     @GetMapping
     public List<Camp> findByGrade(@RequestParam GradeGroup gradeGrp, @RequestParam(defaultValue = "price: low to high") String order) {
@@ -65,6 +66,7 @@ public class CampController {
     @PutMapping("/{campId}")
     @PreAuthorize("hasRole('Admin')")
     public Camp updateCamp(@PathVariable Integer campId,@RequestBody Camp camp){
+
         boolean campOpt = campRepository.existsById(campId);
         if (campOpt) {
           campRepository.save(camp);
@@ -74,7 +76,7 @@ public class CampController {
         return camp;
     }
 
-    @GetMapping("/{campId}")
+/*    @GetMapping("/{campId}")
     public Camp getCampById(@PathVariable Integer campId){
         Optional<Camp> campOpt = campRepository.findById(campId);
         if(campOpt.isPresent()){
@@ -82,7 +84,7 @@ public class CampController {
         }else{
             throw new CampNotFoundException("No camp found");
         }
-    }
+    }*/
     //get unique categories from list of camps
     @GetMapping("unique-categories")
     public Set<String> getUniqueCategories(){
@@ -103,4 +105,35 @@ public class CampController {
             return campRepository.findByGradeGrpAndCategoryInOrderByPriceDesc(gradeGroup,categories);
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Camp> displayViewId(@PathVariable("id") Integer campId) {
+        Optional<Camp> camp = campData.displayCampById(campId);
+        return new ResponseEntity<>(camp.get(), HttpStatus.OK);
+    }
+
+
+    /**
+     * Method to display all camps
+     * OR
+     * Search camps based on name, category
+     * @param name
+     * @param category
+     * @return
+     */
+    @GetMapping("/search")
+    public ResponseEntity<List<Camp>> displayCamps(@RequestParam(value = "name", required = false) String name,
+                                                   @RequestParam(value = "category", required = false) String category) {
+
+        System.out.println(name + ":::" + category);
+        category=null;
+        List<Camp> camps = new ArrayList<>(0);
+        if ((name == null || name.trim().isEmpty()) && (category == null || category.trim().isEmpty())) {
+            camps.addAll(campData.displayCamps());
+        } else  {
+            camps.addAll(campData.searchCamps(name, category));
+        }
+        return new ResponseEntity<>(camps, HttpStatus.OK);
+    }
+
 }

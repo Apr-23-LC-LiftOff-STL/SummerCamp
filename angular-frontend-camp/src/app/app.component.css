@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0;
+  
 }
 
 .container {
@@ -12,7 +13,7 @@ body {
 
 .header {
   flex: none;
- 
+  margin: 0px;
   height: 100px;
   overflow: hidden;
 }

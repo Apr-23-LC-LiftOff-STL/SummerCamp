@@ -1,4 +1,5 @@
 export class Camp {
+
     id!: number;
     name!: string;
     description!: string;

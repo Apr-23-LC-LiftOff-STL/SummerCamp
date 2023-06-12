@@ -10,22 +10,29 @@ sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.clojars.org'
+        name 'Clojars'
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation 'junit:junit:4.13.1'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'org.springframework.security:spring-security-crypto:5.7.8'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation group: 'com.sendgrid', name: 'sendgrid-java', version: '4.9.3'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'com.mysql:mysql-connector-j:8.0.32'
+    implementation 'sendgrid:sendgrid:0.1.0'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'
+    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    //implementation 'org.springframework.boot:spring-boot-starter-security'
-    //testImplementation 'org.springframework.security:spring-security-test'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	testImplementation 'org.springframework.security:spring-security-test'
-	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    testImplementation 'junit:junit:4.13.1'
+
 }
 
 tasks.named('test') {

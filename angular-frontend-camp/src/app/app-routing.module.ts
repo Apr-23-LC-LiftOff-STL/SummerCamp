@@ -1,20 +1,23 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CampDetailComponent } from './camp-detail/camp-detail.component';
 import { CampListComponent } from './camp-list/camp-list.component';
 import { CreateCampComponent } from './create-camp/create-camp.component';
 import { CampByCategoryComponent } from './camp-by-category/camp-by-category.component';
 import { ViewMyFavoritesComponent } from './view-my-favorites/view-my-favorites.component';
 import { LoginComponent } from './login/login.component';
-
 import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { UpdateCampComponent } from './update-camp/update-camp.component';
-
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './_auth/auth.guard';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { CampTipsComponent } from './camp-tips/camp-tips.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 
 const routes: Routes = [
   //javascript object
@@ -26,9 +29,12 @@ const routes: Routes = [
   { path: '', component: CampByCategoryComponent },
   { path: 'register', component: RegistrationComponent },
   {path:'update-camp/:id',component:UpdateCampComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
+  {path: 'camp-detail/:id', pathMatch: 'full', component: CampDetailComponent  },
+  {path:'forgot-password',pathMatch:'full',component:ForgotPasswordComponent},
+  {path:'reset-password',pathMatch:'full',component:ResetPasswordComponent},
   {path:'about-us', component: AboutusComponent},
   {path:'camp-tips', component: CampTipsComponent},
-  {path:'contact-us', component: ContactusComponent},
+  {path:'contact-us', component: ContactusComponent}
 
 ];
 

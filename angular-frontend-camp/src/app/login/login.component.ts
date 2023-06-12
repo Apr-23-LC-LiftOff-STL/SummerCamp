@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../_services/user.service';
 import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService,
     private userAuthService: UserAuthService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.toastr.error('Something is wrong', 'Bad credentials');
       }
     );
  }

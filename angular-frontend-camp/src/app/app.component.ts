@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
 import { UserAuthService } from './_services/user-auth.service';
-import { Router } from '@angular/router';
 import { UserService } from './_services/user.service';
+import { Component,ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { Camp } from './ModelInterfaces/camp';
+import { CampService } from './Services/camp.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
-export class AppComponent {
-  title = 'Summer Camp Quest';
 
-  constructor(private userAuthService: UserAuthService, 
+export class AppComponent {
+  title = 'Camp Quest';
+
+  public camps : Camp[] = [];
+
+  constructor(private userAuthService: UserAuthService,
   private router: Router,
-  public userService: UserService){}
+  public userService: UserService,private campService: CampService){}
 
   ngOnInit() : void {
 
@@ -27,5 +33,9 @@ export class AppComponent {
     this.userAuthService.clear();
     this.router.navigate(['/camps']);
   }
+
+  public getCamp() {
+    this.campService.getCamp(1);// 1 - dummy data
+   }
+
 }
- 

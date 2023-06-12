@@ -18,12 +18,21 @@
     </div>
     <div class="top-buffer"></div>
     <div class="row">
+      <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search by name" [(ngModel)]="name" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" (click)="search()" class="btn btn-outline-primary">search</button>
+      </div>
         <div class = "col-sm-9 text-left" >
-            <div class="font-weight-bold">
-                <label><b>Search By</b></label>
-                <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Search by name">
-                <button name="Search" (click)="search()" id="search" name="search">Search</button>
-            </div>
+<!--            <div class="font-weight-bold">-->
+<!--&lt;!&ndash;                <label><b>Search By</b></label>&ndash;&gt;-->
+<!--                <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Search by name">-->
+<!--                 <button name="Search" (click)="search()" id="search" name="search">Search</button>-->
+<!--            </div>-->
+<!--          <div class="input-group">-->
+<!--            <input type="search" class="form-control rounded" placeholder="Search by name" [(ngModel)]="name" aria-label="Search" aria-describedby="search-addon" />-->
+<!--            <button type="button" (click)="search()" class="btn btn-outline-primary">search</button>-->
+<!--          </div>-->
+
             <div class="font-weight-bold" style="margin-left: 6%;">
 
                 <label for="dropdown"><b>Filter by:</b></label>

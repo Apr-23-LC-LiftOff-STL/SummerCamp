@@ -121,7 +121,7 @@ public class CampController {
      * @param category
      * @return
      */
-    @GetMapping("/search{name}")
+    @GetMapping("/search")
     public ResponseEntity<List<Camp>> displayCamps(@RequestParam(value = "name", required = false) String name,
                                                    @RequestParam(value = "category", required = false) String category) {
 

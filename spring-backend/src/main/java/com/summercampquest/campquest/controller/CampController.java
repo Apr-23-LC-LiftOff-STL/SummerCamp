@@ -125,7 +125,7 @@ public class CampController {
     public ResponseEntity<List<Camp>> displayCamps(@RequestParam(value = "name", required = false) String name,
                                                    @RequestParam(value = "category", required = false) String category) {
 
-        System.err.println(name + ":::" + category);
+        System.out.println(name + ":::" + category);
         category=null;
         List<Camp> camps = new ArrayList<>(0);
         if ((name == null || name.trim().isEmpty()) && (category == null || category.trim().isEmpty())) {

@@ -31,6 +31,7 @@ public interface CampRepository extends JpaRepository<Camp, Integer> {
 
     String SEARCH_CAMPS = "select ca.* from camps ca where (:name is null OR lower(ca.name) like lower(:name)) or (:category is null OR ca.CATEGORY=:category)";
 
+
     String COUNT_SEARCH_CAMPS = "select count(*)  from (" + SEARCH_CAMPS + ")";
 
 

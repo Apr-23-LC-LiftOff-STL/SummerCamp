@@ -33,7 +33,7 @@ export class CampDetailComponent implements OnInit {
 
   reDirect(link:any){
     console.log(link);
-    window.open("https://"+link);
+    window.open(link);
     // window.location.href="https://www.google.com";
   }
 

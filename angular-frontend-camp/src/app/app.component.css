@@ -12,7 +12,7 @@ body {
 
 .header {
   flex: none;
- 
+  margin: 0px;
   height: 100px;
   overflow: hidden;
 }

@@ -4,8 +4,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: bold;
-    font-size: calc(100% + 1vw + 1vh);;
-   
+    font-size: calc(100% + 1vw + 1vh);
     color: #000000;
 
     border: 1px solid rgba(0, 0, 0, 0.2);

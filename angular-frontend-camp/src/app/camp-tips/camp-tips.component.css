@@ -19,7 +19,7 @@
     font-style: normal;
     vertical-align: top;
     font-weight: bold;
-    font-size: calc(30% + 1vw + 1vh);
+    font-size: calc(0.4% + 1vw + 1vh);
 
 }
 
@@ -27,6 +27,6 @@
     font-family: 'Inter';
     font-style: normal;
     vertical-align: top;
-    font-size: calc(20% + 1vw + 1vh);
+    font-size: calc(.5% + 1vw + 1vh);
 
 }

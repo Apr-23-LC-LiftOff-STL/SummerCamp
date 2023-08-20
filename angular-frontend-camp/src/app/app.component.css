@@ -7,6 +7,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+
   height: 100vh;
   overflow: hidden;
 }
@@ -14,15 +15,19 @@ body {
 .header {
   flex: none;
   margin: 0px;
+  padding: 0px;
   height: 100px;
-  overflow: hidden;
+
+  /* overflow: hidden; */
 }
 
 .footer {
   flex: none;
- 
+  /* bottom: auto; */
+  width: 100%;
+  position: absolute;
   height: 75px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .body.outer {
@@ -33,7 +38,7 @@ body {
 }
 
 .body.inner {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   flex: 1;
   
 }

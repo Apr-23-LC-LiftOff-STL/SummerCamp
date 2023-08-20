@@ -3,6 +3,7 @@
 ../.idea
 ./build
 build
+bin
 .gradle/7.6.1
 .gradle/buildOutputCleanup
 .gradle/file-system.probem

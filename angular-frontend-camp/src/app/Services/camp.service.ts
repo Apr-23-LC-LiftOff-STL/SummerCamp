@@ -24,7 +24,6 @@ export class CampService {
     return this.httpClient.get<Camp[]>(this.baseURL, { headers:this.requestHeader, params: gradeGrpParam });
   }
 
- 
 
   createCamp(camp: Camp): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, camp);
@@ -49,9 +48,18 @@ export class CampService {
     return this.httpClient.get<Camp>(url, { headers:this.requestHeader});
   }
 
+  public getCamps():Observable<Camp>{
+     const url=this.baseURL + "/" + "viewall";
+     return this.httpClient.get<Camp>(url,{headers:this.requestHeader});
+  }
+
   getUniqueCategoriesArray(): Observable<string[]>{
     return this.httpClient.get<string[]>(`${this.baseURL}/unique-categories`, { headers:this.requestHeader});
   }
+
+  // getViewAll():Observable<String[]>{
+  //   return this.httpClient.get<string[]>(`${this.baseURL}/viewall`,{headers:this.requestHeader});
+  // }
 
   getSelectedCampsSortedByPrice(categories: string[],order: string, gradeGrp: string): Observable<Camp[]>{
     if(categories.length == 0){
@@ -64,6 +72,7 @@ export class CampService {
     return this.httpClient.get<Camp[]>(`${this.baseURL}/price`, { headers:this.requestHeader, params });
   }
 
+ 
 
 
 }

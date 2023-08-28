@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams, HttpHeaders} from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
+import { isNull } from '@angular/compiler/src/output/output_ast';
+import { isEmpty } from 'rxjs/operators';
 
 
 
@@ -121,12 +123,15 @@ export class CampListComponent implements OnInit {
     this.router.navigate(['camp-detail', id]);
   }
   
+ 
+
   //Search functionality by name
   
   search() {
   
     console.log(this.name);
-    //this.http.get('http://localhost:8080/api/camps/?name='+this.name).subscribe((response: any) => {
+    
+      //this.http.get('http://localhost:8080/api/camps/?name='+this.name).subscribe((response: any) => {
     return this.http.get<Camp[]>('http://localhost:8080/api/v1/camps/search?name='+this.name, 
     { headers:this.requestHeader}).subscribe((response: any) => {
         console.log(response);

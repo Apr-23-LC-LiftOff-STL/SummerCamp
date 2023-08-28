@@ -5,9 +5,15 @@
 }
 
 .image {
+    
     height: calc(70% + 1vw + 1vh);
     width: calc(70% + 1vw + 1vh);
     padding-left: calc(1% + 0.5vw + 1vh);
+}
+
+.col-sm{
+   /* width: fit-content; 
+   height: fit-content;  */
 }
 
 .col-sm:hover {

@@ -52,24 +52,13 @@ public class UserService {
         adminUser.setUserName("admin123");
         adminUser.setUserEmail("admin123@gmail.com");
         adminUser.setUserPassword(getEncodedPassword("admin@pass"));
-        adminUser.setUserFirstName("admin_first_name");
-        adminUser.setUserLastName("admin_last_name");
+
 
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
         userRepository.save(adminUser);
 
-        /*User user = new User();
-        user.setUserFirstName("madhav");
-        user.setUserLastName("karthik");
-        user.setUserName("madhav123");
-        user.setUserEmail("madhav123@gmail.com");
-        user.setUserPassword(getEncodedPassword("madhav@pass"));
-        Set<Role> userRoles = new HashSet<>();
-        userRoles.add(userRole);
-        user.setRole(userRoles);
-        userRepository.save(user);*/
 
     }
 

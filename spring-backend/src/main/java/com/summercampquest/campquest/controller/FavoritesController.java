@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/camps/favorites")
+@RequestMapping("/api/v1/camps/favorites")
 @PreAuthorize("hasRole('User')")
 public class FavoritesController {
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Camp } from '../ModelInterfaces/camp';
 
 @Component({
   selector: 'app-camp-by-category',
@@ -6,4 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./camp-by-category.component.css']
 })
 export class CampByCategoryComponent {
+
 }

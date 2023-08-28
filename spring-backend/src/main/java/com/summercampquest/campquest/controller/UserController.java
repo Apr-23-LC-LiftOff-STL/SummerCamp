@@ -3,6 +3,7 @@ package com.summercampquest.campquest.controller;
 import com.summercampquest.campquest.models.User;
 import com.summercampquest.campquest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

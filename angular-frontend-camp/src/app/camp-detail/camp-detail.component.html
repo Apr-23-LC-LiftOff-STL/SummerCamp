@@ -1,15 +1,14 @@
-<!-- <div style="background-color:green; width: ; height: 1000vh;"></div> -->
-<h2 Style="font-size: 1.5rem;
-font-style: italic;
-padding-left: 15px;position: absolute;top: 100px;">Camp Details</h2>
+<div class="containerdetail" style="max-width: 100%;">
+  <div class="left"></div>
+  <div class="center">
+    <h2 Style="font-size: 1.5rem;
+    font-style: italic;
+padding-left: 55px;position: absolute;top: 100px;">Camp Details</h2> 
 
 <div style="height: 80%; width: inherit;margin-left: 0.5cm;">
 <div>
- 
-  <!-- <div class="container" style="background-color: beige;height: 20%;width:30% ;font-display:left; nav-left: auto;">
-        Camp Details
-  </div> -->
-    <table style="padding: 50px; width:80%;position: absolute;
+
+    <table style="margin-left: 200px; width:80%;position: absolute;
     top: 150px;">
         <tr>
           <th>Name:</th>
@@ -34,10 +33,10 @@ padding-left: 15px;position: absolute;top: 100px;">Camp Details</h2>
           <tr>
             <th>Age :</th>
             <td>{{camp.age}}</td>
-          </tr> 
+          </tr>
           <tr>
             <th>Total Seats:</th>
-            <td>{{camp.total_seats}}</td>
+            <td>{{camp.totalSeats}}</td>
           </tr>
           <tr>
             <th>Mode:</th>
@@ -48,11 +47,15 @@ padding-left: 15px;position: absolute;top: 100px;">Camp Details</h2>
             <td>{{camp.category}}</td>
           </tr>
       </table>
-       
+
 </div>
 
-<button class="btn1" routerLink="/camp-list" >Back </button>
+<button class="btn btn-primary" [routerLink]="[]" (click)="goBack()">Back </button>
 
-<button class="btn2" (click)="reDirect(camp.campLink)">Visit Website</button>
+<button class="btn btn-success" (click)="reDirect(camp.campLink)">Visit Website</button>
+
+</div>
+  </div>
+  <div class="right"></div>
 
 </div>

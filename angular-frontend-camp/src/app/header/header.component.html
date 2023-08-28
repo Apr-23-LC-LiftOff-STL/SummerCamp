@@ -1,17 +1,39 @@
-<header class="card" style="width:100%;">
-    <div class="card-header header-text">
+<!-- 
+    <div class="header-text">
         <span class="col-sm-7">
-            <a href="">
+            <a href="" class="nav-link">
                 <img id='logo' class='logo' src="../../assets/Logo.png">
                 Camp Quest
-            </a>
+            </a> 
         </span>
         <span class="col-sm-2" style="padding-top: 1%; float: right; justify-items: space-between;">
-            <i class="p-3 bi bi-star-fill" style="color: #fcd12a;" routerLink="/view-my-favorites"></i>
-            <a routerLink="/login">
-                <img id='login' class='login' src="../../assets/login.png">
-            </a>
+            <button id="login" class="btn btn-success" *ngIf="!isLoggedIn()" routerLink="/login">Login</button>
+            <span *ngIf="isLoggedIn()">
+                <label *ngIf="userAuthService.isLoggedIn()">Welcome, {{userName}}</label>
+                <button id="login" class="btn btn-danger"  (click)="logout()">logout</button>
+            </span>
+            
         </span>
-    </div> 
+    </div> -->
 
-</header>
+
+    <div class="header-text">
+        <div class="row">
+            <div class="col-sm-8">
+                <a href="" class="nav-link">
+                    <img id='logo' class='logo' src="../../assets/Logo.png">
+                    Camp Quest
+                </a> 
+            </div>
+            <div class="col-sm-3" style="float: right; margin-left: 8%;">
+                <button id="login" style="margin-left: 45%;" class="btn btn-success" *ngIf="!isLoggedIn()" routerLink="/login">Login</button>
+                <span *ngIf="isLoggedIn()">
+                    <label  style="font-size: medium; margin-left: 15%;">Welcome, {{userName}}</label>
+                    <button id="logout" class="btn btn-danger" style="margin-left: 15%;" (click)="logout()">Logout</button>
+                </span>
+            </div>
+        </div>
+        <span class="col-sm-2" style="padding-top: 1%; float: right; justify-items: space-between;">     
+        </span>
+    </div>
+

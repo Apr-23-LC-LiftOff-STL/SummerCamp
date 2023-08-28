@@ -10,6 +10,7 @@ import com.summercampquest.campquest.service.CampData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -37,12 +38,14 @@ public class CampController {
 
     //create camp REST API
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public Camp createCamp(@RequestBody Camp camp){
         return campRepository.save(camp);
     }
 
     //Delete camp by ID REST API
     @DeleteMapping("/{campId}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Object> deleteCamp(@PathVariable Integer campId) {
         Optional<Camp> campOpt = campRepository.findById(campId);
         if (campOpt.isPresent()) {
@@ -61,7 +64,9 @@ public class CampController {
 
     }
     @PutMapping("/{campId}")
-    public Camp updateCamp(@PathVariable Integer campId, @RequestBody Camp camp){
+    @PreAuthorize("hasRole('Admin')")
+    public Camp updateCamp(@PathVariable Integer campId,@RequestBody Camp camp){
+
         boolean campOpt = campRepository.existsById(campId);
         if (campOpt) {
           campRepository.save(camp);
@@ -116,11 +121,11 @@ public class CampController {
      * @param category
      * @return
      */
-    @GetMapping("/search{name}")
+    @GetMapping("/search")
     public ResponseEntity<List<Camp>> displayCamps(@RequestParam(value = "name", required = false) String name,
                                                    @RequestParam(value = "category", required = false) String category) {
 
-        System.err.println(name + ":::" + category);
+        System.out.println(name + ":::" + category);
         category=null;
         List<Camp> camps = new ArrayList<>(0);
         if ((name == null || name.trim().isEmpty()) && (category == null || category.trim().isEmpty())) {

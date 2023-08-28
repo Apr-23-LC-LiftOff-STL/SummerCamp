@@ -1,0 +1,14 @@
+.container1{
+    padding-left: 40%;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 20%;
+    left: 3.5%;
+    margin: -50px 0 0 -50px;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    width: 300px;
+}

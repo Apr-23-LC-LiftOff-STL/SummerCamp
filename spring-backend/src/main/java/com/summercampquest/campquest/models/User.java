@@ -22,18 +22,11 @@ public class User {
     private String userEmail;
     @Column(name="user_password",nullable = false)
     private String userPassword;
-    @Column(name = "age",nullable = true)
-    private Integer age;
-    @Column(name = "grade",nullable = true)
-    private Integer grade;
-    @Column(name = "phone",nullable = true)
-    private Integer phone;
     @Column(name = "token")
     private String token;
     @Column(name = "token_expiry_date")
     private Date tokenExpiryDate;
-    @Column(name = "profilePictureLink",nullable = true)
-    private String profilePictureLink;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
@@ -50,19 +43,15 @@ public class User {
     public User(){
     }
 
-    public User(String userName, String userFirstName, String userLastName, String userEmail, String userPassword, Integer age, Integer grade, Integer phone,
-                String token, Date tokenExpiryDate, String profilePictureLink, Set<Role> role) {
+    public User(String userName, String userFirstName, String userLastName, String userEmail, String userPassword,
+                String token, Date tokenExpiryDate, Set<Role> role) {
         this.userName = userName;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
-        this.age = age;
-        this.grade = grade;
-        this.phone = phone;
         this.token = token;
         this.tokenExpiryDate = tokenExpiryDate;
-        this.profilePictureLink = profilePictureLink;
         this.role = role;
     }
 
@@ -115,29 +104,6 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Integer grade) {
-        this.grade = grade;
-    }
-
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
 
     public String getToken() {
         return token;
@@ -153,14 +119,6 @@ public class User {
 
     public void setTokenExpiryDate(Date tokenExpiryDate) {
         this.tokenExpiryDate = tokenExpiryDate;
-    }
-
-    public String getProfilePictureLink() {
-        return profilePictureLink;
-    }
-
-    public void setProfilePictureLink(String profilePictureLink) {
-        this.profilePictureLink = profilePictureLink;
     }
 
     @MappedSuperclass

@@ -11,6 +11,43 @@ tr, td, th, thead {
     max-height: none; */
 }
 
+.button{
+    background-color: blue;
+}
 
+.row{
+    margin-left: 5%;
+    width: 150px;
+    height: 100px;
+    justify-content: right;
+}
 
+.containeraside{
+    margin-left: 15%;
+    top: 35%;
+    width: 83%;
+    position: absolute;
+    
+}
 
+.row.content{
+    width: 100%;
+    height: 80px;
+}
+
+.col{
+    align-items: center;
+
+    
+}
+
+.col-sm-10{
+    flex:0 0 auto;
+    width: 65.5%;
+    height: 50px;
+}
+
+.colsearch{
+    width:30%;
+    margin-left:71%;
+}

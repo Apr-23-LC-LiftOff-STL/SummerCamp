@@ -4,9 +4,11 @@ import { Camp } from '../ModelInterfaces/camp';
 import { CampService } from '../Services/camp.service';
 import { FavoriteService } from '../Services/favorite.service';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams} from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse,HttpClient,HttpParams, HttpHeaders} from '@angular/common/http';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
+import { isNull } from '@angular/compiler/src/output/output_ast';
+import { isEmpty } from 'rxjs/operators';
 
 
 
@@ -18,30 +20,34 @@ import { UserService } from '../_services/user.service';
 export class CampListComponent implements OnInit {
   camps: Camp[] = [];
   uniqueCategories: string[] = [];
-  priceOptions: string[] = ['price: low to high','price: high to low'];
+  priceOptions: string[] = ['low to high','high to low'];
   selectedPriceOption: string = this.priceOptions[0];
   selectedItems: string[] = [];
   favoritesList: Camp[] = [];
   userName: string = '';
   gradeGrp: string = '';
-  name: String='';
-  searchResults: string[] | undefined;
+  name: string='';
+  searchResults: string[] = [];
+  requestHeader: HttpHeaders = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
 
 
+  constructor(public userAuthService: UserAuthService, public userService: UserService, 
+  private router: Router, private campService: CampService, private favoriteService: FavoriteService, 
+  private toastr: ToastrService, private route: ActivatedRoute, private http: HttpClient ) { }
 
-  constructor(public userAuthService: UserAuthService, public userService: UserService, private router: Router,
-     private campService: CampService, private favoriteService: FavoriteService, private toastr: ToastrService,
-      private route: ActivatedRoute,private http:HttpClient ) { }
+
 
   ngOnInit(): void {
     this.getCamps();
     this.getUniqueCategories();
-    this.getFavorites();
     this.userName = this.userAuthService.getAccountName();
       if(this.userService.roleMatch(['User'])){
         this.getFavorites();
       }
     }
+
   private getCamps() {
     this.route.queryParamMap.subscribe(parms => {
       this.gradeGrp = String(parms.get('gradeGrp'));
@@ -91,7 +97,7 @@ export class CampListComponent implements OnInit {
   }
 
   addToFavorites(campId: number) {
-    console.log(campId)
+    console.log(campId);
     this.favoriteService.addToFavorites(campId, this.userName).subscribe(() => {
       this.getFavorites();
       this.toastr.info('marked as my favorite!');
@@ -117,13 +123,18 @@ export class CampListComponent implements OnInit {
     this.router.navigate(['camp-detail', id]);
   }
   
+ 
+
   //Search functionality by name
   
   search() {
   
     console.log(this.name);
-  
-    this.http.get('http://localhost:8080/api/camps?name='+this.name).subscribe((response: any) => {
+    
+      //this.http.get('http://localhost:8080/api/camps/?name='+this.name).subscribe((response: any) => {
+    return this.http.get<Camp[]>('http://localhost:8080/api/v1/camps/search?name='+this.name, 
+    { headers:this.requestHeader}).subscribe((response: any) => {
+        console.log(response);
         this.camps = response;
       });
   }

@@ -2,7 +2,7 @@ package com.summercampquest.campquest.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "camps")
@@ -49,6 +49,10 @@ public class Camp{
         this.category = category;
         this.campLink = campLink;
         this.gradeGrp = gradeGrp;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getLocation() {

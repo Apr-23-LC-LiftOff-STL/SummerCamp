@@ -43,16 +43,32 @@
         </div>
         <div class = "form-group">
             <label>Category</label>
-            <input type = "text" class = "form-control" id = "category"
-            [(ngModel)] = "camp.category" name = "category">
+            <select id="category" name="category" class="form-select" [(ngModel)]="camp.category">
+                <option *ngFor="let category of uniqueCategories" [value]="category">
+                    {{category}}
+                </option>
+            </select>
         </div>
         <div class = "form-group">
             <label>Camp Link</label>
             <input type = "text" class = "form-control" id = "campLink"
             [(ngModel)] = "camp.campLink" name = "campLink">
         </div>
+        <div class="form-group">
+            <label>Grade Group</label>
+            <select id="gradeGroup" name="gradeGroup" class="form-select" [(ngModel)]="camp.gradeGrp">
+                <option value="GKTO5">K-5</option>
+                <option value="G6TO8">6-8</option>
+                <option value="G9TO12">9-12</option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" class="form-control" id="location" [(ngModel)]="camp.location" name="location">
+        </div>
     
-        <button class = "btn btn-success" type = "submit">Submit</button>
+        <button class = "btn btn-success top-buffer" type = "submit">Submit</button>
         
     
     </form>

@@ -31,7 +31,8 @@ public class CampData {
     }
 
     public List<Camp> searchCamps(String name, String category) {
-        return campRepository.searchCampsByNameAndCategory("%"+name+"%", category);
+        //return campRepository.searchCampsByNameAndCategory("%"+name+"%", category);
+        return campRepository.searchCampsByNameAndCategory("%"+name+"%", "%"+category+"%");
     }
 
 

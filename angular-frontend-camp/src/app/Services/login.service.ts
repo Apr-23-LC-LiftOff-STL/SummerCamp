@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { User } from 'src/app/ModelInterfaces/user';
 
 import { Observable } from 'rxjs';
@@ -9,13 +8,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private loginApiURL = 'http://localhost:8080';
+  private registerURL = "http://localhost:8080/registerNewUser";
+
+  requestHeader = new HttpHeaders(
+    { "No-Auth":"True"}
+  );
 
   constructor(private httpClient: HttpClient) {}
 
-  public verifyUser(): void {}
-
-  create(data: any): Observable<any> {
-    return this.httpClient.post(this.loginApiURL, data);
+  createNewUser(user: User): Observable<any> {
+    return this.httpClient.post(`${this.registerURL}`, user, { headers:this.requestHeader});
   }
+
 }

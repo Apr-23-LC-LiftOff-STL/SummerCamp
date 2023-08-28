@@ -1,15 +1,53 @@
-.item-a {
-   grid-area: header;
-       }
-.item-d {
-        grid-area: footer;
-      }
-      
- .container {
-    display: grid;
-         width: inherit;
-         background-color: antiquewhite;
-         padding-left: 5px;
-         width: inherit;
-      }
-      
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzHHl2qgAsswJB-E2MnNtBkXFUHQIAh8t_-g&usqp=CAU);
+  background-size: cover;
+  
+}
+
+.container {
+  display: block;
+  /* flex-direction: column; */
+  min-height: 100vh;
+  min-width: 100%;
+  /* position: relative; */
+  /* background-color: white; */
+   /* justify-content: center;
+  align-items: center;  */
+  overflow: hidden;
+}
+
+.header {
+  /*flex: none;*/
+  margin: 0px;
+  padding: 0px;
+  height: 100px;
+
+  /* overflow: hidden; */
+}
+
+.footer {
+ /* flex: none;*/
+  /* bottom: auto; */
+  width: 100%;
+  position: absolute;
+  height: 75px;
+  /* overflow: hidden; */
+}
+
+.body.outer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+
+.body.inner {
+  /* overflow-y: scroll; */
+  flex: 1;
+  
+}
+

@@ -1,24 +1,57 @@
-.card {
-    border-bottom-right-radius: 0.2em;
-    border-top-left-radius: 2em;
-    box-shadow: 1px 1px 11px #e1e1e1;
-  }
-  .card {
-    background-size: 10%;
-    background-position: right;
-  }
 
-  .align-right {
-    text-align: 20;
-    border: 0;
-  }
-  .btn1{
-       position: absolute;
-       bottom: 250px;
-       left: 100px;    
-  }
-  .btn2{
-    position: absolute;
-       bottom: 250px;
-       right: 850px;
-  }
+
+.containerdetail {
+  justify-items:  center;
+}
+
+
+.containerdetail > div{
+  height: 800px;
+  /* background-color: blue; */
+  
+}
+.left{
+  float: left;
+  width: 150px;
+  
+}
+.center{
+  display: inline-block;
+  width: 1195px;
+  margin: 0 auto;
+
+}
+
+.right{
+  float: right;
+  width: 150px;
+  
+}
+
+.card {
+  border-bottom-right-radius: 0.2em;
+  border-top-left-radius: 2em;
+  box-shadow: 1px 1px 11px #e1e1e1;
+}
+.card {
+  background-size: 10%;
+  background-position: right;
+}
+
+.align-right {
+  text-align: 20;
+  border: 0;
+}
+.btn-primary{
+     position: absolute;
+     bottom: 250px;
+     left: 550px;
+     background-color: rgb(20, 192, 183);
+
+}
+.btn-success{
+  position: absolute;
+     bottom: 250px;
+     right: 750px;
+     background-color: rgb(20, 192, 183);
+}

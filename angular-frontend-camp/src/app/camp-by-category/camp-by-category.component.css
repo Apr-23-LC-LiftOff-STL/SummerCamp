@@ -10,6 +10,11 @@
     padding-left: calc(1% + 0.5vw + 1vh);
 }
 
+.col-sm:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    transform: scale(1.1); 
+  }
+
 
 .rectangle11 {
     width: 20%;
@@ -26,3 +31,15 @@ p {
   }
 
   
+.container1{
+    padding-left: 5%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 20%;
+    left: 3.5%;
+    margin: -50px 0 0 -50px;
+    justify-content: center;
+    align-items: center;
+}
+

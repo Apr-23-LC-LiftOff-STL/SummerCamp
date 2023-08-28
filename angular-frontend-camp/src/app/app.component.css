@@ -9,16 +9,19 @@ body {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  /* flex-direction: column; */
   min-height: 100vh;
+  min-width: 100%;
   /* position: relative; */
-
+  /* background-color: white; */
+   /* justify-content: center;
+  align-items: center;  */
   overflow: hidden;
 }
 
 .header {
-  flex: none;
+  /*flex: none;*/
   margin: 0px;
   padding: 0px;
   height: 100px;
@@ -27,7 +30,7 @@ body {
 }
 
 .footer {
-  flex: none;
+ /* flex: none;*/
   /* bottom: auto; */
   width: 100%;
   position: absolute;

@@ -18,7 +18,7 @@ import { UserService } from '../_services/user.service';
 export class CampListComponent implements OnInit {
   camps: Camp[] = [];
   uniqueCategories: string[] = [];
-  priceOptions: string[] = ['price: low to high','price: high to low'];
+  priceOptions: string[] = ['low to high','high to low'];
   selectedPriceOption: string = this.priceOptions[0];
   selectedItems: string[] = [];
   favoritesList: Camp[] = [];

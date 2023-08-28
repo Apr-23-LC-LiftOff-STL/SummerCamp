@@ -1,4 +1,5 @@
 <div class="container">
+<div class="container1">
   <h2>Create Account</h2>
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -20,6 +21,7 @@
     <div class="form-group">
       <label for="password">Password:</label>
       <input type="password" class="form-control" id="userPassword" [(ngModel)] = "user.userPassword" placeholder="Create password" name="password" />
+      
     </div>
     <!--<div class="form-group">
       <label for="age">Age:</label>
@@ -35,4 +37,5 @@
     </div>-->
     <button class="btn btn-success top-buffer" type="submit">Register</button>
   </form>
+</div>
 </div>

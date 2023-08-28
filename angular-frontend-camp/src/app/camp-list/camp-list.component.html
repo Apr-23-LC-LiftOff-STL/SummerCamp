@@ -1,7 +1,7 @@
-<div class="container-fluid">
+    <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-10">
-            <h2 style="padding-left: 5%; padding-top: 1%;">Camp List</h2>
+            <h2 >Camp List</h2>
         </div>
         <div class="col">
             <div>
@@ -16,10 +16,17 @@
 
         </div>
     </div>
+    <div class="colsearch">
+        <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search by Camp name" [(ngModel)]="name" aria-label="Search" aria-describedby="search-addon" />
+            <button type="button" (click)="search()" class="btn btn-primary">search</button>
+          </div>
+    </div>
+  
     <div class="top-buffer"></div>
     <div class="row">
       
-        <div class = "col" style="margin-left: 6%;">
+        <div class = "col" >
 
             <label for="dropdown"><b>Filter by:</b></label>
             
@@ -27,24 +34,25 @@
                 <input type="checkbox" name="{{category}}" [value]="category" (change)="getCampsBySelectedCategories($event,category)">&nbsp;&nbsp;{{ category }}
             </div>
         </div>
-       
+    </div>
+    <div class="row"  >
         <div class="col">
-            <label for="radio"><b>Sort by:</b></label>
+            <label for="radio"><b>Sort by Price</b></label>
             <div *ngFor="let option of priceOptions">
                 <input type="radio" name="priceGroup" [(ngModel)]="selectedPriceOption" [value]="option" (change)="getSelectedCampsSortedByPrice()"> {{option}}
             </div>
         </div>
 
-        <div class="col">
+        <!-- <div class="col">
             <div class="input-group">
                 <input type="search" class="form-control rounded" placeholder="Search by Camp name" [(ngModel)]="name" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" (click)="search()" class="btn btn-outline-primary">search</button>
+                <button type="button" (click)="search()" class="btn btn-primary">search</button>
               </div>
-        </div>
+        </div> -->
         
     </div>
 
-
+<div class="containeraside">
     <div>
         <table class="table table-striped camp-table">
             <thead class="table-success">
@@ -81,6 +89,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 <!-- c -->
 

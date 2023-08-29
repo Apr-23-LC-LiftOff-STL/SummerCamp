@@ -1,0 +1,25 @@
+.containerinside{
+    height: fit-content;
+    width: fit-content;
+    align-items: center;
+    padding-left:40%;
+    position: relative;
+}
+
+.back{
+    padding-left: 85%;
+    padding-bottom: 1%;
+    padding-top: 0%; 
+    width: fit-content;  
+}
+
+.pageheading{
+    padding-left: 1%;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+}
+
+.containerfavorites{
+    padding-top: 1%;
+}

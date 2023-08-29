@@ -9,6 +9,7 @@ import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { isEmpty } from 'rxjs/operators';
+import { ColDef } from 'ag-grid-community';
 
 
 
@@ -28,6 +29,8 @@ export class CampListComponent implements OnInit {
   gradeGrp: string = '';
   name: string='';
   searchResults: string[] = [];
+    currentPage: number = 1;
+    itemsPerPage: number = 10; // Number of items per page
   requestHeader: HttpHeaders = new HttpHeaders(
     { "No-Auth":"True"}
   );
@@ -157,5 +160,42 @@ export class CampListComponent implements OnInit {
     }
 
   }
+
+
+  getCampsForPage(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.camps.slice(startIndex, endIndex);
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.camps.length / this.itemsPerPage);
+  }
+
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages()) {
+      this.currentPage = page;
+    }
+  }
+
+  visiblePages(): number[] {
+    const total = this.totalPages();
+    const start = Math.max(1, this.currentPage - 2);
+    const end = Math.min(total, start + 4);
+    return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+  }  
+  
+	// columnDefs: ColDef[] = [
+	// 	{headerName: 'Name', field: 'name' },
+	// 	{headerName: 'Category', field: 'category' },
+	// 	{headerName: 'Location', field: 'location'},
+  //   {headerName: 'Price', field: 'price'}
+	// ];
+
+	// rowData = [
+	// 	{ make: 'Toyota', model: 'Celica', price: 35000 },
+	// 	{ make: 'Ford', model: 'Mondeo', price: 32000 },
+	// 	{ make: 'Porsche', model: 'Boxter', price: 72000 }
+	// ];
 
 }

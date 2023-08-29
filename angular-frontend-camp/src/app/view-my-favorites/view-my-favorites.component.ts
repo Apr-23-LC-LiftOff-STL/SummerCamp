@@ -14,6 +14,9 @@ export class ViewMyFavoritesComponent implements OnInit {
   
   favoritesList: Camp[] = [];
   userName : string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 10; // Number of items per page
+
   
   constructor(private favoriteService: FavoriteService, private location: Location, private userAuthService: UserAuthService) {}
    
@@ -37,5 +40,23 @@ export class ViewMyFavoritesComponent implements OnInit {
     console.log("called goBack fn");
     this.location.back();
   }
+
+  totalPages(): number {
+    return Math.ceil(this.favoritesList.length / this.itemsPerPage);
+  }
+
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages()) {
+      this.currentPage = page;
+    }
+  }
+
+  visiblePages(): number[] {
+    const total = this.totalPages();
+    const start = Math.max(1, this.currentPage - 2);
+    const end = Math.min(total, start + 4);
+    return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+  }  
+  
   
 }

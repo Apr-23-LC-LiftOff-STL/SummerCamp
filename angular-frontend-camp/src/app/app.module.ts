@@ -26,7 +26,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { CampDetailComponent } from './camp-detail/camp-detail.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
   ],
   imports: [
     BrowserModule,
+     AgGridModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

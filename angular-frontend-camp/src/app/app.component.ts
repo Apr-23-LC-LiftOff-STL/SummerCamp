@@ -38,4 +38,6 @@ export class AppComponent {
     this.campService.getCamp(1);// 1 - dummy data
    }
 
+
+
 }

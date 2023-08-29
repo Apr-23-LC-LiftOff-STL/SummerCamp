@@ -66,13 +66,12 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let camp of camps">
+                <!-- <tr *ngFor="let camp of camps"> -->
+                    <tr *ngFor="let camp of getCampsForPage()">
                     <td class="col-sm-1">{{camp.name}}</td>
                     <td class="col-sm-1">{{camp.category}}</td>
                     <td class="col-sm-1">{{camp.location}}</td>
                     <td class="col-sm-1">{{camp.price}}</td>
-
-
                   <td class="col-sm-1">
                         <i class="bi bi-eye-fill" data-toggle="tooltip" data-placement="bottom" title="View" (click)='campDetails(camp.id)'></i>
                         <i class="p-3 bi bi-star" *ngIf="userService.roleMatch(['User']) && !isFavorite(camp.id)" (click)="addToFavorites(camp.id)"
@@ -86,10 +85,58 @@
                             data-placement="bottom" title="Edit"></i>
                     </td>
                 </tr>
+                
             </tbody>
+            
+<!-- <ag-grid-angular style="width: 500px; height: 500px;" 
+    class="ag-theme-alphine"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
+    [pagination]="true" [paginationPageSize]="2">
+</ag-grid-angular> -->
         </table>
+        <!-- Pagination controls -->
+<!-- <div class="pagination">
+    <ul class="pagination">
+      <li class="page-item" *ngFor="let page of totalPages()">
+
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+    </ul>
+  </div> -->
+  <!-- Pagination controls -->
+<div class="containerinside">
+<div class="pagination">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" (click)="changePage(1)">First</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="changePage(currentPage - 1)" disabled="currentPage === 1">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of visiblePages()">
+        <a class="page-link" [class.active]="currentPage === page" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="changePage(currentPage + 1)" disabled="currentPage === totalPages()">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="changePage(totalPages())">Last</a>
+      </li>
+    </ul>
+  </div>
+</div>
+  
     </div>
 </div>
 </div>
 <!-- c -->
+
+<!-- <ag-grid-angular style="width: 500px; height: 500px;" 
+    class="ag-theme-alphine"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
+    [pagination]="true" [paginationPageSize]="2">
+</ag-grid-angular> -->
+
 

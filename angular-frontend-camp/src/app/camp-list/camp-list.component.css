@@ -51,3 +51,15 @@ tr, td, th, thead {
     width:30%;
     margin-left:71%;
 }
+
+.pagination{
+     justify-content: center;
+}
+
+.containerinside{
+    height: fit-content;
+    width: fit-content;
+    align-items: center;
+    padding-left: 31%;
+    position: relative;
+}

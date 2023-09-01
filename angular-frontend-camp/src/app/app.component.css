@@ -5,6 +5,7 @@ body {
   width: 100%;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzHHl2qgAsswJB-E2MnNtBkXFUHQIAh8t_-g&usqp=CAU);
   background-size: cover;
+  /* background-image: url(https://www.creativefabrica.com/wp-content/uploads/2021/03/07/Background-Triangular-Dark-Blue-Graphics-9295187-1-1-580x363.jpg); */
   
 }
 
@@ -25,6 +26,7 @@ body {
   margin: 0px;
   padding: 0px;
   height: 100px;
+  width: 100%;
 
   /* overflow: hidden; */
 }

@@ -29,8 +29,8 @@ export class CampListComponent implements OnInit {
   gradeGrp: string = '';
   name: string='';
   searchResults: string[] = [];
-    currentPage: number = 1;
-    itemsPerPage: number = 10; // Number of items per page
+  currentPage: number = 1;
+  itemsPerPage: number = 10; // Number of items per page
   requestHeader: HttpHeaders = new HttpHeaders(
     { "No-Auth":"True"}
   );
@@ -57,10 +57,14 @@ export class CampListComponent implements OnInit {
       this.campService.getCampsList(this.gradeGrp, this.selectedPriceOption).subscribe(data => {
         console.log(data);
         this.camps = data;
+        // const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        // const endIndex = startIndex + this.itemsPerPage;
+        // return this.camps.slice(startIndex, endIndex);
       }), (error: HttpErrorResponse) => {
         alert(error.message);
       }
     });
+
 
   }
 

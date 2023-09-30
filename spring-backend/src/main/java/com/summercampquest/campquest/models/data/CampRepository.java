@@ -21,11 +21,14 @@ public interface CampRepository extends JpaRepository<Camp, Integer> {
 
     List<Camp> findByGradeGrpAndCategoryInOrderByPriceDesc(GradeGroup gradeGroup, String[] categories);
 
+
     List<Camp> findByName(String name);
 
     List<Camp> findByDeadline(Date deadline);
 
     List<Camp> findByGradeGrp(GradeGroup gradeGroup);
+
+
 
     //String SEARCH_CAMPS = "select ca.* from camp ca where (:name is null OR lower(ca.name)=lower(:name))   AND (:category is null OR ca.CATEGORY=:category)";
 
@@ -37,5 +40,13 @@ public interface CampRepository extends JpaRepository<Camp, Integer> {
 
     @Query(nativeQuery = true, countQuery = COUNT_SEARCH_CAMPS, value = SEARCH_CAMPS)
     List<Camp> searchCampsByNameAndCategory(@Param("name") String name, @Param("category") String category);
+
+//    String ALL_CAMPS="select ca.* from camps ca where ((:grade_grp ='GKTO5') OR (:grade_grp = 'G6TO8') OR (:grade_grp ='G9TO12'))";
+//
+//    String COUNT_ALL_CAMPS = "select count(*)  from (" + ALL_CAMPS + ")";
+//
+//    @Query(nativeQuery = true, countQuery = COUNT_SEARCH_CAMPS, value = SEARCH_CAMPS)
+//    List<Camp> getallCamps();
+
 
 }

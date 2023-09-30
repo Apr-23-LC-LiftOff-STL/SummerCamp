@@ -26,10 +26,13 @@ public class CampController {
     @Autowired
     private CampData campData;
 
-    @GetMapping
-    public List<Camp> findByGrade(@RequestParam GradeGroup gradeGrp, @RequestParam(defaultValue = "price: low to high") String order) {
 
-        if("price: low to high".equalsIgnoreCase(order)){
+
+
+    @GetMapping
+    public List<Camp> findByGrade(@RequestParam GradeGroup gradeGrp, @RequestParam(defaultValue = "low to high") String order) {
+
+        if("low to high".equalsIgnoreCase(order)){
             return campRepository.findByGradeGrpOrderByPriceAsc(gradeGrp);
         } else{
             return campRepository.findByGradeGrpOrderByPriceDesc(gradeGrp);
@@ -97,6 +100,18 @@ public class CampController {
         return uniqueCategories;
     }
 
+    @GetMapping("viewall")
+    public Set<String> getAllCategories(){
+        //get all camps
+        List<Camp> camps = campRepository.findAll();
+        Set<String> allCategories = new HashSet<>();
+        for(Camp camp : camps){
+            allCategories.add(camp.getCategory());
+        }
+        return allCategories;
+    }
+
+
     @GetMapping("price")
     public List<Camp> getSelectedCampsSortedByPrice(@RequestParam String[] categories, @RequestParam(defaultValue = "price: low to high") String order,@RequestParam GradeGroup gradeGroup) {
         if("price: low to high".equalsIgnoreCase(order)){
@@ -136,4 +151,9 @@ public class CampController {
         return new ResponseEntity<>(camps, HttpStatus.OK);
     }
 
+//    @GetMapping("/viewall")
+//    public ResponseEntity<List<Camp>> displayAllCamps() {
+//
+//       return (ResponseEntity<List<Camp>>) campData.viewAllCamps();
+//    }
 }

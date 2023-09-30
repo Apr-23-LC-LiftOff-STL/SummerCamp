@@ -35,6 +35,9 @@ public class CampData {
         return campRepository.searchCampsByNameAndCategory("%"+name+"%", "%"+category+"%");
     }
 
+//    public List<Camp> viewAllCamps(){
+//        return campRepository.getallCamps();
+//    }
 
 
 }

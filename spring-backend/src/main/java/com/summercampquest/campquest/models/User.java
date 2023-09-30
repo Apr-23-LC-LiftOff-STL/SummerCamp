@@ -1,5 +1,7 @@
 package com.summercampquest.campquest.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +14,7 @@ public class User {
 
 
     @Id
-    @Column(name="user_name")
+    @Column(name="user_name" ,nullable = false)
     private String userName;
     @Column(name="user_first_name",nullable = false)
     private String userFirstName;

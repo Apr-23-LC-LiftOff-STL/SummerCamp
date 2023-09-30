@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
@@ -11,7 +11,7 @@ import { UserService } from '../_services/user.service';
 //this auth guard class is used to determine particular path is accessible to the user or not
 //by fetching token, roles and matching allowed roles with actual role of the account
 //if match is true, then we will allow access to the particular path, otherwise not accessible.
-export class AuthGuard implements CanActivate {
+export class AuthGuard  {
 
   constructor(private userAuthService: UserAuthService,
   private router: Router,
